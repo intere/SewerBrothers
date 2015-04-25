@@ -42,6 +42,7 @@
         sprite.xScale = 0.5;
         sprite.yScale = 0.5;
         sprite.position = location;
+//        sprite.anchorPoint = CGPointMake(0.5, 1.0);
         
         SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
