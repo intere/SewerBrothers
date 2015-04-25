@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		36D8EE361AEBEFD3004315CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE351AEBEFD3004315CE /* main.m */; };
 		36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE381AEBEFD3004315CE /* AppDelegate.m */; };
-		36D8EE3C1AEBEFD3004315CE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE3B1AEBEFD3004315CE /* GameScene.m */; };
+		36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE3B1AEBEFD3004315CE /* SplashScreenScene.m */; };
 		36D8EE3E1AEBEFD3004315CE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE3D1AEBEFD3004315CE /* GameScene.sks */; };
 		36D8EE411AEBEFD3004315CE /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE401AEBEFD3004315CE /* GameViewController.m */; };
 		36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE421AEBEFD3004315CE /* Main.storyboard */; };
@@ -19,6 +19,11 @@
 		36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */; };
 		36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */; };
 		36D8EE631AEC01C1004315CE /* pico.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE621AEC01C1004315CE /* pico.png */; };
+		36D8EE671AEC06F0004315CE /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE661AEC06F0004315CE /* GameScene.m */; };
+		36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE681AEC4C0F004315CE /* Player_Right1.png */; };
+		36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE691AEC4C0F004315CE /* Player_Right2.png */; };
+		36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */; };
+		36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +42,8 @@
 		36D8EE351AEBEFD3004315CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36D8EE371AEBEFD3004315CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		36D8EE381AEBEFD3004315CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		36D8EE3A1AEBEFD3004315CE /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		36D8EE3B1AEBEFD3004315CE /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		36D8EE3A1AEBEFD3004315CE /* SplashScreenScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScreenScene.h; sourceTree = "<group>"; };
+		36D8EE3B1AEBEFD3004315CE /* SplashScreenScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashScreenScene.m; sourceTree = "<group>"; };
 		36D8EE3D1AEBEFD3004315CE /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		36D8EE3F1AEBEFD3004315CE /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		36D8EE401AEBEFD3004315CE /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -51,6 +56,12 @@
 		36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SewerSplash_480.png; sourceTree = "<group>"; };
 		36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SewerSplash_568.png; sourceTree = "<group>"; };
 		36D8EE621AEC01C1004315CE /* pico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pico.png; sourceTree = "<group>"; };
+		36D8EE651AEC06F0004315CE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		36D8EE661AEC06F0004315CE /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		36D8EE681AEC4C0F004315CE /* Player_Right1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right1.png; sourceTree = "<group>"; };
+		36D8EE691AEC4C0F004315CE /* Player_Right2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right2.png; sourceTree = "<group>"; };
+		36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right3.png; sourceTree = "<group>"; };
+		36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +103,9 @@
 		36D8EE321AEBEFD3004315CE /* Sewer Brothers */ = {
 			isa = PBXGroup;
 			children = (
+				36D8EE641AEC0580004315CE /* scenes */,
 				36D8EE371AEBEFD3004315CE /* AppDelegate.h */,
 				36D8EE381AEBEFD3004315CE /* AppDelegate.m */,
-				36D8EE3A1AEBEFD3004315CE /* GameScene.h */,
-				36D8EE3B1AEBEFD3004315CE /* GameScene.m */,
 				36D8EE3D1AEBEFD3004315CE /* GameScene.sks */,
 				36D8EE3F1AEBEFD3004315CE /* GameViewController.h */,
 				36D8EE401AEBEFD3004315CE /* GameViewController.m */,
@@ -110,6 +120,10 @@
 		36D8EE331AEBEFD3004315CE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				36D8EE681AEC4C0F004315CE /* Player_Right1.png */,
+				36D8EE691AEC4C0F004315CE /* Player_Right2.png */,
+				36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */,
+				36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */,
 				36D8EE621AEC01C1004315CE /* pico.png */,
 				36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */,
 				36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */,
@@ -134,6 +148,17 @@
 				36D8EE531AEBEFD3004315CE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		36D8EE641AEC0580004315CE /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				36D8EE3A1AEBEFD3004315CE /* SplashScreenScene.h */,
+				36D8EE3B1AEBEFD3004315CE /* SplashScreenScene.m */,
+				36D8EE651AEC06F0004315CE /* GameScene.h */,
+				36D8EE661AEC06F0004315CE /* GameScene.m */,
+			);
+			name = scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,12 +243,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */,
+				36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */,
+				36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */,
 				36D8EE631AEC01C1004315CE /* pico.png in Resources */,
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE3E1AEBEFD3004315CE /* GameScene.sks in Resources */,
+				36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
+				36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +272,8 @@
 			files = (
 				36D8EE411AEBEFD3004315CE /* GameViewController.m in Sources */,
 				36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */,
-				36D8EE3C1AEBEFD3004315CE /* GameScene.m in Sources */,
+				36D8EE671AEC06F0004315CE /* GameScene.m in Sources */,
+				36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */,
 				36D8EE361AEBEFD3004315CE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2E733A48-9DE4-4B45-8B99-3E1482EB8100</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Sewer Brothers</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>204181D9695F8BE45F7709CF819FC3926238FABC</key>
+		<string>github.com:intere/SewerBrothers.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Sewer Brothers.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>204181D9695F8BE45F7709CF819FC3926238FABC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:intere/SewerBrothers.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>204181D9695F8BE45F7709CF819FC3926238FABC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>204181D9695F8BE45F7709CF819FC3926238FABC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Sewer%20Brothers</string>
+		</dict>
+	</array>
+</dict>
+</plist>

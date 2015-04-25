@@ -7,7 +7,7 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
+#import "SplashScreenScene.h"
 
 @implementation SKScene (Unarchive)
 
@@ -40,7 +40,7 @@
         skView.showsNodeCount = YES;
         
         // Create and configured the scene.
-        GameScene *scene = [GameScene sceneWithSize:skView.bounds.size];
+        SplashScreenScene *scene = [SplashScreenScene sceneWithSize:skView.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         
         // Present the scene
