@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "SKBPlayer.h"
 
 @interface GameScene : SKScene
-@property (strong, nonatomic) SKSpriteNode *playerSprite;
+@property (strong, nonatomic) SKBPlayer *playerSprite;
 @end
