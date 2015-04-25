@@ -16,6 +16,9 @@
 		36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE451AEBEFD3004315CE /* Images.xcassets */; };
 		36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE471AEBEFD3004315CE /* LaunchScreen.xib */; };
 		36D8EE551AEBEFD3004315CE /* Sewer_BrothersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE541AEBEFD3004315CE /* Sewer_BrothersTests.m */; };
+		36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */; };
+		36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */; };
+		36D8EE631AEC01C1004315CE /* pico.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE621AEC01C1004315CE /* pico.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		36D8EE4E1AEBEFD3004315CE /* Sewer BrothersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sewer BrothersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D8EE531AEBEFD3004315CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36D8EE541AEBEFD3004315CE /* Sewer_BrothersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sewer_BrothersTests.m; sourceTree = "<group>"; };
+		36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SewerSplash_480.png; sourceTree = "<group>"; };
+		36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SewerSplash_568.png; sourceTree = "<group>"; };
+		36D8EE621AEC01C1004315CE /* pico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pico.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,9 @@
 		36D8EE331AEBEFD3004315CE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				36D8EE621AEC01C1004315CE /* pico.png */,
+				36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */,
+				36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */,
 				36D8EE341AEBEFD3004315CE /* Info.plist */,
 				36D8EE351AEBEFD3004315CE /* main.m */,
 			);
@@ -176,6 +185,7 @@
 				TargetAttributes = {
 					36D8EE2F1AEBEFD3004315CE = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = QQ384P2J3W;
 					};
 					36D8EE4D1AEBEFD3004315CE = {
 						CreatedOnToolsVersion = 6.2;
@@ -208,8 +218,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */,
+				36D8EE631AEC01C1004315CE /* pico.png in Resources */,
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE3E1AEBEFD3004315CE /* GameScene.sks in Resources */,
+				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
+				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Sewer Brothers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Sewer Brothers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
