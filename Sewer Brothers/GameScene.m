@@ -34,7 +34,7 @@
                 SKAction *standingFrame = [SKAction animateWithTextures:_playerSprite.spriteTextures.playerStillFacingRightTextures timePerFrame:0.05];
                 SKAction *standForever = [SKAction repeatActionForever:standingFrame];
                 [_playerSprite runAction:standForever];
-            } else {
+            } else if(_playerSprite.playerStatus != SBPlayerRunningLeft) {
                 [_playerSprite runLeft];
             }
         } else {
@@ -47,7 +47,7 @@
                 SKAction *standingFrame = [SKAction animateWithTextures:_playerSprite.spriteTextures.playerStillFacingLeftTextures timePerFrame:0.05];
                 SKAction *standForever = [SKAction repeatActionForever:standingFrame];
                 [_playerSprite runAction:standForever];
-            } else {
+            } else if(_playerSprite.playerStatus != SBPlayerRunningRight) {
                 [_playerSprite runRight];
             }
         }
