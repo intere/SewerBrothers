@@ -10,12 +10,15 @@
 #import "SKBSpriteTextures.h"
 
 #define kPlayerRunningIncrement 100
+#define kPlayerSkiddingIncrement 20
 
 typedef enum : int {
     SBPlayerFacingLeft = 0,
     SBPlayerFacingRight,
     SBPlayerRunningLeft,
-    SBPlayerRunningRight
+    SBPlayerRunningRight,
+    SBPlayerSkiddingLeft,
+    SBPlayerSkiddingRight
 } SBPlayerStatus;
 
 @interface SKBPlayer : SKSpriteNode
@@ -28,6 +31,12 @@ typedef enum : int {
 
 /** Causes the player to run left.  */
 -(void)runLeft;
+
+/** Causes the player to skid right.  */
+-(void)skidRight;
+
+/** Causes the player to skid left.  */
+-(void)skidLeft;
 
 /** Factory creation method of a new player for you.  */
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location;

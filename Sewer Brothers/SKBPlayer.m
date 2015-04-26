@@ -34,6 +34,54 @@
     [self runAction:moveForever];
 }
 
+-(void)skidRight {
+    NSLog(@"skid Right");
+    [self removeAllActions];
+    _playerStatus = SBPlayerSkiddingRight;
+    
+    NSArray *playerSkidTextures = _spriteTextures.playerSkiddingRightTextures;
+    NSArray *playerStillTextures = _spriteTextures.playerStillFacingRightTextures;
+    
+    SKAction *skidAnimation = [SKAction animateWithTextures:playerSkidTextures timePerFrame:0.2];
+    SKAction *skidAwhile = [SKAction repeatAction:skidAnimation count:1];
+    
+    SKAction *moveLeft = [SKAction moveByX:kPlayerSkiddingIncrement y:0 duration:0.2];
+    SKAction *moveAwhile = [SKAction repeatAction:moveLeft count:1];
+    
+    SKAction *stillAnimation = [SKAction animateWithTextures:playerStillTextures timePerFrame:0.1];
+    SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:1];
+    
+    SKAction *sequence = [SKAction sequence:@[skidAwhile, moveAwhile, stillAwhile]];
+    [self runAction:sequence completion:^{
+        NSLog(@"skid ended, still facing right");
+        _playerStatus = SBPlayerFacingRight;
+    }];
+}
+
+-(void)skidLeft {
+    NSLog(@"skid Left");
+    [self removeAllActions];
+    _playerStatus = SBPlayerSkiddingLeft;
+    
+    NSArray *playerSkidTextures = _spriteTextures.playerSkiddingLeftTextures;
+    NSArray *playerStillTextures = _spriteTextures.playerStillFacingLeftTextures;
+    
+    SKAction *skidAnimation = [SKAction animateWithTextures:playerSkidTextures timePerFrame:1];
+    SKAction *skidAwhile = [SKAction repeatAction:skidAnimation count:0.2];
+    
+    SKAction *moveLeft = [SKAction moveByX:-kPlayerSkiddingIncrement y:0 duration:0.2];
+    SKAction *moveAwhile = [SKAction repeatAction:moveLeft count:1];
+    
+    SKAction *stillAnimation = [SKAction animateWithTextures:playerStillTextures timePerFrame:1];
+    SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:0.1];
+    
+    SKAction *sequence = [SKAction sequence:@[skidAwhile, moveAwhile, stillAwhile]];
+    [self runAction:sequence completion:^{
+        NSLog(@"skid ended, still facing Left");
+        _playerStatus = SBPlayerFacingLeft;
+    }];
+}
+
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location {
     // initialize and create our sprite textures
     SKBSpriteTextures *playerTextures = [[SKBSpriteTextures alloc]init];

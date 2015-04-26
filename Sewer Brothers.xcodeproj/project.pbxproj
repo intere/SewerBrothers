@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */ = {isa = PBXBuildFile; fileRef = 36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */; };
+		36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */ = {isa = PBXBuildFile; fileRef = 36014F2E1AED3EFB0084817B /* Player_RightSkid.png */; };
 		36D8EE361AEBEFD3004315CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE351AEBEFD3004315CE /* main.m */; };
 		36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE381AEBEFD3004315CE /* AppDelegate.m */; };
 		36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE3B1AEBEFD3004315CE /* SplashScreenScene.m */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_LeftSkid.png; sourceTree = "<group>"; };
+		36014F2E1AED3EFB0084817B /* Player_RightSkid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_RightSkid.png; sourceTree = "<group>"; };
 		36D8EE301AEBEFD3004315CE /* Sewer Brothers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sewer Brothers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D8EE341AEBEFD3004315CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36D8EE351AEBEFD3004315CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		36D8EE711AEC51F4004315CE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */,
+				36014F2E1AED3EFB0084817B /* Player_RightSkid.png */,
 				36D8EE801AEC9A47004315CE /* Player_Left_Still.png */,
 				36D8EE811AEC9A47004315CE /* Player_Right_Still.png */,
 				36D8EE781AEC9A21004315CE /* Player_Left1.png */,
@@ -288,7 +294,9 @@
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */,
 				36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */,
+				36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */,
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
+				36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */,
 				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
@@ -511,6 +519,7 @@
 				36D8EE5A1AEBEFD3004315CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36D8EE5B1AEBEFD3004315CE /* Build configuration list for PBXNativeTarget "Sewer BrothersTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +528,7 @@
 				36D8EE5D1AEBEFD3004315CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

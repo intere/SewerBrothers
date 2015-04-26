@@ -27,26 +27,14 @@
         } else if(location.x <= (self.frame.size.width / 2)) {
             // user touched left side of the screen
             if(_playerSprite.playerStatus == SBPlayerRunningRight) {
-                _playerSprite.playerStatus = SBPlayerFacingRight;
-                
-                // stop running by switching to a single frame
-                [_playerSprite removeAllActions];
-                SKAction *standingFrame = [SKAction animateWithTextures:_playerSprite.spriteTextures.playerStillFacingRightTextures timePerFrame:0.05];
-                SKAction *standForever = [SKAction repeatActionForever:standingFrame];
-                [_playerSprite runAction:standForever];
+                [_playerSprite skidRight];
             } else if(_playerSprite.playerStatus != SBPlayerRunningLeft) {
                 [_playerSprite runLeft];
             }
         } else {
             // user touched right side of the screen
             if(_playerSprite.playerStatus == SBPlayerRunningLeft) {
-                _playerSprite.playerStatus = SBPlayerFacingLeft;
-                
-                // stop running by switching to a single frame
-                [_playerSprite removeAllActions];
-                SKAction *standingFrame = [SKAction animateWithTextures:_playerSprite.spriteTextures.playerStillFacingLeftTextures timePerFrame:0.05];
-                SKAction *standForever = [SKAction repeatActionForever:standingFrame];
-                [_playerSprite runAction:standForever];
+                [_playerSprite skidLeft];
             } else if(_playerSprite.playerStatus != SBPlayerRunningRight) {
                 [_playerSprite runRight];
             }
