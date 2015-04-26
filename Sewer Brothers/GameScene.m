@@ -13,6 +13,19 @@
     if(self = [super initWithSize:size]) {
         /* Setup your scene here.  */
         self.backgroundColor = [SKColor blackColor];
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        
+        NSString *fileName = @"";
+        if(self.frame.size.width == 480) {
+            fileName = @"Backdrop_480";     // iPhone Retina (3.5-inch)
+        } else {
+            fileName = @"Backdrop_568";     // iPhone Retina (4-inch)
+        }
+        SKSpriteNode *backdrop = [SKSpriteNode spriteNodeWithImageNamed:fileName];
+        backdrop.name = @"backdropNode";
+        backdrop.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        
+        [self addChild:backdrop];
     }
     return self;
 }

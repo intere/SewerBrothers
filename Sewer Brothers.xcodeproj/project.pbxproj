@@ -32,6 +32,8 @@
 		36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE7B1AEC9A21004315CE /* Player_Left4.png */; };
 		36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE801AEC9A47004315CE /* Player_Left_Still.png */; };
 		36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE811AEC9A47004315CE /* Player_Right_Still.png */; };
+		36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C731AED84E8008A3CCA /* Backdrop_480.png */; };
+		36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C741AED84E8008A3CCA /* Backdrop_568.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		36D8EE7B1AEC9A21004315CE /* Player_Left4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left4.png; sourceTree = "<group>"; };
 		36D8EE801AEC9A47004315CE /* Player_Left_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left_Still.png; sourceTree = "<group>"; };
 		36D8EE811AEC9A47004315CE /* Player_Right_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right_Still.png; sourceTree = "<group>"; };
+		36F35C731AED84E8008A3CCA /* Backdrop_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Backdrop_480.png; sourceTree = "<group>"; };
+		36F35C741AED84E8008A3CCA /* Backdrop_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Backdrop_568.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,8 @@
 		36D8EE701AEC5190004315CE /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				36F35C731AED84E8008A3CCA /* Backdrop_480.png */,
+				36F35C741AED84E8008A3CCA /* Backdrop_568.png */,
 				36D8EE711AEC51F4004315CE /* Player */,
 				36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */,
 				36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */,
@@ -298,10 +304,12 @@
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
 				36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */,
 				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
+				36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
 				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
+				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
 				36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -437,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
