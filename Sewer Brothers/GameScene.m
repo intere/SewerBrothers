@@ -25,9 +25,31 @@
         if(!_playerSprite) {
             _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:location];
         } else if(location.x <= (self.frame.size.width / 2)) {
-            [_playerSprite runLeft];
+            // user touched left side of the screen
+            if(_playerSprite.playerStatus == SBPlayerRunningRight) {
+                _playerSprite.playerStatus = SBPlayerFacingRight;
+                
+                // stop running by switching to a single frame
+                [_playerSprite removeAllActions];
+                SKAction *standingFrame = [SKAction animateWithTextures:_playerSprite.spriteTextures.playerStillFacingRightTextures timePerFrame:0.05];
+                SKAction *standForever = [SKAction repeatActionForever:standingFrame];
+                [_playerSprite runAction:standForever];
+            } else {
+                [_playerSprite runLeft];
+            }
         } else {
-            [_playerSprite runRight];
+            // user touched right side of the screen
+            if(_playerSprite.playerStatus == SBPlayerRunningLeft) {
+                _playerSprite.playerStatus = SBPlayerFacingLeft;
+                
+                // stop running by switching to a single frame
+                [_playerSprite removeAllActions];
+                SKAction *standingFrame = [SKAction animateWithTextures:_playerSprite.spriteTextures.playerStillFacingLeftTextures timePerFrame:0.05];
+                SKAction *standForever = [SKAction repeatActionForever:standingFrame];
+                [_playerSprite runAction:standForever];
+            } else {
+                [_playerSprite runRight];
+            }
         }
     }
 }

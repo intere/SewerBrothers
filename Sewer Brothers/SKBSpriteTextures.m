@@ -1,0 +1,41 @@
+//
+//  SKBSpriteTextures.m
+//  Sewer Brothers
+//
+//  Created by Eric Internicola on 4/25/15.
+//  Copyright (c) 2015 iColaSoft. All rights reserved.
+//
+
+#import "SKBSpriteTextures.h"
+
+@implementation SKBSpriteTextures
+
+-(void)createAnimationTextures {
+    // animation arrays
+    
+    // right, running
+    // 4 animation frames stored as textures
+    SKTexture *f1 = [SKTexture textureWithImageNamed:kPlayerRunRight1FileName];
+    SKTexture *f2 = [SKTexture textureWithImageNamed:kPlayerRunRight2FileName];
+    SKTexture *f3 = [SKTexture textureWithImageNamed:kPlayerRunRight3FileName];
+    SKTexture *f4 = [SKTexture textureWithImageNamed:kPlayerRunRight4FileName];
+    
+    _playerRunRightTextures = @[f1, f2, f3, f4];
+    
+    // right still
+    f1 = [SKTexture textureWithImageNamed:kPlayerStillRightFileName];
+    _playerStillFacingRightTextures = @[f1];
+    
+    // left, running
+    f1 = [SKTexture textureWithImageNamed:kPlayerRunLeft1FileName];
+    f2 = [SKTexture textureWithImageNamed:kPlayerRunLeft2FileName];
+    f3 = [SKTexture textureWithImageNamed:kPlayerRunLeft3FileName];
+    f4 = [SKTexture textureWithImageNamed:kPlayerRunLeft4FileName];
+    _playerRunLeftTextures = @[f1, f2, f3, f4];
+    
+    // left, still
+    f1 = [SKTexture textureWithImageNamed:kPlayerStillLeftFileName];
+    _playerStillFacingLeftTextures = @[f1];
+}
+
+@end

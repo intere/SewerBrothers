@@ -23,6 +23,13 @@
 		36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */; };
 		36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */; };
 		36D8EE741AEC523B004315CE /* SKBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE731AEC523B004315CE /* SKBPlayer.m */; };
+		36D8EE771AEC58CD004315CE /* SKBSpriteTextures.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE761AEC58CD004315CE /* SKBSpriteTextures.m */; };
+		36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE781AEC9A21004315CE /* Player_Left1.png */; };
+		36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE791AEC9A21004315CE /* Player_Left2.png */; };
+		36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE7A1AEC9A21004315CE /* Player_Left3.png */; };
+		36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE7B1AEC9A21004315CE /* Player_Left4.png */; };
+		36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE801AEC9A47004315CE /* Player_Left_Still.png */; };
+		36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE811AEC9A47004315CE /* Player_Right_Still.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,14 @@
 		36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right4.png; sourceTree = "<group>"; };
 		36D8EE721AEC523B004315CE /* SKBPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBPlayer.h; sourceTree = "<group>"; };
 		36D8EE731AEC523B004315CE /* SKBPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBPlayer.m; sourceTree = "<group>"; };
+		36D8EE751AEC58CD004315CE /* SKBSpriteTextures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBSpriteTextures.h; sourceTree = "<group>"; };
+		36D8EE761AEC58CD004315CE /* SKBSpriteTextures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBSpriteTextures.m; sourceTree = "<group>"; };
+		36D8EE781AEC9A21004315CE /* Player_Left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left1.png; sourceTree = "<group>"; };
+		36D8EE791AEC9A21004315CE /* Player_Left2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left2.png; sourceTree = "<group>"; };
+		36D8EE7A1AEC9A21004315CE /* Player_Left3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left3.png; sourceTree = "<group>"; };
+		36D8EE7B1AEC9A21004315CE /* Player_Left4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left4.png; sourceTree = "<group>"; };
+		36D8EE801AEC9A47004315CE /* Player_Left_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left_Still.png; sourceTree = "<group>"; };
+		36D8EE811AEC9A47004315CE /* Player_Right_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right_Still.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +174,8 @@
 				36D8EE711AEC51F4004315CE /* Player */,
 				36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */,
 				36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */,
+				36D8EE751AEC58CD004315CE /* SKBSpriteTextures.h */,
+				36D8EE761AEC58CD004315CE /* SKBSpriteTextures.m */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -166,6 +183,12 @@
 		36D8EE711AEC51F4004315CE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				36D8EE801AEC9A47004315CE /* Player_Left_Still.png */,
+				36D8EE811AEC9A47004315CE /* Player_Right_Still.png */,
+				36D8EE781AEC9A21004315CE /* Player_Left1.png */,
+				36D8EE791AEC9A21004315CE /* Player_Left2.png */,
+				36D8EE7A1AEC9A21004315CE /* Player_Left3.png */,
+				36D8EE7B1AEC9A21004315CE /* Player_Left4.png */,
 				36D8EE681AEC4C0F004315CE /* Player_Right1.png */,
 				36D8EE691AEC4C0F004315CE /* Player_Right2.png */,
 				36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */,
@@ -258,12 +281,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */,
+				36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */,
+				36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */,
 				36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */,
 				36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */,
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */,
+				36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */,
+				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
+				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
+				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
 				36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */,
 			);
@@ -284,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D8EE411AEBEFD3004315CE /* GameViewController.m in Sources */,
+				36D8EE771AEC58CD004315CE /* SKBSpriteTextures.m in Sources */,
 				36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */,
 				36D8EE671AEC06F0004315CE /* GameScene.m in Sources */,
 				36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */,
