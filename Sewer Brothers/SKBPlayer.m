@@ -112,8 +112,8 @@
     }
     
     // applicable animation
-    SKAction *jumpAction = [SKAction animateWithTextures:playerJumpTextures timePerFrame:1];
-    SKAction *jumpAwhile = [SKAction repeatAction:jumpAction count:1.0];
+    SKAction *jumpAction = [SKAction animateWithTextures:playerJumpTextures timePerFrame:0.2];
+    SKAction *jumpAwhile = [SKAction repeatAction:jumpAction count:4.0];
     
     // run jump action and when completed, handle next phase
     [self runAction:jumpAwhile completion:^{
@@ -166,6 +166,7 @@
     player.physicsBody.density = 1.0;
     player.physicsBody.linearDamping = 0.1;
     player.physicsBody.restitution = 0.2;  // 0.5 is fun :)
+    player.physicsBody.allowsRotation = NO;
     
     // add the sprite to the scene
     [whichScene addChild:player];

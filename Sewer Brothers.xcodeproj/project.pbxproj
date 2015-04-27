@@ -37,6 +37,8 @@
 		36F35C781AEDC34C008A3CCA /* Base_600.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C771AEDC34C008A3CCA /* Base_600.png */; };
 		36F35C7B1AEDCD15008A3CCA /* Player_LeftJump.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C791AEDCD15008A3CCA /* Player_LeftJump.png */; };
 		36F35C7C1AEDCD15008A3CCA /* Player_RightJump.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C7A1AEDCD15008A3CCA /* Player_RightJump.png */; };
+		36F35C801AEE65B0008A3CCA /* SKBLedge.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F35C7F1AEE65B0008A3CCA /* SKBLedge.m */; };
+		36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C811AEE6658008A3CCA /* LedgeBrick.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,9 @@
 		36F35C771AEDC34C008A3CCA /* Base_600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Base_600.png; sourceTree = "<group>"; };
 		36F35C791AEDCD15008A3CCA /* Player_LeftJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_LeftJump.png; sourceTree = "<group>"; };
 		36F35C7A1AEDCD15008A3CCA /* Player_RightJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_RightJump.png; sourceTree = "<group>"; };
+		36F35C7E1AEE65B0008A3CCA /* SKBLedge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBLedge.h; sourceTree = "<group>"; };
+		36F35C7F1AEE65B0008A3CCA /* SKBLedge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBLedge.m; sourceTree = "<group>"; };
+		36F35C811AEE6658008A3CCA /* LedgeBrick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LedgeBrick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		365DBC2D1AEE6C3C005CAE5D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				36F35C791AEDCD15008A3CCA /* Player_LeftJump.png */,
+				36F35C7A1AEDCD15008A3CCA /* Player_RightJump.png */,
+				36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */,
+				36014F2E1AED3EFB0084817B /* Player_RightSkid.png */,
+				36D8EE801AEC9A47004315CE /* Player_Left_Still.png */,
+				36D8EE811AEC9A47004315CE /* Player_Right_Still.png */,
+				36D8EE781AEC9A21004315CE /* Player_Left1.png */,
+				36D8EE791AEC9A21004315CE /* Player_Left2.png */,
+				36D8EE7A1AEC9A21004315CE /* Player_Left3.png */,
+				36D8EE7B1AEC9A21004315CE /* Player_Left4.png */,
+				36D8EE681AEC4C0F004315CE /* Player_Right1.png */,
+				36D8EE691AEC4C0F004315CE /* Player_Right2.png */,
+				36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */,
+				36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		365DBC2E1AEE6C4E005CAE5D /* images */ = {
+			isa = PBXGroup;
+			children = (
+				36F35C771AEDC34C008A3CCA /* Base_600.png */,
+				36F35C731AED84E8008A3CCA /* Backdrop_480.png */,
+				36F35C741AED84E8008A3CCA /* Backdrop_568.png */,
+				36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */,
+				36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		36D8EE271AEBEFD2004315CE = {
 			isa = PBXGroup;
 			children = (
@@ -185,12 +223,9 @@
 		36D8EE701AEC5190004315CE /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				36F35C771AEDC34C008A3CCA /* Base_600.png */,
-				36F35C731AED84E8008A3CCA /* Backdrop_480.png */,
-				36F35C741AED84E8008A3CCA /* Backdrop_568.png */,
+				365DBC2E1AEE6C4E005CAE5D /* images */,
+				36F35C7D1AEE658F008A3CCA /* Ledge */,
 				36D8EE711AEC51F4004315CE /* Player */,
-				36D8EE5E1AEBF6E3004315CE /* SewerSplash_480.png */,
-				36D8EE5F1AEBF6E3004315CE /* SewerSplash_568.png */,
 				36D8EE751AEC58CD004315CE /* SKBSpriteTextures.h */,
 				36D8EE761AEC58CD004315CE /* SKBSpriteTextures.m */,
 			);
@@ -200,24 +235,21 @@
 		36D8EE711AEC51F4004315CE /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				36F35C791AEDCD15008A3CCA /* Player_LeftJump.png */,
-				36F35C7A1AEDCD15008A3CCA /* Player_RightJump.png */,
-				36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */,
-				36014F2E1AED3EFB0084817B /* Player_RightSkid.png */,
-				36D8EE801AEC9A47004315CE /* Player_Left_Still.png */,
-				36D8EE811AEC9A47004315CE /* Player_Right_Still.png */,
-				36D8EE781AEC9A21004315CE /* Player_Left1.png */,
-				36D8EE791AEC9A21004315CE /* Player_Left2.png */,
-				36D8EE7A1AEC9A21004315CE /* Player_Left3.png */,
-				36D8EE7B1AEC9A21004315CE /* Player_Left4.png */,
-				36D8EE681AEC4C0F004315CE /* Player_Right1.png */,
-				36D8EE691AEC4C0F004315CE /* Player_Right2.png */,
-				36D8EE6A1AEC4C0F004315CE /* Player_Right3.png */,
-				36D8EE6B1AEC4C0F004315CE /* Player_Right4.png */,
+				365DBC2D1AEE6C3C005CAE5D /* images */,
 				36D8EE721AEC523B004315CE /* SKBPlayer.h */,
 				36D8EE731AEC523B004315CE /* SKBPlayer.m */,
 			);
 			name = Player;
+			sourceTree = "<group>";
+		};
+		36F35C7D1AEE658F008A3CCA /* Ledge */ = {
+			isa = PBXGroup;
+			children = (
+				36F35C811AEE6658008A3CCA /* LedgeBrick.png */,
+				36F35C7E1AEE65B0008A3CCA /* SKBLedge.h */,
+				36F35C7F1AEE65B0008A3CCA /* SKBLedge.m */,
+			);
+			name = Ledge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +351,7 @@
 				36F35C7C1AEDCD15008A3CCA /* Player_RightJump.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
+				36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */,
 				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
 				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
@@ -346,6 +379,7 @@
 				36D8EE671AEC06F0004315CE /* GameScene.m in Sources */,
 				36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */,
 				36D8EE741AEC523B004315CE /* SKBPlayer.m in Sources */,
+				36F35C801AEE65B0008A3CCA /* SKBLedge.m in Sources */,
 				36D8EE361AEBEFD3004315CE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

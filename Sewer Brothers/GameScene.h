@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "AppDelegate.h"
 #import "SKBPlayer.h"
+#import "SKBLedge.h"
 
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 @property (strong, nonatomic) SKBPlayer *playerSprite;

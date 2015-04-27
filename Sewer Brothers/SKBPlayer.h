@@ -12,7 +12,7 @@
 
 #define kPlayerRunningIncrement 100
 #define kPlayerSkiddingIncrement 20
-#define kPlayerJumpingIncrement  10
+#define kPlayerJumpingIncrement  8
 
 typedef enum : int {
     SBPlayerFacingLeft = 0,

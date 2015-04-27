@@ -38,6 +38,43 @@
         brickBase.physicsBody.dynamic = NO;
         
         [self addChild:brickBase];
+        
+        // ledge
+        SKBLedge *sceneLedge = [[SKBLedge alloc]init];
+        int ledgeIndex = 0;
+        
+        // ledge, bottom left
+        int howMany = (CGRectGetMaxX(self.frame) < 500) ? 18 : 23;
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(kLedgeSideBufferSpacing, brickBase.position.y+80) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
+        
+        // ledge, bottom right
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMaxX(self.frame)-kLedgeSideBufferSpacing-((howMany-1)*kLedgeBrickSpacing), brickBase.position.y + 80) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
+        
+        // ledge, middle left
+        howMany = (CGRectGetMaxX(self.frame) < 500) ? 6 : 8;
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMinX(self.frame)+kLedgeSideBufferSpacing, brickBase.position.y + 142) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
+        
+        // ledge, middle middle
+        howMany = (CGRectGetMaxX(self.frame) < 500) ? 31 : 36;
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMidX(self.frame)-((howMany * kLedgeBrickSpacing) / 2), brickBase.position.y + 152) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
+        
+        // ledge, middle right
+        howMany = (CGRectGetMaxX(self.frame) < 500) ? 6 : 9;
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMaxX(self.frame)-kLedgeSideBufferSpacing-((howMany-1)*kLedgeBrickSpacing), brickBase.position.y + 142) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
+        
+        // ledge, top left
+        howMany = (CGRectGetMaxX(self.frame) < 500) ? 23 : 28;
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMinX(self.frame)+kLedgeSideBufferSpacing, brickBase.position.y + 224) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
+        
+        // ledge, top right
+        [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMaxX(self.frame)-kLedgeSideBufferSpacing-((howMany-1)*kLedgeBrickSpacing), brickBase.position.y + 224) withHowManyBlocks:howMany startingIndex:ledgeIndex];
+        ledgeIndex += howMany;
     }
     return self;
 }
@@ -95,12 +132,14 @@
     // Player / sideWalls
     if (((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kWallCategory) !=0)) {
         if([firstBodyName isEqualToString:@"player1"]) {
-            if(_playerSprite.position.x < 20) {
-                NSLog(@"player contacted left edge");
-                [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
-            } else {
-                NSLog(@"player contacted right edge");
-                [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
+            if(_playerSprite.position.y < (CGRectGetMaxY(self.frame)-20)) {
+                if(_playerSprite.position.x < 20) {
+                    NSLog(@"player contacted left edge");
+                    [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
+                } else {
+                    NSLog(@"player contacted right edge");
+                    [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
+                }
             }
         }
     }
