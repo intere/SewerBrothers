@@ -150,13 +150,14 @@
     [playerTextures createAnimationTextures];
     
     // initial frame
-    SKTexture *f1 = [SKTexture textureWithImageNamed:kPlayerRunRight1FileName];
+    SKTexture *f1 = [SKTexture textureWithImageNamed:kPlayerStillRightFileName];
     
     // our player character sprite & starting position in the scene
     SKBPlayer *player = [SKBPlayer spriteNodeWithTexture:f1];
     player.position = location;
     player.name = @"player1";
     player.spriteTextures = playerTextures;
+    player.playerStatus = SBPlayerFacingRight;
     
     // physics
     player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
@@ -164,7 +165,7 @@
     player.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory;
     player.physicsBody.density = 1.0;
     player.physicsBody.linearDamping = 0.1;
-    player.physicsBody.restitution = 0.5;  // 0.2
+    player.physicsBody.restitution = 0.2;  // 0.5 is fun :)
     
     // add the sprite to the scene
     [whichScene addChild:player];
