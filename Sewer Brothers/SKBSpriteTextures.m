@@ -22,6 +22,10 @@
     
     _playerRunRightTextures = @[f1, f2, f3, f4];
     
+    // right, jumping
+    f1 = [SKTexture textureWithImageNamed:kPlayerJumpRightFileName];
+    _playerJumpRightTextures = @[f1];
+    
     // right skidding
     f1 = [SKTexture textureWithImageNamed:kPlayerSkidRightFileName];
     _playerSkiddingRightTextures = @[f1];
@@ -36,6 +40,10 @@
     f3 = [SKTexture textureWithImageNamed:kPlayerRunLeft3FileName];
     f4 = [SKTexture textureWithImageNamed:kPlayerRunLeft4FileName];
     _playerRunLeftTextures = @[f1, f2, f3, f4];
+    
+    // left, jumping
+    f1 = [SKTexture textureWithImageNamed:kPlayerJumpLeftFileName];
+    _playerJumpLeftTextures = @[f1];
     
     // left, skidding
     f1 = [SKTexture textureWithImageNamed:kPlayerSkidLeftFileName];

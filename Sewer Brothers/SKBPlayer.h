@@ -12,6 +12,7 @@
 
 #define kPlayerRunningIncrement 100
 #define kPlayerSkiddingIncrement 20
+#define kPlayerJumpingIncrement  10
 
 typedef enum : int {
     SBPlayerFacingLeft = 0,
@@ -19,7 +20,11 @@ typedef enum : int {
     SBPlayerRunningLeft,
     SBPlayerRunningRight,
     SBPlayerSkiddingLeft,
-    SBPlayerSkiddingRight
+    SBPlayerSkiddingRight,
+    SBPlayerJumpingLeft,
+    SBPlayerJumpingRight,
+    SBPlayerJumpingUpFacingLeft,
+    SBPlayerJumpingUpFacingRight
 } SBPlayerStatus;
 
 @interface SKBPlayer : SKSpriteNode
@@ -41,6 +46,9 @@ typedef enum : int {
 
 /** Wraps the player to the specified point.  */
 -(void)wrapPlayer:(CGPoint)where;
+
+/** Makes the user jump.  */
+-(void)jump;
 
 /** Factory creation method of a new player for you.  */
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location;

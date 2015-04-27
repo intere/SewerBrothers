@@ -82,6 +82,68 @@
     }];
 }
 
+-(void)jump {
+    NSArray *playerJumpTextures = nil;
+    SBPlayerStatus nextplayerStatus = 0;
+    
+    // determine direction and next phase
+    if(self.playerStatus == SBPlayerRunningLeft || self.playerStatus == SBPlayerSkiddingLeft) {
+        NSLog(@"jump left");
+        self.playerStatus = SBPlayerJumpingLeft;
+        playerJumpTextures = _spriteTextures.playerJumpLeftTextures;
+        nextplayerStatus = SBPlayerRunningLeft;
+    } else if(self.playerStatus == SBPlayerRunningRight || self.playerStatus == SBPlayerSkiddingRight) {
+        NSLog(@"jump right");
+        self.playerStatus = SBPlayerJumpingRight;
+        playerJumpTextures = _spriteTextures.playerJumpRightTextures;
+        nextplayerStatus = SBPlayerRunningRight;
+    } else if(self.playerStatus == SBPlayerFacingLeft) {
+        NSLog(@"jump up, facing left");
+        self.playerStatus = SBPlayerJumpingUpFacingLeft;
+        playerJumpTextures = _spriteTextures.playerJumpLeftTextures;
+        nextplayerStatus = SBPlayerFacingLeft;
+    } else if(self.playerStatus == SBPlayerFacingRight) {
+        NSLog(@"jump up, facing right");
+        self.playerStatus = SBPlayerJumpingUpFacingRight;
+        playerJumpTextures = _spriteTextures.playerJumpRightTextures;
+        nextplayerStatus = SBPlayerFacingRight;
+    } else {
+        NSLog(@"SKBPlayer::jump encountered invalid value...");
+    }
+    
+    // applicable animation
+    SKAction *jumpAction = [SKAction animateWithTextures:playerJumpTextures timePerFrame:1];
+    SKAction *jumpAwhile = [SKAction repeatAction:jumpAction count:1.0];
+    
+    // run jump action and when completed, handle next phase
+    [self runAction:jumpAwhile completion:^{
+        if(nextplayerStatus == SBPlayerRunningLeft) {
+            [self removeAllActions];
+            [self runLeft];
+        } else if(nextplayerStatus == SBPlayerRunningRight) {
+            [self removeAllActions];
+            [self runRight];
+        } else if(nextplayerStatus == SBPlayerRunningRight) {
+            NSArray *playerStillTextures = _spriteTextures.playerStillFacingLeftTextures;
+            SKAction *stillAnimation = [SKAction animateWithTextures:playerStillTextures timePerFrame:1];
+            SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:0.1];
+            [self runAction:stillAwhile];
+            self.playerStatus = SBPlayerFacingLeft;
+        } else if(nextplayerStatus == SBPlayerFacingRight) {
+            NSArray *playerStillTextures = _spriteTextures.playerStillFacingRightTextures;
+            SKAction *stillAnimation = [SKAction animateWithTextures:playerStillTextures timePerFrame:1];
+            SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:0.1];
+            [self runAction:stillAwhile];
+            self.playerStatus = SBPlayerFacingRight;
+        } else {
+            NSLog(@"SKBPlayer::jump completion block encountered invalid value...");
+        }
+    }];
+    
+    // jump impulse applied
+    [self.physicsBody applyImpulse:CGVectorMake(0, kPlayerJumpingIncrement)];
+}
+
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location {
     // initialize and create our sprite textures
     SKBSpriteTextures *playerTextures = [[SKBSpriteTextures alloc]init];
@@ -102,7 +164,7 @@
     player.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory;
     player.physicsBody.density = 1.0;
     player.physicsBody.linearDamping = 0.1;
-    player.physicsBody.restitution = 0.2;
+    player.physicsBody.restitution = 0.5;  // 0.2
     
     // add the sprite to the scene
     [whichScene addChild:player];
