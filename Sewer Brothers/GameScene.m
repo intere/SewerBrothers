@@ -13,7 +13,8 @@
     if(self = [super initWithSize:size]) {
         /* Setup your scene here.  */
         self.backgroundColor = [SKColor blackColor];
-        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        CGRect edgeRect = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height+100.0);
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:edgeRect];
         self.physicsBody.categoryBitMask = kWallCategory;
         self.physicsWorld.contactDelegate = self;
         
@@ -132,14 +133,12 @@
     // Player / sideWalls
     if (((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kWallCategory) !=0)) {
         if([firstBodyName isEqualToString:@"player1"]) {
-            if(_playerSprite.position.y < (CGRectGetMaxY(self.frame)-20)) {
-                if(_playerSprite.position.x < 20) {
-                    NSLog(@"player contacted left edge");
-                    [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
-                } else {
-                    NSLog(@"player contacted right edge");
-                    [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
-                }
+            if(_playerSprite.position.x < 20) {
+                NSLog(@"player contacted left edge");
+                [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
+            } else {
+                NSLog(@"player contacted right edge");
+                [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
             }
         }
     }
