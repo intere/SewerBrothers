@@ -34,6 +34,7 @@
 		36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE811AEC9A47004315CE /* Player_Right_Still.png */; };
 		36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C731AED84E8008A3CCA /* Backdrop_480.png */; };
 		36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C741AED84E8008A3CCA /* Backdrop_568.png */; };
+		36F35C781AEDC34C008A3CCA /* Base_600.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C771AEDC34C008A3CCA /* Base_600.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		36D8EE811AEC9A47004315CE /* Player_Right_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right_Still.png; sourceTree = "<group>"; };
 		36F35C731AED84E8008A3CCA /* Backdrop_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Backdrop_480.png; sourceTree = "<group>"; };
 		36F35C741AED84E8008A3CCA /* Backdrop_568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Backdrop_568.png; sourceTree = "<group>"; };
+		36F35C771AEDC34C008A3CCA /* Base_600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Base_600.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		36D8EE701AEC5190004315CE /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				36F35C771AEDC34C008A3CCA /* Base_600.png */,
 				36F35C731AED84E8008A3CCA /* Backdrop_480.png */,
 				36F35C741AED84E8008A3CCA /* Backdrop_568.png */,
 				36D8EE711AEC51F4004315CE /* Player */,
@@ -303,6 +306,7 @@
 				36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */,
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
 				36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */,
+				36F35C781AEDC34C008A3CCA /* Base_600.png in Resources */,
 				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
 				36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,

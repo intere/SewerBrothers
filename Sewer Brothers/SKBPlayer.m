@@ -93,10 +93,13 @@
     // our player character sprite & starting position in the scene
     SKBPlayer *player = [SKBPlayer spriteNodeWithTexture:f1];
     player.position = location;
+    player.name = @"player1";
     player.spriteTextures = playerTextures;
     
     // physics
     player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
+    player.physicsBody.categoryBitMask = kPlayerCategory;
+    player.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory;
     player.physicsBody.density = 1.0;
     player.physicsBody.linearDamping = 0.1;
     player.physicsBody.restitution = 0.2;
@@ -104,5 +107,13 @@
     // add the sprite to the scene
     [whichScene addChild:player];
     return player;
+}
+
+#pragma mark Screen wrap
+-(void)wrapPlayer:(CGPoint)where {
+    SKPhysicsBody *storePB = self.physicsBody;
+    self.physicsBody = nil;
+    self.position = where;
+    self.physicsBody = storePB;
 }
 @end

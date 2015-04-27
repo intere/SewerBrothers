@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "AppDelegate.h"
 #import "SKBSpriteTextures.h"
 
 #define kPlayerRunningIncrement 100
@@ -37,6 +38,9 @@ typedef enum : int {
 
 /** Causes the player to skid left.  */
 -(void)skidLeft;
+
+/** Wraps the player to the specified point.  */
+-(void)wrapPlayer:(CGPoint)where;
 
 /** Factory creation method of a new player for you.  */
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location;
