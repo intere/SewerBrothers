@@ -206,6 +206,28 @@
             [theSecondCoin turnLeft];
         }
     }
+    
+    // Coin / Ratz
+    if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kCoinCategory) !=0)) {
+        SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+        SKBCoin *theCoin = (SKBCoin *)secondBody.node;
+        
+        NSLog(@"%@ & %@ have collided...", theCoin.name, theRatz.name);
+        
+        // cause coin to turn and change directions
+        if(theCoin.coinStatus == SBCoinRunningLeft) {
+            [theCoin turnRight];
+        } else if(theCoin.coinStatus == SBCoinRunningRight) {
+            [theCoin turnLeft];
+        }
+        
+        // cause Ratz to turn and change directions
+        if(theRatz.ratzStatus == SBRatzRunningLeft) {
+            [theRatz turnRight];
+        } else if(theRatz.ratzStatus == SBRatzRunningRight) {
+            [theRatz turnLeft];
+        }
+    }
 }
 
 #pragma mark - Private Methods

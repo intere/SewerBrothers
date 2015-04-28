@@ -18,8 +18,8 @@
     coin.position = location;
     coin.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:coin.size];
     coin.physicsBody.categoryBitMask = kCoinCategory;
-    coin.physicsBody.contactTestBitMask = kWallCategory | kCoinCategory;
-    coin.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kCoinCategory;
+    coin.physicsBody.contactTestBitMask = kWallCategory | kCoinCategory | kRatzCategory;
+    coin.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kCoinCategory | kRatzCategory;
     coin.physicsBody.density = 1.0;
     coin.physicsBody.linearDamping = 0.1;
     coin.physicsBody.restitution = 0.2;
