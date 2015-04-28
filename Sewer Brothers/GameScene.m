@@ -104,8 +104,13 @@
             _enemyIsSpawningFlag = NO;
             _spawnedEnemyCount = _spawnedEnemyCount + 1;
             
-            SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(startX, startY) ratzIndex:castIndex];
-            [newEnemy spawnedInScene:self];
+            if(castIndex % 5 == 0) {
+                SKBCoin *newCoin = [SKBCoin initNewCoin:self startingPoint:CGPointMake(startX, startY) coinIndex:castIndex];
+                [newCoin spawnedInScene:self];
+            } else {
+                SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(startX, startY) ratzIndex:castIndex];
+                [newEnemy spawnedInScene:self];
+            }
         }];
     }
 }
@@ -168,6 +173,37 @@
             [theSecondRatz turnRight];
         } else if(theSecondRatz.ratzStatus == SBRatzRunningRight) {
             [theSecondRatz turnLeft];
+        }
+    }
+    
+    // Coin / sidewalls
+    if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kWallCategory) !=0)) {
+        SKBCoin *theCoin = (SKBCoin *)firstBody.node;
+        if(theCoin.position.x < 100) {
+            [theCoin wrapCoin:CGPointMake(CGRectGetMaxX(self.frame)-10, theCoin.position.y)];
+        } else {
+            [theCoin wrapCoin:CGPointMake(10, theCoin.position.y)];
+        }
+    }
+    
+    // Coin / Coin
+    if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kCoinCategory) !=0)) {
+        SKBCoin *theFirstCoin = (SKBCoin *)firstBody.node;
+        SKBCoin *theSecondCoin = (SKBCoin *)secondBody.node;
+        
+        NSLog(@"%@ & %@ have collided...", theFirstCoin.name, theSecondCoin.name);
+        
+        // case first ratz to turn and change directions
+        if(theFirstCoin.coinStatus == SBCoinRunningLeft) {
+            [theFirstCoin turnRight];
+        } else if(theFirstCoin.coinStatus == SBCoinRunningRight) {
+            [theFirstCoin turnLeft];
+        }
+        
+        if(theSecondCoin.coinStatus == SBCoinRunningLeft) {
+            [theSecondCoin turnRight];
+        } else if(theSecondCoin.coinStatus == SBCoinRunningRight) {
+            [theSecondCoin turnLeft];
         }
     }
 }

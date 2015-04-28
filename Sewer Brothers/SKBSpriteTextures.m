@@ -71,6 +71,13 @@
     f5 = [SKTexture textureWithImageNamed:kRatzRunLeft5FileName];
     
     _ratzRunLeftTextures = @[f1, f2, f3, f4, f5];
+    
+    // Coins
+    f1 = [SKTexture textureWithImageNamed:kCoin1FileName];
+    f2 = [SKTexture textureWithImageNamed:kCoin2FileName];
+    f3 = [SKTexture textureWithImageNamed:kCoin3FileName];
+    
+    _coinTextures = @[f1, f2, f3];
 }
 
 @end

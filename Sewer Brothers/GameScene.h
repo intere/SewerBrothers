@@ -11,6 +11,7 @@
 #import "SKBPlayer.h"
 #import "SKBLedge.h"
 #import "SKBRatz.h"
+#import "SKBCoin.h"
 
 #define kEnemySpawnEdgeBufferX 60
 #define kEnemySpanwEdgeBufferY 60

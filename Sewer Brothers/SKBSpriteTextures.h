@@ -37,6 +37,10 @@
 #define kRatzRunLeft4FileName @"Ratz_Left4.png"
 #define kRatzRunLeft5FileName @"Ratz_Left5.png"
 
+#define kCoin1FileName @"Coin1.png"
+#define kCoin2FileName @"Coin2.png"
+#define kCoin3FileName @"Coin3.png"
+
 
 @interface SKBSpriteTextures : NSObject
 
@@ -45,6 +49,7 @@
 @property (nonatomic, strong) NSArray *playerRunLeftTextures, *playerJumpLeftTextures;
 @property (nonatomic, strong) NSArray *playerSkiddingLeftTextures, *playerStillFacingLeftTextures;
 @property (nonatomic, strong) NSArray *ratzRunLeftTextures, *ratzRunRightTextures;
+@property (nonatomic, strong) NSArray *coinTextures;
 
 -(void)createAnimationTextures;
 
