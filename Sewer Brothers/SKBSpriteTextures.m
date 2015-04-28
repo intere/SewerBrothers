@@ -52,6 +52,25 @@
     // left, still
     f1 = [SKTexture textureWithImageNamed:kPlayerStillLeftFileName];
     _playerStillFacingLeftTextures = @[f1];
+    
+    // Ratz
+    
+    // right, running
+    f1 = [SKTexture textureWithImageNamed:kRatzRunRight1FileName];
+    f2 = [SKTexture textureWithImageNamed:kRatzRunRight2FileName];
+    f3 = [SKTexture textureWithImageNamed:kRatzRunRight3FileName];
+    f4 = [SKTexture textureWithImageNamed:kRatzRunRight4FileName];
+    SKTexture *f5 = f2 = [SKTexture textureWithImageNamed:kRatzRunRight5FileName];
+    _ratzRunRightTextures = @[f1, f2, f3, f4, f5];
+    
+    // left, running
+    f1 = [SKTexture textureWithImageNamed:kRatzRunRight1FileName];
+    f1 = [SKTexture textureWithImageNamed:kRatzRunRight2FileName];
+    f1 = [SKTexture textureWithImageNamed:kRatzRunRight3FileName];
+    f1 = [SKTexture textureWithImageNamed:kRatzRunRight4FileName];
+    f1 = [SKTexture textureWithImageNamed:kRatzRunRight5FileName];
+    
+    _ratzRunRightTextures = @[f1, f2, f3, f4, f5];
 }
 
 @end

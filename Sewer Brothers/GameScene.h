@@ -10,8 +10,14 @@
 #import "AppDelegate.h"
 #import "SKBPlayer.h"
 #import "SKBLedge.h"
+#import "SKBRatz.h"
+
+#define kEnemySpawnEdgeBufferX 60
 
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 @property (strong, nonatomic) SKBPlayer *playerSprite;
+@property (strong, nonatomic) SKBSpriteTextures *spriteTextures;
 
+@property int spawnedEnemyCount;
+@property BOOL enemyIsSpawningFlag;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SKBPlayer.h"
+#import "GameScene.h"
 
 @implementation SKBPlayer
 
@@ -144,11 +145,12 @@
     [self.physicsBody applyImpulse:CGVectorMake(0, kPlayerJumpingIncrement)];
 }
 
+-(void)spawnedInScene:(SKScene *)whichScene {
+    GameScene *theScene = (GameScene *)whichScene;
+    _spriteTextures = theScene.spriteTextures;
+}
+
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location {
-    // initialize and create our sprite textures
-    SKBSpriteTextures *playerTextures = [[SKBSpriteTextures alloc]init];
-    [playerTextures createAnimationTextures];
-    
     // initial frame
     SKTexture *f1 = [SKTexture textureWithImageNamed:kPlayerStillRightFileName];
     
@@ -156,13 +158,13 @@
     SKBPlayer *player = [SKBPlayer spriteNodeWithTexture:f1];
     player.position = location;
     player.name = @"player1";
-    player.spriteTextures = playerTextures;
     player.playerStatus = SBPlayerFacingRight;
     
     // physics
     player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
     player.physicsBody.categoryBitMask = kPlayerCategory;
     player.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory;
+    player.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory;
     player.physicsBody.density = 1.0;
     player.physicsBody.linearDamping = 0.1;
     player.physicsBody.restitution = 0.2;  // 0.5 is fun :)
@@ -180,4 +182,6 @@
     self.position = where;
     self.physicsBody = storePB;
 }
+
+
 @end

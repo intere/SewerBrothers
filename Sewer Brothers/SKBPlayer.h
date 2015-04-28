@@ -50,6 +50,9 @@ typedef enum : int {
 /** Makes the user jump.  */
 -(void)jump;
 
+/** Sets the scene that the player will be spawned in.  */
+-(void)spawnedInScene:(SKScene *)whichScene;
+
 /** Factory creation method of a new player for you.  */
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location;
 @end
