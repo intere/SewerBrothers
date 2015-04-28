@@ -64,13 +64,13 @@
     _ratzRunRightTextures = @[f1, f2, f3, f4, f5];
     
     // left, running
-    f1 = [SKTexture textureWithImageNamed:kRatzRunRight1FileName];
-    f1 = [SKTexture textureWithImageNamed:kRatzRunRight2FileName];
-    f1 = [SKTexture textureWithImageNamed:kRatzRunRight3FileName];
-    f1 = [SKTexture textureWithImageNamed:kRatzRunRight4FileName];
-    f1 = [SKTexture textureWithImageNamed:kRatzRunRight5FileName];
+    f1 = [SKTexture textureWithImageNamed:kRatzRunLeft1FileName];
+    f2 = [SKTexture textureWithImageNamed:kRatzRunLeft2FileName];
+    f3 = [SKTexture textureWithImageNamed:kRatzRunLeft3FileName];
+    f4 = [SKTexture textureWithImageNamed:kRatzRunLeft4FileName];
+    f5 = [SKTexture textureWithImageNamed:kRatzRunLeft5FileName];
     
-    _ratzRunRightTextures = @[f1, f2, f3, f4, f5];
+    _ratzRunLeftTextures = @[f1, f2, f3, f4, f5];
 }
 
 @end

@@ -124,7 +124,7 @@
         } else if(nextplayerStatus == SBPlayerRunningRight) {
             [self removeAllActions];
             [self runRight];
-        } else if(nextplayerStatus == SBPlayerRunningRight) {
+        } else if(nextplayerStatus == SBPlayerFacingLeft) {
             NSArray *playerStillTextures = _spriteTextures.playerStillFacingLeftTextures;
             SKAction *stillAnimation = [SKAction animateWithTextures:playerStillTextures timePerFrame:1];
             SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:0.1];
@@ -137,7 +137,7 @@
             [self runAction:stillAwhile];
             self.playerStatus = SBPlayerFacingRight;
         } else {
-            NSLog(@"SKBPlayer::jump completion block encountered invalid value...");
+            NSLog(@"SKBPlayer::jump completion block encountered invalid value... %d", nextplayerStatus);
         }
     }];
     
@@ -163,8 +163,8 @@
     // physics
     player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.size];
     player.physicsBody.categoryBitMask = kPlayerCategory;
-    player.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory;
-    player.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory;
+    player.physicsBody.contactTestBitMask = kWallCategory;
+    player.physicsBody.collisionBitMask = kWallCategory | kLedgeCategory;
     player.physicsBody.density = 1.0;
     player.physicsBody.linearDamping = 0.1;
     player.physicsBody.restitution = 0.2;  // 0.5 is fun :)

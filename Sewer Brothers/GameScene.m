@@ -84,8 +84,18 @@
         int castIndex = _spawnedEnemyCount;
         
         int scheduledDelay = 2;
-        int startX = 50;
-        int startY = 280;
+        int leftSideX = CGRectGetMinX(self.frame)+kEnemySpawnEdgeBufferX;
+        int rightSideX = CGRectGetMaxX(self.frame)-kEnemySpawnEdgeBufferX;
+        int topSideY = CGRectGetMaxY(self.frame)-kEnemySpanwEdgeBufferY;
+        
+        int startX = 0;
+        // alternate sides for every other spawn
+        if(castIndex % 2 == 0) {
+            startX = leftSideX;
+        } else {
+            startX = rightSideX;
+        }
+        int startY = topSideY;
         
         // begin delay and when completed, spawn enemy
         SKAction *spacing = [SKAction waitForDuration:scheduledDelay];
@@ -137,6 +147,27 @@
             [theRatz wrapRatz:CGPointMake(self.frame.size.width-20, theRatz.position.y)];
         } else {
             [theRatz wrapRatz:CGPointMake(20, theRatz.position.y)];
+        }
+    }
+    
+    // Ratz / Ratz
+    if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kRatzCategory) !=0)) {
+        SKBRatz *theFirstRatz = (SKBRatz *)firstBody.node;
+        SKBRatz *theSecondRatz = (SKBRatz *)secondBody.node;
+        
+        NSLog(@"%@ & %@ have collided...", theFirstRatz.name, theSecondRatz.name);
+        
+        // case first ratz to turn and change directions
+        if(theFirstRatz.ratzStatus == SBRatzRunningLeft) {
+            [theFirstRatz turnRight];
+        } else if(theFirstRatz.ratzStatus == SBRatzRunningRight) {
+            [theFirstRatz turnLeft];
+        }
+        
+        if(theSecondRatz.ratzStatus == SBRatzRunningLeft) {
+            [theSecondRatz turnRight];
+        } else if(theSecondRatz.ratzStatus == SBRatzRunningRight) {
+            [theSecondRatz turnLeft];
         }
     }
 }

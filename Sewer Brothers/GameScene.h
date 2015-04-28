@@ -13,6 +13,7 @@
 #import "SKBRatz.h"
 
 #define kEnemySpawnEdgeBufferX 60
+#define kEnemySpanwEdgeBufferY 60
 
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 @property (strong, nonatomic) SKBPlayer *playerSprite;

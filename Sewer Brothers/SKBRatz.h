@@ -36,4 +36,10 @@ typedef enum : int {
 /** Ratz run Left.  */
 -(void)runLeft;
 
+/** Turns Right. */
+-(void)turnRight;
+
+/** Turns Left.  */
+-(void)turnLeft;
+
 @end

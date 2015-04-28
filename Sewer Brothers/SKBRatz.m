@@ -19,8 +19,8 @@
     ratz.position = location;
     ratz.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ratz.size];
     ratz.physicsBody.categoryBitMask = kRatzCategory;
-    ratz.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory;
-    ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory;
+    ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory;
+    ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kRatzCategory;
     ratz.physicsBody.density = 1.0;
     ratz.physicsBody.linearDamping = 0.1;
     ratz.physicsBody.restitution = 0.2;
@@ -75,4 +75,19 @@
     SKAction *moveForever = [SKAction repeatActionForever:moveLeft];
     [self runAction:moveForever];
 }
+
+-(void)turnRight {
+    self.ratzStatus = SBRatzRunningRight;
+    [self removeAllActions];
+    SKAction *moveRight = [SKAction moveByX:5 y:0 duration:0.4];
+    [self runAction:moveRight completion:^{[self runRight];}];
+}
+
+-(void)turnLeft {
+    self.ratzStatus = SBRatzRunningLeft;
+    [self removeAllActions];
+    SKAction *moveLeft = [SKAction moveByX:-5 y:0 duration:0.4];
+    [self runAction:moveLeft completion:^{[self runLeft];}];
+}
+
 @end
