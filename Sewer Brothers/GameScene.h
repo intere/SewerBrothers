@@ -19,6 +19,7 @@
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 @property (strong, nonatomic) SKBPlayer *playerSprite;
 @property (strong, nonatomic) SKBSpriteTextures *spriteTextures;
+@property (strong, nonatomic) NSArray *castTypeArray, *castDelayArray, *castStartXindexArray;
 
 @property int spawnedEnemyCount;
 @property BOOL enemyIsSpawningFlag;

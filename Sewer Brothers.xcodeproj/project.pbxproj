@@ -36,6 +36,7 @@
 		36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE7B1AEC9A21004315CE /* Player_Left4.png */; };
 		36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE801AEC9A47004315CE /* Player_Left_Still.png */; };
 		36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE811AEC9A47004315CE /* Player_Right_Still.png */; };
+		36D941E41AF030E6005D59D3 /* CastOfCharacters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D941E31AF030E6005D59D3 /* CastOfCharacters.plist */; };
 		36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */; };
 		36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */; };
 		36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */; };
@@ -107,6 +108,7 @@
 		36D8EE7B1AEC9A21004315CE /* Player_Left4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left4.png; sourceTree = "<group>"; };
 		36D8EE801AEC9A47004315CE /* Player_Left_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left_Still.png; sourceTree = "<group>"; };
 		36D8EE811AEC9A47004315CE /* Player_Right_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right_Still.png; sourceTree = "<group>"; };
+		36D941E31AF030E6005D59D3 /* CastOfCharacters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CastOfCharacters.plist; sourceTree = "<group>"; };
 		36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left1.png; sourceTree = "<group>"; };
 		36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left2.png; sourceTree = "<group>"; };
 		36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left3.png; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				36D8EE341AEBEFD3004315CE /* Info.plist */,
 				36D8EE351AEBEFD3004315CE /* main.m */,
+				36D941E31AF030E6005D59D3 /* CastOfCharacters.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */,
 				36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */,
 				36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */,
+				36D941E41AF030E6005D59D3 /* CastOfCharacters.plist in Resources */,
 				36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */,
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */,

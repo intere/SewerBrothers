@@ -32,9 +32,14 @@
         backdrop.name = @"backdropNode";
         backdrop.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         
+        // add backdrop image to screen
         [self addChild:backdrop];
         
+        // add surfaces to screen
         [self createSceneContents];
+        
+        // compose cast of characters from propertyList
+        [self loadCastOfCharacters];
     }
     return self;
 }
@@ -79,18 +84,28 @@
 
 -(void)update:(NSTimeInterval)currentTime {
     /* Called before each frame is rendered.  */
-    if(!_enemyIsSpawningFlag && _spawnedEnemyCount < 25) {
+    if(!_enemyIsSpawningFlag && _spawnedEnemyCount < _castTypeArray.count) {
         _enemyIsSpawningFlag = YES;
         int castIndex = _spawnedEnemyCount;
         
-        int scheduledDelay = 2;
         int leftSideX = CGRectGetMinX(self.frame)+kEnemySpawnEdgeBufferX;
         int rightSideX = CGRectGetMaxX(self.frame)-kEnemySpawnEdgeBufferX;
         int topSideY = CGRectGetMaxY(self.frame)-kEnemySpanwEdgeBufferY;
         
+        // from castOfCharacters file, the sprite Type
+        NSNumber *theNumber = [_castTypeArray objectAtIndex:castIndex];
+        SKBEnemyTypes castType = [theNumber intValue];
+        
+        // from castOfCharacters file, the sprite Delay
+        theNumber = [_castDelayArray objectAtIndex:castIndex];
+        int castDelay = [theNumber intValue];
+        
+        // from castOfCharacters file, the sprite startXindex
         int startX = 0;
-        // alternate sides for every other spawn
-        if(castIndex % 2 == 0) {
+        // determine which side
+        theNumber = [_castStartXindexArray objectAtIndex:castIndex];
+        
+        if([theNumber intValue]==0) {
             startX = leftSideX;
         } else {
             startX = rightSideX;
@@ -98,20 +113,73 @@
         int startY = topSideY;
         
         // begin delay and when completed, spawn enemy
-        SKAction *spacing = [SKAction waitForDuration:scheduledDelay];
+        SKAction *spacing = [SKAction waitForDuration:castDelay];
         [self runAction:spacing completion:^{
             // Create & spawn the new Enemy
             _enemyIsSpawningFlag = NO;
             _spawnedEnemyCount = _spawnedEnemyCount + 1;
             
-            if(castIndex % 5 == 0) {
+            if(castType == SKBEnemyTypeCoin) {
                 SKBCoin *newCoin = [SKBCoin initNewCoin:self startingPoint:CGPointMake(startX, startY) coinIndex:castIndex];
                 [newCoin spawnedInScene:self];
-            } else {
+            } else if(castType == SKBEnemyTypeRatz) {
                 SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(startX, startY) ratzIndex:castIndex];
                 [newEnemy spawnedInScene:self];
             }
         }];
+    }
+}
+
+-(void)loadCastOfCharacters {
+    // load cast from plist file
+    NSString *path = [[NSBundle mainBundle] pathForResource:kCastOfCharactersFileName ofType:@"plist"];
+    NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    if(plistDictionary) {
+        NSDictionary *levelDictionary = [plistDictionary valueForKey:@"Level"];
+        if(levelDictionary) {
+            NSArray *levelOneArray = [levelDictionary valueForKey:@"One"];
+            if(levelOneArray) {
+                NSDictionary *enemyDictionary = nil;
+                NSMutableArray *newTypeArray = [NSMutableArray arrayWithCapacity:levelOneArray.count];
+                NSMutableArray *newDelayArray = [NSMutableArray arrayWithCapacity:levelOneArray.count];
+                NSMutableArray *newStartArray = [NSMutableArray arrayWithCapacity:levelOneArray.count];
+                NSNumber *rawType, *rawDelay, *rawStartXindex;
+                int enemyType, spawnDelay, startXindex = 0;
+                
+                for(int index=0; index<levelOneArray.count; index++) {
+                    enemyDictionary = [levelOneArray objectAtIndex:index];
+                    
+                    // NSNumbers from dictionary
+                    rawType = [enemyDictionary valueForKey:@"Type"];
+                    rawDelay = [enemyDictionary valueForKey:@"Delay"];
+                    rawStartXindex = [enemyDictionary valueForKey:@"StartXindex"];
+                    
+                    // local integer values
+                    enemyType = [rawType intValue];
+                    spawnDelay = [rawDelay intValue];
+                    startXindex = [rawStartXindex intValue];
+                    
+                    // long term storage
+                    [newTypeArray addObject:rawType];
+                    [newDelayArray addObject:rawDelay];
+                    [newStartArray addObject:rawStartXindex];
+                    
+                    NSLog(@"%d, %d, %d, %d", index, enemyType, spawnDelay, startXindex);
+                }
+                
+                // store data locally
+                _castTypeArray = [NSArray arrayWithArray:newTypeArray];
+                _castDelayArray = [NSArray arrayWithArray:newDelayArray];
+                _castStartXindexArray = [NSArray arrayWithArray:newStartArray];
+            } else {
+                NSLog(@"No levelOneArray");
+            }
+        } else {
+            NSLog(@"No levelDictionary");
+        }
+    } else {
+        NSLog(@"No plist loaded from '%@'", path);
     }
 }
 
