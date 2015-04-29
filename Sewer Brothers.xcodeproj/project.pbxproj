@@ -56,6 +56,9 @@
 		36D942131AF10AB1005D59D3 /* SpawnCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420D1AF10AB1005D59D3 /* SpawnCoin.caf */; };
 		36D942141AF10AB1005D59D3 /* SpawnEnemy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420E1AF10AB1005D59D3 /* SpawnEnemy.caf */; };
 		36D942151AF10AB1005D59D3 /* SpawnPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420F1AF10AB1005D59D3 /* SpawnPlayer.caf */; };
+		36D942171AF1137F005D59D3 /* Grate.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D942161AF1137F005D59D3 /* Grate.png */; };
+		36D9421A1AF11540005D59D3 /* PipeLwrLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D942181AF11540005D59D3 /* PipeLwrLeft.png */; };
+		36D9421B1AF11540005D59D3 /* PipeLwrRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D942191AF11540005D59D3 /* PipeLwrRight.png */; };
 		36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */; };
 		36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */; };
 		36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */; };
@@ -148,6 +151,9 @@
 		36D9420D1AF10AB1005D59D3 /* SpawnCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpawnCoin.caf; sourceTree = "<group>"; };
 		36D9420E1AF10AB1005D59D3 /* SpawnEnemy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpawnEnemy.caf; sourceTree = "<group>"; };
 		36D9420F1AF10AB1005D59D3 /* SpawnPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpawnPlayer.caf; sourceTree = "<group>"; };
+		36D942161AF1137F005D59D3 /* Grate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grate.png; sourceTree = "<group>"; };
+		36D942181AF11540005D59D3 /* PipeLwrLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PipeLwrLeft.png; sourceTree = "<group>"; };
+		36D942191AF11540005D59D3 /* PipeLwrRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PipeLwrRight.png; sourceTree = "<group>"; };
 		36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left1.png; sourceTree = "<group>"; };
 		36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left2.png; sourceTree = "<group>"; };
 		36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left3.png; sourceTree = "<group>"; };
@@ -232,6 +238,9 @@
 		365DBC2E1AEE6C4E005CAE5D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				36D942181AF11540005D59D3 /* PipeLwrLeft.png */,
+				36D942191AF11540005D59D3 /* PipeLwrRight.png */,
+				36D942161AF1137F005D59D3 /* Grate.png */,
 				36F35C771AEDC34C008A3CCA /* Base_600.png */,
 				36F35C731AED84E8008A3CCA /* Backdrop_480.png */,
 				36F35C741AED84E8008A3CCA /* Backdrop_568.png */,
@@ -522,8 +531,10 @@
 				36D941F31AF084EE005D59D3 /* Text_Number_3.png in Resources */,
 				36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */,
 				36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */,
+				36D9421B1AF11540005D59D3 /* PipeLwrRight.png in Resources */,
 				36D942091AF10A18005D59D3 /* Theme.caf in Resources */,
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
+				36D9421A1AF11540005D59D3 /* PipeLwrLeft.png in Resources */,
 				3624C3AC1AEFBFEE00D974C2 /* Coin3.png in Resources */,
 				36D942131AF10AB1005D59D3 /* SpawnCoin.caf in Resources */,
 				36DB89C21AEEEF2E0093B567 /* Ratz_Left5.png in Resources */,
@@ -539,6 +550,7 @@
 				36DB89C61AEEEF2E0093B567 /* Ratz_Right4.png in Resources */,
 				36D942121AF10AB1005D59D3 /* Skid.caf in Resources */,
 				36D941F71AF084EE005D59D3 /* Text_Number_7.png in Resources */,
+				36D942171AF1137F005D59D3 /* Grate.png in Resources */,
 				36F35C7C1AEDCD15008A3CCA /* Player_RightJump.png in Resources */,
 				36D942151AF10AB1005D59D3 /* SpawnPlayer.caf in Resources */,
 				36DB89C41AEEEF2E0093B567 /* Ratz_Right2.png in Resources */,

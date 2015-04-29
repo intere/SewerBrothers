@@ -19,7 +19,7 @@
     ratz.position = location;
     ratz.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ratz.size];
     ratz.physicsBody.categoryBitMask = kRatzCategory;
-    ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory | kCoinCategory;
+    ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory | kCoinCategory | kPipeCategory;
     ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kRatzCategory | kCoinCategory;
     ratz.physicsBody.density = 1.0;
     ratz.physicsBody.linearDamping = 0.1;
@@ -52,6 +52,39 @@
     self.physicsBody = nil;
     self.position = where;
     self.physicsBody = storePB;
+}
+
+-(void)ratzHitLeftPipe:(SKScene *)whichScene {
+    int leftSideX = CGRectGetMinX(whichScene.frame) + kEnemySpawnEdgeBufferX;
+    int topSideY = CGRectGetMaxY(whichScene.frame) - kEnemySpanwEdgeBufferY;
+    
+    SKPhysicsBody *storePB = self.physicsBody;
+    self.physicsBody = nil;
+    self.position = CGPointMake(leftSideX, topSideY);
+    self.physicsBody = storePB;
+    
+    [self removeAllActions];
+    [self runRight];
+    
+    // Play spawning sound
+    [self runAction:_spawnSound];
+}
+
+-(void)ratzHitRightPipe:(SKScene *)whichScene {
+    int rightSideX = CGRectGetMaxX(whichScene.frame) - kEnemySpawnEdgeBufferX;
+    int topSideY = CGRectGetMaxY(whichScene.frame) - kEnemySpanwEdgeBufferY;
+    
+    SKPhysicsBody *storePB = self.physicsBody;
+    self.physicsBody = nil;
+    self.position = CGPointMake(rightSideX, topSideY);
+    self.physicsBody = storePB;
+    
+    [self removeAllActions];
+    [self runLeft];
+    
+    // Play spawning sound
+    [self runAction:_spawnSound];
+
 }
 
 #pragma mark Movement

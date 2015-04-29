@@ -35,6 +35,9 @@ typedef enum : int {
 /** Wraps the coin around to the other side.  */
 -(void)wrapCoin:(CGPoint)where;
 
+/** Handles the case when the coin hits a pipe.  */
+-(void)coinHitPipe;
+
 /** Moves Right.  */
 -(void)runRight;
 

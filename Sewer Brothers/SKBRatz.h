@@ -34,6 +34,12 @@ typedef enum : int {
 /** Wrap the Ratz from one side to the other.  */
 -(void)wrapRatz:(CGPoint)where;
 
+/** Handles the case where the ratz hits the left pipe.  */
+-(void)ratzHitLeftPipe:(SKScene *)whichScene;
+
+/** Handles the case where the ratz hits the right pipe.  */
+-(void)ratzHitRightPipe:(SKScene *)whichScene;
+
 /** Ratz run Right.  */
 -(void)runRight;
 

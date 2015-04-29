@@ -195,110 +195,162 @@
         secondBody = contact.bodyA;
     }
     
-    // contact body name
-    NSString *firstBodyName = firstBody.node.name;
-    
     // Player / sideWalls
     if (((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kWallCategory) !=0)) {
-        if([firstBodyName isEqualToString:@"player1"]) {
-            if (_playerSprite.position.y > CGRectGetMaxY(self.frame)-20) {
-                NSLog(@"player hit top of screen");
-            } else if(_playerSprite.position.x < 20) {
-                NSLog(@"player contacted left edge");
-                [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
-            } else {
-                NSLog(@"player contacted right edge");
-                [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
-            }
-        }
+        [self playerHitEdge:firstBody];
     }
     
     // Ratz / sideWalls
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kWallCategory) !=0)) {
-        SKBRatz *theRatz = (SKBRatz *)firstBody.node;
-        if(theRatz.position.x < 100) {
-            [theRatz wrapRatz:CGPointMake(self.frame.size.width-20, theRatz.position.y)];
-        } else {
-            [theRatz wrapRatz:CGPointMake(20, theRatz.position.y)];
-        }
+        [self ratHitEdge:firstBody];
     }
     
     // Ratz / Ratz
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kRatzCategory) !=0)) {
-        SKBRatz *theFirstRatz = (SKBRatz *)firstBody.node;
-        SKBRatz *theSecondRatz = (SKBRatz *)secondBody.node;
-        
-        NSLog(@"%@ & %@ have collided...", theFirstRatz.name, theSecondRatz.name);
-        
-        // case first ratz to turn and change directions
-        if(theFirstRatz.ratzStatus == SBRatzRunningLeft) {
-            [theFirstRatz turnRight];
-        } else if(theFirstRatz.ratzStatus == SBRatzRunningRight) {
-            [theFirstRatz turnLeft];
-        }
-        
-        if(theSecondRatz.ratzStatus == SBRatzRunningLeft) {
-            [theSecondRatz turnRight];
-        } else if(theSecondRatz.ratzStatus == SBRatzRunningRight) {
-            [theSecondRatz turnLeft];
-        }
+        [self contactBetweenRat:firstBody andRat:secondBody];
     }
     
     // Coin / sidewalls
     if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kWallCategory) !=0)) {
-        SKBCoin *theCoin = (SKBCoin *)firstBody.node;
-        if(theCoin.position.x < 100) {
-            [theCoin wrapCoin:CGPointMake(CGRectGetMaxX(self.frame)-10, theCoin.position.y)];
-        } else {
-            [theCoin wrapCoin:CGPointMake(10, theCoin.position.y)];
-        }
+        [self coinHitEdge:firstBody];
     }
     
     // Coin / Coin
     if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kCoinCategory) !=0)) {
-        SKBCoin *theFirstCoin = (SKBCoin *)firstBody.node;
-        SKBCoin *theSecondCoin = (SKBCoin *)secondBody.node;
-        
-        NSLog(@"%@ & %@ have collided...", theFirstCoin.name, theSecondCoin.name);
-        
-        // case first ratz to turn and change directions
-        if(theFirstCoin.coinStatus == SBCoinRunningLeft) {
-            [theFirstCoin turnRight];
-        } else if(theFirstCoin.coinStatus == SBCoinRunningRight) {
-            [theFirstCoin turnLeft];
-        }
-        
-        if(theSecondCoin.coinStatus == SBCoinRunningLeft) {
-            [theSecondCoin turnRight];
-        } else if(theSecondCoin.coinStatus == SBCoinRunningRight) {
-            [theSecondCoin turnLeft];
-        }
+        [self contactBetweenCoin:firstBody andCoin:secondBody];
     }
     
     // Coin / Ratz
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kCoinCategory) !=0)) {
-        SKBRatz *theRatz = (SKBRatz *)firstBody.node;
-        SKBCoin *theCoin = (SKBCoin *)secondBody.node;
-        
-        NSLog(@"%@ & %@ have collided...", theCoin.name, theRatz.name);
-        
-        // cause coin to turn and change directions
-        if(theCoin.coinStatus == SBCoinRunningLeft) {
-            [theCoin turnRight];
-        } else if(theCoin.coinStatus == SBCoinRunningRight) {
-            [theCoin turnLeft];
-        }
-        
-        // cause Ratz to turn and change directions
-        if(theRatz.ratzStatus == SBRatzRunningLeft) {
-            [theRatz turnRight];
-        } else if(theRatz.ratzStatus == SBRatzRunningRight) {
-            [theRatz turnLeft];
-        }
+        [self contactBetweenRat:firstBody andCoin:secondBody];
+    }
+    
+    // Coin / Pipes
+    if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kPipeCategory) !=0)) {
+        [self coinHitPipe:firstBody];
+    }
+    
+    // Ratz / Pipes
+    if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kPipeCategory) !=0)) {
+        [self ratHitPipe:firstBody];
     }
 }
 
 #pragma mark - Private Methods
+
+-(void)ratHitPipe:(SKPhysicsBody *)firstBody {
+    SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+    if(theRatz.position.x < 100) {
+        [theRatz ratzHitLeftPipe:self];
+    } else {
+        [theRatz ratzHitRightPipe:self];
+    }
+}
+
+-(void)coinHitPipe:(SKPhysicsBody *)firstBody {
+    SKBCoin *theCoin = (SKBCoin *)firstBody.node;
+    [theCoin coinHitPipe];
+}
+
+-(void)playerHitEdge:(SKPhysicsBody *)firstBody {
+    // contact body name
+    NSString *firstBodyName = firstBody.node.name;
+    
+    if([firstBodyName isEqualToString:@"player1"]) {
+        if (_playerSprite.position.y > CGRectGetMaxY(self.frame)-20) {
+            NSLog(@"player hit top of screen");
+        } else if(_playerSprite.position.x < 20) {
+            NSLog(@"player contacted left edge");
+            [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
+        } else {
+            NSLog(@"player contacted right edge");
+            [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
+        }
+    }
+}
+
+-(void)ratHitEdge:(SKPhysicsBody *)firstBody {
+    SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+    if(theRatz.position.x < 100) {
+        NSLog(@"ratz contacted left edge");
+        [theRatz wrapRatz:CGPointMake(self.frame.size.width-20, theRatz.position.y)];
+    } else {
+        NSLog(@"ratz contacted right edge");
+        [theRatz wrapRatz:CGPointMake(20, theRatz.position.y)];
+    }
+}
+
+-(void)contactBetweenRat:(SKPhysicsBody *)firstBody andRat:(SKPhysicsBody *)secondBody {
+    SKBRatz *theFirstRatz = (SKBRatz *)firstBody.node;
+    SKBRatz *theSecondRatz = (SKBRatz *)secondBody.node;
+    
+    NSLog(@"%@ & %@ have collided...", theFirstRatz.name, theSecondRatz.name);
+    
+    // case first ratz to turn and change directions
+    if(theFirstRatz.ratzStatus == SBRatzRunningLeft) {
+        [theFirstRatz turnRight];
+    } else if(theFirstRatz.ratzStatus == SBRatzRunningRight) {
+        [theFirstRatz turnLeft];
+    }
+    
+    if(theSecondRatz.ratzStatus == SBRatzRunningLeft) {
+        [theSecondRatz turnRight];
+    } else if(theSecondRatz.ratzStatus == SBRatzRunningRight) {
+        [theSecondRatz turnLeft];
+    }
+}
+
+-(void)coinHitEdge:(SKPhysicsBody *)firstBody {
+    SKBCoin *theCoin = (SKBCoin *)firstBody.node;
+    if(theCoin.position.x < 100) {
+        [theCoin wrapCoin:CGPointMake(CGRectGetMaxX(self.frame)-10, theCoin.position.y)];
+    } else {
+        [theCoin wrapCoin:CGPointMake(10, theCoin.position.y)];
+    }
+}
+
+-(void)contactBetweenCoin:(SKPhysicsBody *)firstBody andCoin:(SKPhysicsBody *)secondBody {
+    SKBCoin *theFirstCoin = (SKBCoin *)firstBody.node;
+    SKBCoin *theSecondCoin = (SKBCoin *)secondBody.node;
+    
+    NSLog(@"%@ & %@ have collided...", theFirstCoin.name, theSecondCoin.name);
+    
+    // case first ratz to turn and change directions
+    if(theFirstCoin.coinStatus == SBCoinRunningLeft) {
+        [theFirstCoin turnRight];
+    } else if(theFirstCoin.coinStatus == SBCoinRunningRight) {
+        [theFirstCoin turnLeft];
+    }
+    
+    if(theSecondCoin.coinStatus == SBCoinRunningLeft) {
+        [theSecondCoin turnRight];
+    } else if(theSecondCoin.coinStatus == SBCoinRunningRight) {
+        [theSecondCoin turnLeft];
+    }
+}
+
+-(void)contactBetweenRat:(SKPhysicsBody *)firstBody andCoin:(SKPhysicsBody *)secondBody {
+    SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+    SKBCoin *theCoin = (SKBCoin *)secondBody.node;
+    
+    NSLog(@"%@ & %@ have collided...", theCoin.name, theRatz.name);
+    
+    // cause coin to turn and change directions
+    if(theCoin.coinStatus == SBCoinRunningLeft) {
+        [theCoin turnRight];
+    } else if(theCoin.coinStatus == SBCoinRunningRight) {
+        [theCoin turnLeft];
+    }
+    
+    // cause Ratz to turn and change directions
+    if(theRatz.ratzStatus == SBRatzRunningLeft) {
+        [theRatz turnRight];
+    } else if(theRatz.ratzStatus == SBRatzRunningRight) {
+        [theRatz turnLeft];
+    }
+}
+
+
 -(void)createSceneContents {
     // Initialize Enemies & Schedule
     _spawnedEnemyCount = 0;
@@ -350,6 +402,34 @@
     // ledge, top right
     [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMaxX(self.frame)-kLedgeSideBufferSpacing-((howMany-1)*kLedgeBrickSpacing), brickBase.position.y + 224) withHowManyBlocks:howMany startingIndex:ledgeIndex];
     ledgeIndex += howMany;
+    
+    // Grates
+    SKSpriteNode *grate = [SKSpriteNode spriteNodeWithImageNamed:@"Grate.png"];
+    grate.name = @"grate1";
+    grate.position = CGPointMake(30, CGRectGetMaxY(self.frame)-25);
+    [self addChild:grate];
+    
+    grate = [SKSpriteNode spriteNodeWithImageNamed:@"Grate.png"];
+    grate.name = @"grate2";
+    grate.position = CGPointMake(CGRectGetMaxX(self.frame)-30, CGRectGetMaxY(self.frame)-25);
+    [self addChild:grate];
+    
+    // Pipes
+    SKSpriteNode *pipe = [SKSpriteNode spriteNodeWithImageNamed:@"PipeLwrLeft.png"];
+    pipe.name = @"pipeLeft";
+    pipe.position = CGPointMake(9, 25);
+    pipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipe.size];
+    pipe.physicsBody.categoryBitMask = kPipeCategory;
+    pipe.physicsBody.dynamic = NO;
+    [self addChild:pipe];
+    
+    pipe = [SKSpriteNode spriteNodeWithImageNamed:@"PipeLwrRight.png"];
+    pipe.name = @"pipeRight";
+    pipe.position = CGPointMake(CGRectGetMaxX(self.frame)-9, 25);
+    pipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipe.size];
+    pipe.physicsBody.categoryBitMask = kPipeCategory;
+    pipe.physicsBody.dynamic = NO;
+    [self addChild:pipe];
     
     // Scoring
     SKBScores *sceneScores = [[SKBScores alloc]init];
