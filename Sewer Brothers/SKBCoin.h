@@ -26,6 +26,7 @@ typedef enum : int {
 
 @property SBCoinStatus coinStatus;
 @property int lastKnownXposition, lastKnownYposition;
+@property (nonatomic, strong) NSString *lastKnownContactedLedge;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
 @property (nonatomic, strong) SKAction *spawnSound, *collectedSound;
 

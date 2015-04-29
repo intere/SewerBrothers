@@ -78,6 +78,18 @@
 		36F35C7C1AEDCD15008A3CCA /* Player_RightJump.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C7A1AEDCD15008A3CCA /* Player_RightJump.png */; };
 		36F35C801AEE65B0008A3CCA /* SKBLedge.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F35C7F1AEE65B0008A3CCA /* SKBLedge.m */; };
 		36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */ = {isa = PBXBuildFile; fileRef = 36F35C811AEE6658008A3CCA /* LedgeBrick.png */; };
+		36FB47A21AF18F5600565347 /* CoinCollected.sks in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A01AF18F5600565347 /* CoinCollected.sks */; };
+		36FB47A31AF18F5600565347 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A11AF18F5600565347 /* spark.png */; };
+		36FB47AE1AF1937D00565347 /* Ratz_KO_L_Hit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A41AF1937D00565347 /* Ratz_KO_L_Hit1.png */; };
+		36FB47AF1AF1937D00565347 /* Ratz_KO_L_Hit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A51AF1937D00565347 /* Ratz_KO_L_Hit2.png */; };
+		36FB47B01AF1937D00565347 /* Ratz_KO_L_Hit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A61AF1937D00565347 /* Ratz_KO_L_Hit3.png */; };
+		36FB47B11AF1937D00565347 /* Ratz_KO_L_Hit4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A71AF1937D00565347 /* Ratz_KO_L_Hit4.png */; };
+		36FB47B21AF1937D00565347 /* Ratz_KO_L_Hit5.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A81AF1937D00565347 /* Ratz_KO_L_Hit5.png */; };
+		36FB47B31AF1937D00565347 /* Ratz_KO_R_Hit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47A91AF1937D00565347 /* Ratz_KO_R_Hit1.png */; };
+		36FB47B41AF1937D00565347 /* Ratz_KO_R_Hit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AA1AF1937D00565347 /* Ratz_KO_R_Hit2.png */; };
+		36FB47B51AF1937D00565347 /* Ratz_KO_R_Hit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AB1AF1937D00565347 /* Ratz_KO_R_Hit3.png */; };
+		36FB47B61AF1937D00565347 /* Ratz_KO_R_Hit4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AC1AF1937D00565347 /* Ratz_KO_R_Hit4.png */; };
+		36FB47B71AF1937D00565347 /* Ratz_KO_R_Hit5.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AD1AF1937D00565347 /* Ratz_KO_R_Hit5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +188,18 @@
 		36F35C7E1AEE65B0008A3CCA /* SKBLedge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBLedge.h; sourceTree = "<group>"; };
 		36F35C7F1AEE65B0008A3CCA /* SKBLedge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBLedge.m; sourceTree = "<group>"; };
 		36F35C811AEE6658008A3CCA /* LedgeBrick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LedgeBrick.png; sourceTree = "<group>"; };
+		36FB47A01AF18F5600565347 /* CoinCollected.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CoinCollected.sks; sourceTree = "<group>"; };
+		36FB47A11AF18F5600565347 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		36FB47A41AF1937D00565347 /* Ratz_KO_L_Hit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_L_Hit1.png; sourceTree = "<group>"; };
+		36FB47A51AF1937D00565347 /* Ratz_KO_L_Hit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_L_Hit2.png; sourceTree = "<group>"; };
+		36FB47A61AF1937D00565347 /* Ratz_KO_L_Hit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_L_Hit3.png; sourceTree = "<group>"; };
+		36FB47A71AF1937D00565347 /* Ratz_KO_L_Hit4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_L_Hit4.png; sourceTree = "<group>"; };
+		36FB47A81AF1937D00565347 /* Ratz_KO_L_Hit5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_L_Hit5.png; sourceTree = "<group>"; };
+		36FB47A91AF1937D00565347 /* Ratz_KO_R_Hit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit1.png; sourceTree = "<group>"; };
+		36FB47AA1AF1937D00565347 /* Ratz_KO_R_Hit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit2.png; sourceTree = "<group>"; };
+		36FB47AB1AF1937D00565347 /* Ratz_KO_R_Hit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit3.png; sourceTree = "<group>"; };
+		36FB47AC1AF1937D00565347 /* Ratz_KO_R_Hit4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit4.png; sourceTree = "<group>"; };
+		36FB47AD1AF1937D00565347 /* Ratz_KO_R_Hit5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +297,7 @@
 		36D8EE321AEBEFD3004315CE /* Sewer Brothers */ = {
 			isa = PBXGroup;
 			children = (
+				36FB479F1AF18F2700565347 /* Emitters */,
 				36D942001AF10932005D59D3 /* Sounds */,
 				36D8EE701AEC5190004315CE /* Sprites */,
 				36D8EE641AEC0580004315CE /* scenes */,
@@ -407,6 +432,16 @@
 		36DB89CB1AEEF0D30093B567 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				36FB47A41AF1937D00565347 /* Ratz_KO_L_Hit1.png */,
+				36FB47A51AF1937D00565347 /* Ratz_KO_L_Hit2.png */,
+				36FB47A61AF1937D00565347 /* Ratz_KO_L_Hit3.png */,
+				36FB47A71AF1937D00565347 /* Ratz_KO_L_Hit4.png */,
+				36FB47A81AF1937D00565347 /* Ratz_KO_L_Hit5.png */,
+				36FB47A91AF1937D00565347 /* Ratz_KO_R_Hit1.png */,
+				36FB47AA1AF1937D00565347 /* Ratz_KO_R_Hit2.png */,
+				36FB47AB1AF1937D00565347 /* Ratz_KO_R_Hit3.png */,
+				36FB47AC1AF1937D00565347 /* Ratz_KO_R_Hit4.png */,
+				36FB47AD1AF1937D00565347 /* Ratz_KO_R_Hit5.png */,
 				36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */,
 				36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */,
 				36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */,
@@ -429,6 +464,15 @@
 				36F35C7F1AEE65B0008A3CCA /* SKBLedge.m */,
 			);
 			name = Ledge;
+			sourceTree = "<group>";
+		};
+		36FB479F1AF18F2700565347 /* Emitters */ = {
+			isa = PBXGroup;
+			children = (
+				36FB47A01AF18F5600565347 /* CoinCollected.sks */,
+				36FB47A11AF18F5600565347 /* spark.png */,
+			);
+			name = Emitters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,20 +557,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */,
+				36FB47B01AF1937D00565347 /* Ratz_KO_L_Hit3.png in Resources */,
 				36D941F11AF084EE005D59D3 /* Text_Number_1.png in Resources */,
+				36FB47B21AF1937D00565347 /* Ratz_KO_L_Hit5.png in Resources */,
 				36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */,
 				36D941F01AF084EE005D59D3 /* Text_Number_0.png in Resources */,
 				36D942101AF10AB1005D59D3 /* Jump.caf in Resources */,
 				36D941F41AF084EE005D59D3 /* Text_Number_4.png in Resources */,
 				36D942111AF10AB1005D59D3 /* Run.caf in Resources */,
 				36DB89C51AEEEF2E0093B567 /* Ratz_Right3.png in Resources */,
+				36FB47B71AF1937D00565347 /* Ratz_KO_R_Hit5.png in Resources */,
 				36D9421D1AF12971005D59D3 /* CoinCollected.caf in Resources */,
+				36FB47AF1AF1937D00565347 /* Ratz_KO_L_Hit2.png in Resources */,
 				36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */,
 				36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */,
 				36DB89C71AEEEF2E0093B567 /* Ratz_Right5.png in Resources */,
 				36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */,
 				36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */,
+				36FB47B51AF1937D00565347 /* Ratz_KO_R_Hit3.png in Resources */,
 				36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */,
+				36FB47B41AF1937D00565347 /* Ratz_KO_R_Hit2.png in Resources */,
 				36D941E41AF030E6005D59D3 /* CastOfCharacters.plist in Resources */,
 				36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */,
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
@@ -535,6 +585,7 @@
 				36D941F31AF084EE005D59D3 /* Text_Number_3.png in Resources */,
 				36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */,
 				36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */,
+				36FB47B31AF1937D00565347 /* Ratz_KO_R_Hit1.png in Resources */,
 				36D9421B1AF11540005D59D3 /* PipeLwrRight.png in Resources */,
 				36D942091AF10A18005D59D3 /* Theme.caf in Resources */,
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
@@ -543,6 +594,8 @@
 				36D942131AF10AB1005D59D3 /* SpawnCoin.caf in Resources */,
 				36DB89C21AEEEF2E0093B567 /* Ratz_Left5.png in Resources */,
 				36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */,
+				36FB47B11AF1937D00565347 /* Ratz_KO_L_Hit4.png in Resources */,
+				36FB47AE1AF1937D00565347 /* Ratz_KO_L_Hit1.png in Resources */,
 				36D941F51AF084EE005D59D3 /* Text_Number_5.png in Resources */,
 				36F35C781AEDC34C008A3CCA /* Base_600.png in Resources */,
 				36D941F81AF084EE005D59D3 /* Text_Number_8.png in Resources */,
@@ -552,6 +605,7 @@
 				36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */,
 				36D941F21AF084EE005D59D3 /* Text_Number_2.png in Resources */,
 				36DB89C61AEEEF2E0093B567 /* Ratz_Right4.png in Resources */,
+				36FB47A21AF18F5600565347 /* CoinCollected.sks in Resources */,
 				36D942121AF10AB1005D59D3 /* Skid.caf in Resources */,
 				36D941F71AF084EE005D59D3 /* Text_Number_7.png in Resources */,
 				36D942171AF1137F005D59D3 /* Grate.png in Resources */,
@@ -566,8 +620,10 @@
 				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
 				36DB89C31AEEEF2E0093B567 /* Ratz_Right1.png in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
+				36FB47A31AF18F5600565347 /* spark.png in Resources */,
 				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
 				3624C3AB1AEFBFEE00D974C2 /* Coin2.png in Resources */,
+				36FB47B61AF1937D00565347 /* Ratz_KO_R_Hit4.png in Resources */,
 				36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */,
 				36D941F91AF084EE005D59D3 /* Text_Number_9.png in Resources */,
 				36DB89C11AEEEF2E0093B567 /* Ratz_Left4.png in Resources */,

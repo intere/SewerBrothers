@@ -18,7 +18,7 @@
     coin.position = location;
     coin.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:coin.size];
     coin.physicsBody.categoryBitMask = kCoinCategory;
-    coin.physicsBody.contactTestBitMask = kWallCategory | kCoinCategory | kRatzCategory | kPipeCategory;
+    coin.physicsBody.contactTestBitMask = kWallCategory | kCoinCategory | kRatzCategory | kPipeCategory | kLedgeCategory;
     coin.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kCoinCategory | kRatzCategory;
     coin.physicsBody.density = 1.0;
     coin.physicsBody.linearDamping = 0.1;
@@ -74,6 +74,14 @@
     
     SKAction *fadeAway = [SKAction fadeOutWithDuration:1];
     [moneyText runAction:fadeAway completion:^{[moneyText removeFromParent];}];
+    
+    // particle special effect
+    NSString *emitterPath = [[NSBundle mainBundle] pathForResource:@"CoinCollected" ofType:@"sks"];
+    SKEmitterNode *bling = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterPath];
+    bling.position = self.position;
+    bling.name = @"coinCollected";
+    bling.targetNode = self.scene;
+    [whichScene addChild:bling];
     
     [self removeFromParent];
 }

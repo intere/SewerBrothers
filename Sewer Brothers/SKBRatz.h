@@ -13,15 +13,19 @@
 #define kRatzSpawnSoundFileName @"SpawnEnemy.caf"
 
 #define kRatzRunningIncrement 40
+#define kRatzPointValue 100
 
 typedef enum : int {
     SBRatzRunningLeft = 0,
-    SBRatzRunningRight
+    SBRatzRunningRight,
+    SBRatzKOfacingLeft,
+    SBRatzKOfacingRight
 } SBRatzStatus;
 
 @interface SKBRatz : SKSpriteNode
 @property SBRatzStatus ratzStatus;
 @property int lastKnownXposition, lastKnownYposition;
+@property NSString *lastKnownContactedLedge;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
 @property (nonatomic, strong) SKAction *spawnSound;
 
@@ -39,6 +43,12 @@ typedef enum : int {
 
 /** Handles the case where the ratz hits the right pipe.  */
 -(void)ratzHitRightPipe:(SKScene *)whichScene;
+
+/** The Ratz is knocked out!  */
+-(void)ratzKnockedOut:(SKScene *)whichScene;
+
+/** The Ratz has been collected!  */
+-(void)ratzCollected:(SKScene *)whichScene;
 
 /** Ratz run Right.  */
 -(void)runRight;

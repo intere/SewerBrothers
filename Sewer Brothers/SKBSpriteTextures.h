@@ -37,6 +37,18 @@
 #define kRatzRunLeft4FileName @"Ratz_Left4.png"
 #define kRatzRunLeft5FileName @"Ratz_Left5.png"
 
+#define kRatzKOfacingLeft1FileName @"Ratz_KO_L_Hit1.png"
+#define kRatzKOfacingLeft2FileName @"Ratz_KO_L_Hit2.png"
+#define kRatzKOfacingLeft3FileName @"Ratz_KO_L_Hit3.png"
+#define kRatzKOfacingLeft4FileName @"Ratz_KO_L_Hit4.png"
+#define kRatzKOfacingLeft5FileName @"Ratz_KO_L_Hit5.png"
+
+#define kRatzKOfacingRight1FileName @"Ratz_KO_R_Hit1.png"
+#define kRatzKOfacingRight2FileName @"Ratz_KO_R_Hit2.png"
+#define kRatzKOfacingRight3FileName @"Ratz_KO_R_Hit3.png"
+#define kRatzKOfacingRight4FileName @"Ratz_KO_R_Hit4.png"
+#define kRatzKOfacingRight5FileName @"Ratz_KO_R_Hit5.png"
+
 #define kCoin1FileName @"Coin1.png"
 #define kCoin2FileName @"Coin2.png"
 #define kCoin3FileName @"Coin3.png"
@@ -49,6 +61,7 @@
 @property (nonatomic, strong) NSArray *playerRunLeftTextures, *playerJumpLeftTextures;
 @property (nonatomic, strong) NSArray *playerSkiddingLeftTextures, *playerStillFacingLeftTextures;
 @property (nonatomic, strong) NSArray *ratzRunLeftTextures, *ratzRunRightTextures;
+@property (nonatomic, strong) NSArray *ratzKOfacingLeftTextures, *ratzKOfacingRightTextures;
 @property (nonatomic, strong) NSArray *coinTextures;
 
 -(void)createAnimationTextures;

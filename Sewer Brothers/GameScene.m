@@ -219,6 +219,37 @@
 }
 
 #pragma mark - SKPhysicsContactDelegate methods
+
+-(void)checkForEnemyHits:(NSString *)struckLedgeName {
+    // Coins
+    for(int index=0; index<= _spawnedEnemyCount; index++) {
+        [self enumerateChildNodesWithName:[NSString stringWithFormat:@"coin%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+            *stop = YES;
+            SKBCoin *theCoin = (SKBCoin *)node;
+            
+            // struckLedge check
+            if([theCoin.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
+                NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theCoin.name);
+                [theCoin coinCollected:self];
+            }
+        }];
+    }
+    
+    // Ratz
+    for(int index=0; index<=_spawnedEnemyCount; index++) {
+        [self enumerateChildNodesWithName:[NSString stringWithFormat:@"ratz%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+            *stop = YES;
+            SKBRatz *theRatz = (SKBRatz *)node;
+            
+            // struckLedge check
+            if([theRatz.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
+                NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theRatz.name);
+                [theRatz ratzKnockedOut:self];
+            }
+        }];
+    }
+}
+
 -(void)didBeginContact:(SKPhysicsContact *)contact {
     SKPhysicsBody *firstBody, *secondBody;
     
@@ -273,6 +304,47 @@
     // Player / Coins
     if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kCoinCategory) !=0)) {
         [self playerCollectedCoin:secondBody];
+    }
+    
+    // Player / Ledges
+    if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kLedgeCategory) !=0)) {
+        if(_playerSprite.playerStatus == SBPlayerJumpingLeft || _playerSprite.playerStatus == SBPlayerJumpingRight
+           || _playerSprite.playerStatus == SBPlayerJumpingUpFacingLeft || _playerSprite.playerStatus == SBPlayerJumpingUpFacingRight) {
+            SKSpriteNode *theStruckLedge = (SKSpriteNode *)secondBody.node;
+            [self checkForEnemyHits:theStruckLedge.name];
+        }
+    }
+    
+    // Coin / ledges
+    if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kLedgeCategory) !=0)) {
+        SKBCoin *theCoin = (SKBCoin *)firstBody.node;
+        SKNode *theLedge = secondBody.node;
+        theCoin.lastKnownContactedLedge = theLedge.name;
+    }
+    
+    // Ratz / ledges
+    if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kLedgeCategory) !=0)) {
+        SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+        SKNode *theLedge = secondBody.node;
+        theRatz.lastKnownContactedLedge = theLedge.name;
+    }
+    
+    // Ratz / Base Bricks
+    if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kBaseCategory) !=0)) {
+        SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+        theRatz.lastKnownContactedLedge = @"";
+    }
+    
+    // Player / Ratz
+    if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kRatzCategory) !=0)) {
+        SKBRatz *theRatz = (SKBRatz *)secondBody.node;
+        if(theRatz.ratzStatus == SBRatzKOfacingLeft || theRatz.ratzStatus == SBRatzKOfacingRight) {
+            [theRatz ratzCollected:self];
+            
+            // Score some points
+            _playerScore += kRatzPointValue;
+            [_scoreDisplay updateScore:self newScore:_playerScore];
+        }
     }
 }
 

@@ -72,6 +72,21 @@
     
     _ratzRunLeftTextures = @[f1, f2, f3, f4, f5];
     
+    f1 = [SKTexture textureWithImageNamed:kRatzKOfacingLeft1FileName];
+    f2 = [SKTexture textureWithImageNamed:kRatzKOfacingLeft2FileName];
+    f3 = [SKTexture textureWithImageNamed:kRatzKOfacingLeft3FileName];
+    f4 = [SKTexture textureWithImageNamed:kRatzKOfacingLeft4FileName];
+    f5 = [SKTexture textureWithImageNamed:kRatzKOfacingLeft5FileName];
+    
+    _ratzKOfacingLeftTextures = @[f1, f2, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f3, f2, f3, f2, f3, f2, f1];
+    
+    f1 = [SKTexture textureWithImageNamed:kRatzKOfacingRight1FileName];
+    f2 = [SKTexture textureWithImageNamed:kRatzKOfacingRight2FileName];
+    f3 = [SKTexture textureWithImageNamed:kRatzKOfacingRight3FileName];
+    f4 = [SKTexture textureWithImageNamed:kRatzKOfacingRight4FileName];
+    f5 = [SKTexture textureWithImageNamed:kRatzKOfacingRight5FileName];
+    _ratzKOfacingRightTextures = @[f1, f2, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f3, f2, f3, f2, f3, f2, f1];
+    
     // Coins
     f1 = [SKTexture textureWithImageNamed:kCoin1FileName];
     f2 = [SKTexture textureWithImageNamed:kCoin2FileName];

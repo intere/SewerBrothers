@@ -19,7 +19,7 @@
     ratz.position = location;
     ratz.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ratz.size];
     ratz.physicsBody.categoryBitMask = kRatzCategory;
-    ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory | kCoinCategory | kPipeCategory;
+    ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory | kCoinCategory | kPipeCategory | kLedgeCategory | kBaseCategory;
     ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kRatzCategory | kCoinCategory;
     ratz.physicsBody.density = 1.0;
     ratz.physicsBody.linearDamping = 0.1;
@@ -85,6 +85,34 @@
     // Play spawning sound
     [self runAction:_spawnSound];
 
+}
+
+#pragma mark Contact
+-(void)ratzKnockedOut:(SKScene *)whichScene {
+    [self removeAllActions];
+    
+    NSArray *textureArray = nil;
+    if(_ratzStatus == SBRatzRunningLeft) {
+        _ratzStatus = SBRatzKOfacingLeft;
+        textureArray = [NSArray arrayWithArray:_spriteTextures.ratzKOfacingLeftTextures];
+    } else {
+        textureArray = [NSArray arrayWithArray:_spriteTextures.ratzKOfacingRightTextures];
+    }
+    
+    SKAction *knockedOutAnimation = [SKAction animateWithTextures:textureArray timePerFrame:0.2];
+    SKAction *knockedOutForAwhiile = [SKAction repeatAction:knockedOutAnimation count:1];
+    
+    [self runAction:knockedOutForAwhiile completion:^{
+        if(_ratzStatus == SBRatzKOfacingLeft) {
+            [self runLeft];
+        } else {
+            [self runRight];
+        }
+    }];
+}
+
+-(void)ratzCollected:(SKScene *)whichScene {
+    NSLog(@"%@ collected", self.name);
 }
 
 #pragma mark Movement
