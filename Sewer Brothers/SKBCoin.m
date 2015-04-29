@@ -32,6 +32,7 @@
 -(void)spawnedInScene:(SKScene *)whichScene {
     GameScene *theScene = (GameScene *)whichScene;
     _spriteTextures = theScene.spriteTextures;
+    _collectedSound = [SKAction playSoundFileNamed:kCoinCollectedSoundFileName waitForCompletion:NO];
     _spawnSound = [SKAction playSoundFileNamed:kCoinSpawnSoundFileName waitForCompletion:NO];
     [self runAction:_spawnSound];
     
@@ -51,7 +52,29 @@
     self.physicsBody = storePB;
 }
 
+#pragma mark Contact
+
 -(void)coinHitPipe {
+    [self removeFromParent];
+}
+
+-(void)coinCollected:(SKScene *)whichScene {
+    NSLog(@"%@ collected", self.name);
+    
+    // Play sound
+    [whichScene runAction:_collectedSound];
+    
+    // Show amount of winnings
+    SKLabelNode *moneyText = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
+    moneyText.text = [NSString stringWithFormat:@"$%d", kCoinPointValue];
+    moneyText.fontSize = 9;
+    moneyText.fontColor = [SKColor whiteColor];
+    moneyText.position = CGPointMake(self.position.x-10, self.position.y+28);
+    [whichScene addChild:moneyText];
+    
+    SKAction *fadeAway = [SKAction fadeOutWithDuration:1];
+    [moneyText runAction:fadeAway completion:^{[moneyText removeFromParent];}];
+    
     [self removeFromParent];
 }
 

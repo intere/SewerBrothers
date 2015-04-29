@@ -50,16 +50,7 @@
         CGPoint location = [touch locationInNode:self];
         SBPlayerStatus status = _playerSprite.playerStatus;
         
-        if(!_playerSprite) {
-            _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:location];
-            [_playerSprite spawnedInScene:self];
-            
-            SKAction *spawnDelay = [SKAction waitForDuration:4];
-            [self runAction:spawnDelay completion:^{
-                SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(50,280) ratzIndex:0];
-                [newEnemy spawnedInScene:self];
-            }];
-        } else if(location.y >= (self.frame.size.height / 2)) {
+        if(location.y >= (self.frame.size.height / 2)) {
             // user touched upper half of the screen (zero = bottom of screen)
             if(status != SBPlayerJumpingLeft && status != SBPlayerJumpingRight && status != SBPlayerJumpingUpFacingLeft && status != SBPlayerJumpingUpFacingRight) {
                 [_playerSprite jump];
@@ -127,6 +118,50 @@
                 [newEnemy spawnedInScene:self];
             }
         }];
+    }
+    
+    // check for stuck enemies every 20 frames
+    _frameCounter++;
+    if(_frameCounter >=20) {
+        _frameCounter = 0;
+        for(int index=0; index<=_spawnedEnemyCount; index++) {
+            [self enumerateChildNodesWithName:[NSString stringWithFormat:@"coin%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+                *stop = YES;
+                SKBCoin *theCoin = (SKBCoin *)node;
+                int currentX = theCoin.position.x;
+                int currentY = theCoin.position.y;
+                if(currentX == theCoin.lastKnownXposition && currentY == theCoin.lastKnownYposition) {
+                    NSLog(@"%@ appears to be stuck...", theCoin.name);
+                    if(theCoin.coinStatus == SBCoinRunningRight) {
+                        [theCoin removeAllActions];
+                        [theCoin runLeft];
+                    } else if(theCoin.coinStatus == SBCoinRunningLeft) {
+                        [theCoin removeAllActions];
+                        [theCoin runRight];
+                    }
+                }
+                theCoin.lastKnownXposition = currentX;
+                theCoin.lastKnownYposition = currentY;
+            }];
+            [self enumerateChildNodesWithName:[NSString stringWithFormat:@"ratz%d", index] usingBlock:^(SKNode *node, BOOL*stop) {
+                *stop = YES;
+                SKBRatz *theRatz = (SKBRatz *)node;
+                int currentX = theRatz.position.x;
+                int currentY = theRatz.position.y;
+                if(currentX == theRatz.lastKnownXposition && currentY == theRatz.lastKnownYposition) {
+                    NSLog(@"%@ appears to be stuck...", theRatz.name);
+                    if(theRatz.ratzStatus == SBRatzRunningRight) {
+                        [theRatz removeAllActions];
+                        [theRatz runLeft];
+                    } else if(theRatz.ratzStatus == SBRatzRunningLeft) {
+                        [theRatz removeAllActions];
+                        [theRatz runRight];
+                    }
+                }
+                theRatz.lastKnownXposition = currentX;
+                theRatz.lastKnownYposition = currentY;
+            }];
+        }
     }
 }
 
@@ -234,9 +269,23 @@
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kPipeCategory) !=0)) {
         [self ratHitPipe:firstBody];
     }
+    
+    // Player / Coins
+    if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kCoinCategory) !=0)) {
+        [self playerCollectedCoin:secondBody];
+    }
 }
 
 #pragma mark - Private Methods
+
+-(void)playerCollectedCoin:(SKPhysicsBody *)secondBody {
+    SKBCoin *theCoin = (SKBCoin *)secondBody.node;
+    [theCoin coinCollected:self];
+    
+    // Score some bonus points
+    _playerScore += kCoinPointValue;
+    [_scoreDisplay updateScore:self newScore:_playerScore];
+}
 
 -(void)ratHitPipe:(SKPhysicsBody *)firstBody {
     SKBRatz *theRatz = (SKBRatz *)firstBody.node;
@@ -435,8 +484,12 @@
     SKBScores *sceneScores = [[SKBScores alloc]init];
     [sceneScores createScoreNode:self];
     _scoreDisplay = sceneScores;
-    _playerScore = 85942;
+    _playerScore = 0;
     [_scoreDisplay updateScore:self newScore:_playerScore];
+    
+    // Player
+    _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:CGPointMake(40, 25)];
+    [_playerSprite spawnedInScene:self];
 }
 
 @end

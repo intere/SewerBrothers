@@ -12,8 +12,10 @@
 #import "SKBSpriteTextures.h"
 
 #define kCoinSpawnSoundFileName @"SpawnCoin.caf"
+#define kCoinCollectedSoundFileName @"CoinCollected.caf"
 
 #define kCoinRunningIncrement 40
+#define kCoinPointValue 60
 
 typedef enum : int {
     SBCoinRunningLeft = 0,
@@ -23,8 +25,9 @@ typedef enum : int {
 @interface SKBCoin : SKSpriteNode
 
 @property SBCoinStatus coinStatus;
+@property int lastKnownXposition, lastKnownYposition;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
-@property (nonatomic, strong) SKAction *spawnSound;
+@property (nonatomic, strong) SKAction *spawnSound, *collectedSound;
 
 /** Factory Coin Creation Method.  */
 +(SKBCoin *)initNewCoin:(SKScene *)whichScene startingPoint:(CGPoint)location coinIndex:(int)index;
@@ -37,6 +40,9 @@ typedef enum : int {
 
 /** Handles the case when the coin hits a pipe.  */
 -(void)coinHitPipe;
+
+/** Handles the case when the player collects the coin.  */
+-(void)coinCollected:(SKScene *)whichScene;
 
 /** Moves Right.  */
 -(void)runRight;

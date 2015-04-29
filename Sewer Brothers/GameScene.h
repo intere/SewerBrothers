@@ -19,6 +19,7 @@
 @property (strong, nonatomic) SKBSpriteTextures *spriteTextures;
 @property (strong, nonatomic) NSArray *castTypeArray, *castDelayArray, *castStartXindexArray;
 
+@property int frameCounter;
 @property int spawnedEnemyCount;
 @property BOOL enemyIsSpawningFlag;
 

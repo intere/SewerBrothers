@@ -21,8 +21,8 @@ typedef enum : int {
 
 @interface SKBRatz : SKSpriteNode
 @property SBRatzStatus ratzStatus;
+@property int lastKnownXposition, lastKnownYposition;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
-
 @property (nonatomic, strong) SKAction *spawnSound;
 
 /** Factory Ratz Creation method.  */

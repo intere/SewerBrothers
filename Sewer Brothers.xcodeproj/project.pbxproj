@@ -59,6 +59,7 @@
 		36D942171AF1137F005D59D3 /* Grate.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D942161AF1137F005D59D3 /* Grate.png */; };
 		36D9421A1AF11540005D59D3 /* PipeLwrLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D942181AF11540005D59D3 /* PipeLwrLeft.png */; };
 		36D9421B1AF11540005D59D3 /* PipeLwrRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D942191AF11540005D59D3 /* PipeLwrRight.png */; };
+		36D9421D1AF12971005D59D3 /* CoinCollected.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9421C1AF12971005D59D3 /* CoinCollected.caf */; };
 		36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */; };
 		36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */; };
 		36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */; };
@@ -154,6 +155,7 @@
 		36D942161AF1137F005D59D3 /* Grate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grate.png; sourceTree = "<group>"; };
 		36D942181AF11540005D59D3 /* PipeLwrLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PipeLwrLeft.png; sourceTree = "<group>"; };
 		36D942191AF11540005D59D3 /* PipeLwrRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PipeLwrRight.png; sourceTree = "<group>"; };
+		36D9421C1AF12971005D59D3 /* CoinCollected.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CoinCollected.caf; sourceTree = "<group>"; };
 		36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left1.png; sourceTree = "<group>"; };
 		36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left2.png; sourceTree = "<group>"; };
 		36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left3.png; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 		36D942001AF10932005D59D3 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				36D9421C1AF12971005D59D3 /* CoinCollected.caf */,
 				36D9420A1AF10AB1005D59D3 /* Jump.caf */,
 				36D9420B1AF10AB1005D59D3 /* Run.caf */,
 				36D9420C1AF10AB1005D59D3 /* Skid.caf */,
@@ -517,6 +520,7 @@
 				36D941F41AF084EE005D59D3 /* Text_Number_4.png in Resources */,
 				36D942111AF10AB1005D59D3 /* Run.caf in Resources */,
 				36DB89C51AEEEF2E0093B567 /* Ratz_Right3.png in Resources */,
+				36D9421D1AF12971005D59D3 /* CoinCollected.caf in Resources */,
 				36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */,
 				36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */,
 				36DB89C71AEEEF2E0093B567 /* Ratz_Right5.png in Resources */,
