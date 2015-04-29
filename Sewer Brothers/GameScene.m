@@ -350,6 +350,13 @@
     // ledge, top right
     [sceneLedge createNewSetOfLedgeNodes:self startingPoint:CGPointMake(CGRectGetMaxX(self.frame)-kLedgeSideBufferSpacing-((howMany-1)*kLedgeBrickSpacing), brickBase.position.y + 224) withHowManyBlocks:howMany startingIndex:ledgeIndex];
     ledgeIndex += howMany;
+    
+    // Scoring
+    SKBScores *sceneScores = [[SKBScores alloc]init];
+    [sceneScores createScoreNode:self];
+    _scoreDisplay = sceneScores;
+    _playerScore = 85942;
+    [_scoreDisplay updateScore:self newScore:_playerScore];
 }
 
 @end

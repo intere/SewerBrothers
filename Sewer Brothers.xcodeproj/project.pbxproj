@@ -37,6 +37,25 @@
 		36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE801AEC9A47004315CE /* Player_Left_Still.png */; };
 		36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D8EE811AEC9A47004315CE /* Player_Right_Still.png */; };
 		36D941E41AF030E6005D59D3 /* CastOfCharacters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36D941E31AF030E6005D59D3 /* CastOfCharacters.plist */; };
+		36D941F01AF084EE005D59D3 /* Text_Number_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941E61AF084EE005D59D3 /* Text_Number_0.png */; };
+		36D941F11AF084EE005D59D3 /* Text_Number_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941E71AF084EE005D59D3 /* Text_Number_1.png */; };
+		36D941F21AF084EE005D59D3 /* Text_Number_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941E81AF084EE005D59D3 /* Text_Number_2.png */; };
+		36D941F31AF084EE005D59D3 /* Text_Number_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941E91AF084EE005D59D3 /* Text_Number_3.png */; };
+		36D941F41AF084EE005D59D3 /* Text_Number_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941EA1AF084EE005D59D3 /* Text_Number_4.png */; };
+		36D941F51AF084EE005D59D3 /* Text_Number_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941EB1AF084EE005D59D3 /* Text_Number_5.png */; };
+		36D941F61AF084EE005D59D3 /* Text_Number_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941EC1AF084EE005D59D3 /* Text_Number_6.png */; };
+		36D941F71AF084EE005D59D3 /* Text_Number_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941ED1AF084EE005D59D3 /* Text_Number_7.png */; };
+		36D941F81AF084EE005D59D3 /* Text_Number_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941EE1AF084EE005D59D3 /* Text_Number_8.png */; };
+		36D941F91AF084EE005D59D3 /* Text_Number_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941EF1AF084EE005D59D3 /* Text_Number_9.png */; };
+		36D941FC1AF085F7005D59D3 /* Text_PlayerScoreHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D941FB1AF085F7005D59D3 /* Text_PlayerScoreHeader.png */; };
+		36D941FF1AF086C1005D59D3 /* SKBScores.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D941FE1AF086C1005D59D3 /* SKBScores.m */; };
+		36D942091AF10A18005D59D3 /* Theme.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D942081AF10A18005D59D3 /* Theme.caf */; };
+		36D942101AF10AB1005D59D3 /* Jump.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420A1AF10AB1005D59D3 /* Jump.caf */; };
+		36D942111AF10AB1005D59D3 /* Run.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420B1AF10AB1005D59D3 /* Run.caf */; };
+		36D942121AF10AB1005D59D3 /* Skid.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420C1AF10AB1005D59D3 /* Skid.caf */; };
+		36D942131AF10AB1005D59D3 /* SpawnCoin.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420D1AF10AB1005D59D3 /* SpawnCoin.caf */; };
+		36D942141AF10AB1005D59D3 /* SpawnEnemy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420E1AF10AB1005D59D3 /* SpawnEnemy.caf */; };
+		36D942151AF10AB1005D59D3 /* SpawnPlayer.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D9420F1AF10AB1005D59D3 /* SpawnPlayer.caf */; };
 		36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */; };
 		36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */; };
 		36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */; };
@@ -109,6 +128,26 @@
 		36D8EE801AEC9A47004315CE /* Player_Left_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Left_Still.png; sourceTree = "<group>"; };
 		36D8EE811AEC9A47004315CE /* Player_Right_Still.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_Right_Still.png; sourceTree = "<group>"; };
 		36D941E31AF030E6005D59D3 /* CastOfCharacters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CastOfCharacters.plist; sourceTree = "<group>"; };
+		36D941E61AF084EE005D59D3 /* Text_Number_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_0.png; sourceTree = "<group>"; };
+		36D941E71AF084EE005D59D3 /* Text_Number_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_1.png; sourceTree = "<group>"; };
+		36D941E81AF084EE005D59D3 /* Text_Number_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_2.png; sourceTree = "<group>"; };
+		36D941E91AF084EE005D59D3 /* Text_Number_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_3.png; sourceTree = "<group>"; };
+		36D941EA1AF084EE005D59D3 /* Text_Number_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_4.png; sourceTree = "<group>"; };
+		36D941EB1AF084EE005D59D3 /* Text_Number_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_5.png; sourceTree = "<group>"; };
+		36D941EC1AF084EE005D59D3 /* Text_Number_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_6.png; sourceTree = "<group>"; };
+		36D941ED1AF084EE005D59D3 /* Text_Number_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_7.png; sourceTree = "<group>"; };
+		36D941EE1AF084EE005D59D3 /* Text_Number_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_8.png; sourceTree = "<group>"; };
+		36D941EF1AF084EE005D59D3 /* Text_Number_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_Number_9.png; sourceTree = "<group>"; };
+		36D941FB1AF085F7005D59D3 /* Text_PlayerScoreHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_PlayerScoreHeader.png; sourceTree = "<group>"; };
+		36D941FD1AF086C1005D59D3 /* SKBScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBScores.h; sourceTree = "<group>"; };
+		36D941FE1AF086C1005D59D3 /* SKBScores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBScores.m; sourceTree = "<group>"; };
+		36D942081AF10A18005D59D3 /* Theme.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Theme.caf; sourceTree = "<group>"; };
+		36D9420A1AF10AB1005D59D3 /* Jump.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jump.caf; sourceTree = "<group>"; };
+		36D9420B1AF10AB1005D59D3 /* Run.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Run.caf; sourceTree = "<group>"; };
+		36D9420C1AF10AB1005D59D3 /* Skid.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Skid.caf; sourceTree = "<group>"; };
+		36D9420D1AF10AB1005D59D3 /* SpawnCoin.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpawnCoin.caf; sourceTree = "<group>"; };
+		36D9420E1AF10AB1005D59D3 /* SpawnEnemy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpawnEnemy.caf; sourceTree = "<group>"; };
+		36D9420F1AF10AB1005D59D3 /* SpawnPlayer.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpawnPlayer.caf; sourceTree = "<group>"; };
 		36DB89B41AEEEF2E0093B567 /* Ratz_Left1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left1.png; sourceTree = "<group>"; };
 		36DB89B51AEEEF2E0093B567 /* Ratz_Left2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left2.png; sourceTree = "<group>"; };
 		36DB89B61AEEEF2E0093B567 /* Ratz_Left3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_Left3.png; sourceTree = "<group>"; };
@@ -223,6 +262,7 @@
 		36D8EE321AEBEFD3004315CE /* Sewer Brothers */ = {
 			isa = PBXGroup;
 			children = (
+				36D942001AF10932005D59D3 /* Sounds */,
 				36D8EE701AEC5190004315CE /* Sprites */,
 				36D8EE641AEC0580004315CE /* scenes */,
 				36D8EE371AEBEFD3004315CE /* AppDelegate.h */,
@@ -278,6 +318,7 @@
 		36D8EE701AEC5190004315CE /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				36D941E51AF084AC005D59D3 /* Numbers */,
 				3624C3A61AEFBFD600D974C2 /* Coin */,
 				36DB89B31AEEEEFB0093B567 /* Ratz */,
 				365DBC2E1AEE6C4E005CAE5D /* images */,
@@ -297,6 +338,48 @@
 				36D8EE731AEC523B004315CE /* SKBPlayer.m */,
 			);
 			name = Player;
+			sourceTree = "<group>";
+		};
+		36D941E51AF084AC005D59D3 /* Numbers */ = {
+			isa = PBXGroup;
+			children = (
+				36D941FA1AF0850B005D59D3 /* images */,
+				36D941FD1AF086C1005D59D3 /* SKBScores.h */,
+				36D941FE1AF086C1005D59D3 /* SKBScores.m */,
+			);
+			name = Numbers;
+			sourceTree = "<group>";
+		};
+		36D941FA1AF0850B005D59D3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				36D941FB1AF085F7005D59D3 /* Text_PlayerScoreHeader.png */,
+				36D941E61AF084EE005D59D3 /* Text_Number_0.png */,
+				36D941E71AF084EE005D59D3 /* Text_Number_1.png */,
+				36D941E81AF084EE005D59D3 /* Text_Number_2.png */,
+				36D941E91AF084EE005D59D3 /* Text_Number_3.png */,
+				36D941EA1AF084EE005D59D3 /* Text_Number_4.png */,
+				36D941EB1AF084EE005D59D3 /* Text_Number_5.png */,
+				36D941EC1AF084EE005D59D3 /* Text_Number_6.png */,
+				36D941ED1AF084EE005D59D3 /* Text_Number_7.png */,
+				36D941EE1AF084EE005D59D3 /* Text_Number_8.png */,
+				36D941EF1AF084EE005D59D3 /* Text_Number_9.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		36D942001AF10932005D59D3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				36D9420A1AF10AB1005D59D3 /* Jump.caf */,
+				36D9420B1AF10AB1005D59D3 /* Run.caf */,
+				36D9420C1AF10AB1005D59D3 /* Skid.caf */,
+				36D9420D1AF10AB1005D59D3 /* SpawnCoin.caf */,
+				36D9420E1AF10AB1005D59D3 /* SpawnEnemy.caf */,
+				36D9420F1AF10AB1005D59D3 /* SpawnPlayer.caf */,
+				36D942081AF10A18005D59D3 /* Theme.caf */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		36DB89B31AEEEEFB0093B567 /* Ratz */ = {
@@ -418,7 +501,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */,
+				36D941F11AF084EE005D59D3 /* Text_Number_1.png in Resources */,
 				36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */,
+				36D941F01AF084EE005D59D3 /* Text_Number_0.png in Resources */,
+				36D942101AF10AB1005D59D3 /* Jump.caf in Resources */,
+				36D941F41AF084EE005D59D3 /* Text_Number_4.png in Resources */,
+				36D942111AF10AB1005D59D3 /* Run.caf in Resources */,
 				36DB89C51AEEEF2E0093B567 /* Ratz_Right3.png in Resources */,
 				36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */,
 				36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */,
@@ -431,20 +519,32 @@
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */,
 				3624C3AA1AEFBFEE00D974C2 /* Coin1.png in Resources */,
+				36D941F31AF084EE005D59D3 /* Text_Number_3.png in Resources */,
 				36D8EE831AEC9A47004315CE /* Player_Right_Still.png in Resources */,
 				36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */,
+				36D942091AF10A18005D59D3 /* Theme.caf in Resources */,
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
 				3624C3AC1AEFBFEE00D974C2 /* Coin3.png in Resources */,
+				36D942131AF10AB1005D59D3 /* SpawnCoin.caf in Resources */,
 				36DB89C21AEEEF2E0093B567 /* Ratz_Left5.png in Resources */,
 				36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */,
+				36D941F51AF084EE005D59D3 /* Text_Number_5.png in Resources */,
 				36F35C781AEDC34C008A3CCA /* Base_600.png in Resources */,
+				36D941F81AF084EE005D59D3 /* Text_Number_8.png in Resources */,
+				36D942141AF10AB1005D59D3 /* SpawnEnemy.caf in Resources */,
 				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
 				36F35C7B1AEDCD15008A3CCA /* Player_LeftJump.png in Resources */,
 				36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */,
+				36D941F21AF084EE005D59D3 /* Text_Number_2.png in Resources */,
 				36DB89C61AEEEF2E0093B567 /* Ratz_Right4.png in Resources */,
+				36D942121AF10AB1005D59D3 /* Skid.caf in Resources */,
+				36D941F71AF084EE005D59D3 /* Text_Number_7.png in Resources */,
 				36F35C7C1AEDCD15008A3CCA /* Player_RightJump.png in Resources */,
+				36D942151AF10AB1005D59D3 /* SpawnPlayer.caf in Resources */,
 				36DB89C41AEEEF2E0093B567 /* Ratz_Right2.png in Resources */,
+				36D941FC1AF085F7005D59D3 /* Text_PlayerScoreHeader.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
+				36D941F61AF084EE005D59D3 /* Text_Number_6.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
 				36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */,
 				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
@@ -453,6 +553,7 @@
 				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
 				3624C3AB1AEFBFEE00D974C2 /* Coin2.png in Resources */,
 				36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */,
+				36D941F91AF084EE005D59D3 /* Text_Number_9.png in Resources */,
 				36DB89C11AEEEF2E0093B567 /* Ratz_Left4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +580,7 @@
 				36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */,
 				36D8EE741AEC523B004315CE /* SKBPlayer.m in Sources */,
 				36DB89CA1AEEF0C70093B567 /* SKBRatz.m in Sources */,
+				36D941FF1AF086C1005D59D3 /* SKBScores.m in Sources */,
 				36F35C801AEE65B0008A3CCA /* SKBLedge.m in Sources */,
 				36D8EE361AEBEFD3004315CE /* main.m in Sources */,
 			);

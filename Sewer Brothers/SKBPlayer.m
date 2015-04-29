@@ -21,6 +21,12 @@
     SKAction *moveRight = [SKAction moveByX:kPlayerRunningIncrement y:0 duration:1];
     SKAction *moveForever = [SKAction repeatActionForever:moveRight];
     [self runAction:moveForever];
+    
+    // Sound effect for running
+    SKAction *shortPause = [SKAction waitForDuration:0.01];
+    SKAction *sequence = [SKAction sequence:@[_runSound, shortPause]];
+    SKAction *soundContinuous = [SKAction repeatActionForever:sequence];
+    [self runAction:soundContinuous withKey:@"soundContinuous"];
 }
 
 -(void)runLeft {
@@ -33,6 +39,13 @@
     SKAction *moveLeft = [SKAction moveByX:-kPlayerRunningIncrement y:0 duration:1];
     SKAction *moveForever = [SKAction repeatActionForever:moveLeft];
     [self runAction:moveForever];
+    
+    // Sound effect for running
+    SKAction *shortPause = [SKAction waitForDuration:0.01];
+    SKAction *sequence = [SKAction sequence:@[_runSound, shortPause]];
+    SKAction *soundContinuous = [SKAction repeatActionForever:sequence];
+    [self runAction:soundContinuous withKey:@"soundContinuous"];
+    
 }
 
 -(void)skidRight {
@@ -53,7 +66,9 @@
     SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:1];
     
     SKAction *sequence = [SKAction sequence:@[skidAwhile, moveAwhile, stillAwhile]];
-    [self runAction:sequence completion:^{
+    SKAction *group = [SKAction group:@[sequence, _skidSound]];
+    
+    [self runAction:group completion:^{
         NSLog(@"skid ended, still facing right");
         _playerStatus = SBPlayerFacingRight;
     }];
@@ -77,13 +92,18 @@
     SKAction *stillAwhile = [SKAction repeatAction:stillAnimation count:0.1];
     
     SKAction *sequence = [SKAction sequence:@[skidAwhile, moveAwhile, stillAwhile]];
-    [self runAction:sequence completion:^{
+    SKAction *group = [SKAction group:@[sequence, _skidSound]];
+    
+    [self runAction:group completion:^{
         NSLog(@"skid ended, still facing Left");
         _playerStatus = SBPlayerFacingLeft;
     }];
 }
 
 -(void)jump {
+    // Stop running sound effects
+    [self removeActionForKey:@"soundContinuous"];
+    
     NSArray *playerJumpTextures = nil;
     SBPlayerStatus nextplayerStatus = 0;
     
@@ -115,9 +135,10 @@
     // applicable animation
     SKAction *jumpAction = [SKAction animateWithTextures:playerJumpTextures timePerFrame:0.2];
     SKAction *jumpAwhile = [SKAction repeatAction:jumpAction count:4.0];
+    SKAction *groupedJump = [SKAction group:@[_jumpSound, jumpAwhile]];
     
     // run jump action and when completed, handle next phase
-    [self runAction:jumpAwhile completion:^{
+    [self runAction:groupedJump completion:^{
         if(nextplayerStatus == SBPlayerRunningLeft) {
             [self removeAllActions];
             [self runLeft];
@@ -148,6 +169,15 @@
 -(void)spawnedInScene:(SKScene *)whichScene {
     GameScene *theScene = (GameScene *)whichScene;
     _spriteTextures = theScene.spriteTextures;
+    
+    // Sounds
+    _spawnSound = [SKAction playSoundFileNamed:kPlayerSpawnSoundFileName waitForCompletion:NO];
+    _runSound = [SKAction playSoundFileNamed:kPlayerRunSoundFileName waitForCompletion:NO];
+    _jumpSound = [SKAction playSoundFileNamed:kPlayerJumpSoundFileName waitForCompletion:NO];
+    _skidSound = [SKAction playSoundFileNamed:kPlayerSkidSoundFileName waitForCompletion:NO];
+    
+    // Play sound
+    [self runAction:_spawnSound];
 }
 
 +(SKBPlayer *)initNewPlayer:(SKScene *)whichScene startingPoint:(CGPoint)location {

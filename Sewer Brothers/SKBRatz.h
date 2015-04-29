@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "SKBSpriteTextures.h"
 
+#define kRatzSpawnSoundFileName @"SpawnEnemy.caf"
+
 #define kRatzRunningIncrement 40
 
 typedef enum : int {
@@ -20,6 +22,8 @@ typedef enum : int {
 @interface SKBRatz : SKSpriteNode
 @property SBRatzStatus ratzStatus;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
+
+@property (nonatomic, strong) SKAction *spawnSound;
 
 /** Factory Ratz Creation method.  */
 +(SKBRatz *)initNewRatz:(SKScene *)whichScene startingPoint:(CGPoint)location ratzIndex:(int)index;

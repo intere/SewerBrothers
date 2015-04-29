@@ -32,6 +32,8 @@
 -(void)spawnedInScene:(SKScene *)whichScene {
     GameScene *theScene = (GameScene *)whichScene;
     _spriteTextures = theScene.spriteTextures;
+    _spawnSound = [SKAction playSoundFileNamed:kCoinSpawnSoundFileName waitForCompletion:NO];
+    [self runAction:_spawnSound];
     
     // set initial direction and start moving
     if(self.position.x < CGRectGetMidX(whichScene.frame)) {

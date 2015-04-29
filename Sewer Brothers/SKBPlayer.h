@@ -10,6 +10,11 @@
 #import "AppDelegate.h"
 #import "SKBSpriteTextures.h"
 
+#define kPlayerSpawnSoundFileName @"SpawnPlayer.caf"
+#define kPlayerRunSoundFileName @"Run.caf"
+#define kPlayerSkidSoundFileName @"Skid.caf"
+#define kPlayerJumpSoundFileName @"Jump.caf"
+
 #define kPlayerRunningIncrement 100
 #define kPlayerSkiddingIncrement 20
 #define kPlayerJumpingIncrement  8
@@ -31,6 +36,9 @@ typedef enum : int {
 
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
 @property SBPlayerStatus playerStatus;
+
+@property (nonatomic, strong) SKAction *spawnSound;
+@property (nonatomic, strong) SKAction *runSound, *jumpSound, *skidSound;
 
 /** Causes the player to run right.  */
 -(void)runRight;

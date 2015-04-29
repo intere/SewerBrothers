@@ -12,6 +12,7 @@
 #import "SKBLedge.h"
 #import "SKBRatz.h"
 #import "SKBCoin.h"
+#import "SKBScores.h"
 
 #define kEnemySpawnEdgeBufferX 60
 #define kEnemySpanwEdgeBufferY 60
@@ -23,4 +24,7 @@
 
 @property int spawnedEnemyCount;
 @property BOOL enemyIsSpawningFlag;
+
+@property (nonatomic, strong) SKBScores *scoreDisplay;
+@property int playerScore;
 @end

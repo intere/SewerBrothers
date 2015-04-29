@@ -32,17 +32,30 @@
     splash.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     
     [self addChild:splash];
+    
+    SKLabelNode *myText = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    myText.text = @"Press To Start";
+    myText.name = @"startNode";
+    myText.fontSize = 30;
+    myText.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
+    
+    SKAction *themeSong = [SKAction playSoundFileNamed:@"Theme.caf" waitForCompletion:NO];
+    [self runAction:themeSong];
+    
+    [self addChild:myText];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
         SKNode *splashNode = [self childNodeWithName:SPLASH_NODE];
+        SKNode *startNode = [self childNodeWithName:@"startNode"];
         if(splashNode) {
             splashNode.name = nil;
             SKAction *zoom = [SKAction scaleTo:4.0 duration:1];
             SKAction *fadeAway = [SKAction fadeOutWithDuration:1];
             SKAction *grouped = [SKAction group:@[zoom, fadeAway]];
+            [startNode runAction:grouped];
             [splashNode runAction:grouped completion:^{
                 GameScene *nextScene = [[GameScene alloc]initWithSize:self.size];
                 SKTransition *doors = [SKTransition doorwayWithDuration:0.5];

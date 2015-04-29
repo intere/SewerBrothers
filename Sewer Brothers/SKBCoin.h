@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "SKBSpriteTextures.h"
 
+#define kCoinSpawnSoundFileName @"SpawnCoin.caf"
+
 #define kCoinRunningIncrement 40
 
 typedef enum : int {
@@ -22,6 +24,7 @@ typedef enum : int {
 
 @property SBCoinStatus coinStatus;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
+@property (nonatomic, strong) SKAction *spawnSound;
 
 /** Factory Coin Creation Method.  */
 +(SKBCoin *)initNewCoin:(SKScene *)whichScene startingPoint:(CGPoint)location coinIndex:(int)index;
