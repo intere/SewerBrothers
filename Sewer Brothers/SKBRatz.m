@@ -20,7 +20,7 @@
     ratz.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ratz.size];
     ratz.physicsBody.categoryBitMask = kRatzCategory;
     ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory | kCoinCategory | kPipeCategory | kLedgeCategory | kBaseCategory;
-    ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kRatzCategory | kCoinCategory;
+    ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kRatzCategory | kCoinCategory | kPlayerCategory;
     ratz.physicsBody.density = 1.0;
     ratz.physicsBody.linearDamping = 0.1;
     ratz.physicsBody.restitution = 0.2;
@@ -35,6 +35,8 @@
     _spriteTextures = theScene.spriteTextures;
     
     // Sound Effects
+    _koSound = [SKAction playSoundFileNamed:kRatzKOSoundFileName waitForCompletion:NO];
+    _collectedSound = [SKAction playSoundFileNamed:kRatzCollectedSoundFileName waitForCompletion:NO];
     _spawnSound = [SKAction playSoundFileNamed:kRatzSpawnSoundFileName waitForCompletion:NO];
     [self runAction:_spawnSound];
     
@@ -96,6 +98,7 @@
         _ratzStatus = SBRatzKOfacingLeft;
         textureArray = [NSArray arrayWithArray:_spriteTextures.ratzKOfacingLeftTextures];
     } else {
+        _ratzStatus = SBRatzKOfacingRight;
         textureArray = [NSArray arrayWithArray:_spriteTextures.ratzKOfacingRightTextures];
     }
     
@@ -113,6 +116,43 @@
 
 -(void)ratzCollected:(SKScene *)whichScene {
     NSLog(@"%@ collected", self.name);
+    [whichScene runAction:_collectedSound];
+    
+    // Updated status
+    _ratzStatus = SBRatzKicked;
+    
+    // show amount of winnings
+    SKLabelNode *moneyText = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
+    moneyText.text = [NSString stringWithFormat:@"$%d", kRatzPointValue];
+    moneyText.fontSize = 9;
+    moneyText.fontColor = [SKColor whiteColor];
+    moneyText.position = CGPointMake(self.position.x-10, self.position.y+28);
+    [whichScene addChild:moneyText];
+    
+    SKAction *fadeAway = [SKAction fadeOutWithDuration:1];
+    [moneyText runAction:fadeAway completion:^{[moneyText removeFromParent];}];
+    
+    // upward impulse applied
+    [self.physicsBody applyImpulse:CGVectorMake(0, kRatzKickedIncrement)];
+    
+    // Make him spin when kicked
+    SKAction *rotation = [SKAction rotateByAngle:M_PI duration:0.1];
+    SKAction *rotateForever = [SKAction repeatActionForever:rotation];
+    
+    [self runAction:rotateForever];
+    
+    // while kicked upward and spinning, wait for a short spell before altering physics body
+    SKAction *shortDelay = [SKAction waitForDuration:0.5];
+    
+    [self runAction:shortDelay completion:^{
+        // Make a new physics body that is much, much smaller as to not affect ledges as he falls
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1, 1)];
+        self.physicsBody.categoryBitMask = kRatzCategory;
+        self.physicsBody.collisionBitMask = kWallCategory;
+        self.physicsBody.contactTestBitMask = kWallCategory;
+        self.physicsBody.linearDamping = 1.0;
+        self.physicsBody.allowsRotation = YES;
+    }];
 }
 
 #pragma mark Movement

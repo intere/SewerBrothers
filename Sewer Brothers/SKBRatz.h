@@ -10,16 +10,20 @@
 #import "AppDelegate.h"
 #import "SKBSpriteTextures.h"
 
-#define kRatzSpawnSoundFileName @"SpawnEnemy.caf"
+#define kRatzSpawnSoundFileName         @"SpawnEnemy.caf"
+#define kRatzKOSoundFileName            @"EnemyKO.caf"
+#define kRatzCollectedSoundFileName     @"EnemyCollected.caf"
 
-#define kRatzRunningIncrement 40
-#define kRatzPointValue 100
+#define kRatzRunningIncrement           40
+#define kRatzPointValue                 100
+#define kRatzKickedIncrement            5
 
 typedef enum : int {
     SBRatzRunningLeft = 0,
     SBRatzRunningRight,
     SBRatzKOfacingLeft,
-    SBRatzKOfacingRight
+    SBRatzKOfacingRight,
+    SBRatzKicked
 } SBRatzStatus;
 
 @interface SKBRatz : SKSpriteNode
@@ -27,7 +31,7 @@ typedef enum : int {
 @property int lastKnownXposition, lastKnownYposition;
 @property NSString *lastKnownContactedLedge;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
-@property (nonatomic, strong) SKAction *spawnSound;
+@property (nonatomic, strong) SKAction *spawnSound, *koSound, *collectedSound;
 
 /** Factory Ratz Creation method.  */
 +(SKBRatz *)initNewRatz:(SKScene *)whichScene startingPoint:(CGPoint)location ratzIndex:(int)index;

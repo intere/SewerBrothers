@@ -392,12 +392,18 @@
 
 -(void)ratHitEdge:(SKPhysicsBody *)firstBody {
     SKBRatz *theRatz = (SKBRatz *)firstBody.node;
-    if(theRatz.position.x < 100) {
-        NSLog(@"ratz contacted left edge");
-        [theRatz wrapRatz:CGPointMake(self.frame.size.width-20, theRatz.position.y)];
+    if(theRatz.ratzStatus != SBRatzKicked) {
+        if(theRatz.position.x < 100) {
+            NSLog(@"ratz contacted left edge");
+            [theRatz wrapRatz:CGPointMake(self.frame.size.width-20, theRatz.position.y)];
+        } else {
+            NSLog(@"ratz contacted right edge");
+            [theRatz wrapRatz:CGPointMake(20, theRatz.position.y)];
+        }
     } else {
-        NSLog(@"ratz contacted right edge");
-        [theRatz wrapRatz:CGPointMake(20, theRatz.position.y)];
+        // contacted bottom wall (has been kicked off and has fallen)
+        NSLog(@"%@ hit bottom of screen and is being removed", theRatz.name);
+        [theRatz removeFromParent];
     }
 }
 

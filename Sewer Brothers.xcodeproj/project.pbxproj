@@ -90,6 +90,8 @@
 		36FB47B51AF1937D00565347 /* Ratz_KO_R_Hit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AB1AF1937D00565347 /* Ratz_KO_R_Hit3.png */; };
 		36FB47B61AF1937D00565347 /* Ratz_KO_R_Hit4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AC1AF1937D00565347 /* Ratz_KO_R_Hit4.png */; };
 		36FB47B71AF1937D00565347 /* Ratz_KO_R_Hit5.png in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47AD1AF1937D00565347 /* Ratz_KO_R_Hit5.png */; };
+		36FB47BA1AF25ACA00565347 /* EnemyCollected.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47B81AF25ACA00565347 /* EnemyCollected.caf */; };
+		36FB47BB1AF25ACA00565347 /* EnemyKO.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36FB47B91AF25ACA00565347 /* EnemyKO.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +202,8 @@
 		36FB47AB1AF1937D00565347 /* Ratz_KO_R_Hit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit3.png; sourceTree = "<group>"; };
 		36FB47AC1AF1937D00565347 /* Ratz_KO_R_Hit4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit4.png; sourceTree = "<group>"; };
 		36FB47AD1AF1937D00565347 /* Ratz_KO_R_Hit5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ratz_KO_R_Hit5.png; sourceTree = "<group>"; };
+		36FB47B81AF25ACA00565347 /* EnemyCollected.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EnemyCollected.caf; sourceTree = "<group>"; };
+		36FB47B91AF25ACA00565347 /* EnemyKO.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EnemyKO.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +411,8 @@
 		36D942001AF10932005D59D3 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				36FB47B81AF25ACA00565347 /* EnemyCollected.caf */,
+				36FB47B91AF25ACA00565347 /* EnemyKO.caf */,
 				36D9421C1AF12971005D59D3 /* CoinCollected.caf */,
 				36D9420A1AF10AB1005D59D3 /* Jump.caf */,
 				36D9420B1AF10AB1005D59D3 /* Run.caf */,
@@ -558,6 +564,7 @@
 			files = (
 				36D8EE491AEBEFD3004315CE /* LaunchScreen.xib in Resources */,
 				36FB47B01AF1937D00565347 /* Ratz_KO_L_Hit3.png in Resources */,
+				36FB47BB1AF25ACA00565347 /* EnemyKO.caf in Resources */,
 				36D941F11AF084EE005D59D3 /* Text_Number_1.png in Resources */,
 				36FB47B21AF1937D00565347 /* Ratz_KO_L_Hit5.png in Resources */,
 				36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */,
@@ -619,6 +626,7 @@
 				36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */,
 				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
 				36DB89C31AEEEF2E0093B567 /* Ratz_Right1.png in Resources */,
+				36FB47BA1AF25ACA00565347 /* EnemyCollected.caf in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
 				36FB47A31AF18F5600565347 /* spark.png in Resources */,
 				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
