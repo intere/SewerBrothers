@@ -13,6 +13,7 @@
 #define kRatzSpawnSoundFileName         @"SpawnEnemy.caf"
 #define kRatzKOSoundFileName            @"EnemyKO.caf"
 #define kRatzCollectedSoundFileName     @"EnemyCollected.caf"
+#define kRatzSplashedSoundFileName      @"Splash.caf"
 
 #define kRatzRunningIncrement           40
 #define kRatzPointValue                 100
@@ -31,7 +32,7 @@ typedef enum : int {
 @property int lastKnownXposition, lastKnownYposition;
 @property NSString *lastKnownContactedLedge;
 @property (nonatomic, strong) SKBSpriteTextures *spriteTextures;
-@property (nonatomic, strong) SKAction *spawnSound, *koSound, *collectedSound;
+@property (nonatomic, strong) SKAction *spawnSound, *koSound, *collectedSound, *splashSound;
 
 /** Factory Ratz Creation method.  */
 +(SKBRatz *)initNewRatz:(SKScene *)whichScene startingPoint:(CGPoint)location ratzIndex:(int)index;
@@ -53,6 +54,9 @@ typedef enum : int {
 
 /** The Ratz has been collected!  */
 -(void)ratzCollected:(SKScene *)whichScene;
+
+/** The Ratz hits the water (visual effect).  */
+-(void)ratzHitWater:(SKScene *)whichScene;
 
 /** Ratz run Right.  */
 -(void)runRight;

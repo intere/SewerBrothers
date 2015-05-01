@@ -337,18 +337,27 @@
     
     // Player / Ratz
     if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kRatzCategory) !=0)) {
-        SKBRatz *theRatz = (SKBRatz *)secondBody.node;
+        [self ratHitPlayer:secondBody];
+    }
+}
+
+#pragma mark - Private Methods
+
+-(void)ratHitPlayer:(SKPhysicsBody *)secondBody {
+    SKBRatz *theRatz = (SKBRatz *)secondBody.node;
+    if(_playerSprite.playerStatus != SBPlayerFalling) {
         if(theRatz.ratzStatus == SBRatzKOfacingLeft || theRatz.ratzStatus == SBRatzKOfacingRight) {
             [theRatz ratzCollected:self];
             
             // Score some points
             _playerScore += kRatzPointValue;
             [_scoreDisplay updateScore:self newScore:_playerScore];
+        } else if(theRatz.ratzStatus == SBRatzRunningLeft || theRatz.ratzStatus == SBRatzRunningRight) {
+            // oops, player dies
+            [_playerSprite playerKilled:self];
         }
     }
 }
-
-#pragma mark - Private Methods
 
 -(void)playerCollectedCoin:(SKPhysicsBody *)secondBody {
     SKBCoin *theCoin = (SKBCoin *)secondBody.node;
@@ -377,16 +386,21 @@
     // contact body name
     NSString *firstBodyName = firstBody.node.name;
     
-    if([firstBodyName isEqualToString:@"player1"]) {
-        if (_playerSprite.position.y > CGRectGetMaxY(self.frame)-20) {
-            NSLog(@"player hit top of screen");
-        } else if(_playerSprite.position.x < 20) {
-            NSLog(@"player contacted left edge");
-            [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
-        } else {
-            NSLog(@"player contacted right edge");
-            [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
+    if(_playerSprite.playerStatus != SBPlayerFalling) {
+        if([firstBodyName isEqualToString:@"player1"]) {
+            if (_playerSprite.position.y > CGRectGetMaxY(self.frame)-20) {
+                NSLog(@"player hit top of screen");
+            } else if(_playerSprite.position.x < 20) {
+                NSLog(@"player contacted left edge");
+                [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
+            } else {
+                NSLog(@"player contacted right edge");
+                [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
+            }
         }
+    } else {
+        // contacted bottom wall (has been killed and has fallen)
+        [_playerSprite playerHitWater:self];
     }
 }
 
@@ -402,8 +416,7 @@
         }
     } else {
         // contacted bottom wall (has been kicked off and has fallen)
-        NSLog(@"%@ hit bottom of screen and is being removed", theRatz.name);
-        [theRatz removeFromParent];
+        [theRatz ratzHitWater:self];
     }
 }
 

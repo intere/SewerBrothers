@@ -13,6 +13,9 @@
 		3624C3AB1AEFBFEE00D974C2 /* Coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3624C3A81AEFBFEE00D974C2 /* Coin2.png */; };
 		3624C3AC1AEFBFEE00D974C2 /* Coin3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3624C3A91AEFBFEE00D974C2 /* Coin3.png */; };
 		3624C3B01AEFC00700D974C2 /* SKBCoin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3624C3AF1AEFC00700D974C2 /* SKBCoin.m */; };
+		36D15B0B1AF3AE4B00FAA564 /* Splashed.sks in Resources */ = {isa = PBXBuildFile; fileRef = 36D15B0A1AF3AE4B00FAA564 /* Splashed.sks */; };
+		36D15B0D1AF3AFE500FAA564 /* Splash.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D15B0C1AF3AFE500FAA564 /* Splash.caf */; };
+		36D15B0F1AF3B61200FAA564 /* Playerbitten.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D15B0E1AF3B61200FAA564 /* Playerbitten.caf */; };
 		36D8EE361AEBEFD3004315CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE351AEBEFD3004315CE /* main.m */; };
 		36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE381AEBEFD3004315CE /* AppDelegate.m */; };
 		36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE3B1AEBEFD3004315CE /* SplashScreenScene.m */; };
@@ -112,6 +115,9 @@
 		3624C3A91AEFBFEE00D974C2 /* Coin3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin3.png; sourceTree = "<group>"; };
 		3624C3AE1AEFC00700D974C2 /* SKBCoin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBCoin.h; sourceTree = "<group>"; };
 		3624C3AF1AEFC00700D974C2 /* SKBCoin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBCoin.m; sourceTree = "<group>"; };
+		36D15B0A1AF3AE4B00FAA564 /* Splashed.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Splashed.sks; sourceTree = "<group>"; };
+		36D15B0C1AF3AFE500FAA564 /* Splash.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splash.caf; sourceTree = "<group>"; };
+		36D15B0E1AF3B61200FAA564 /* Playerbitten.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Playerbitten.caf; sourceTree = "<group>"; };
 		36D8EE301AEBEFD3004315CE /* Sewer Brothers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sewer Brothers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D8EE341AEBEFD3004315CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36D8EE351AEBEFD3004315CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -411,6 +417,8 @@
 		36D942001AF10932005D59D3 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				36D15B0E1AF3B61200FAA564 /* Playerbitten.caf */,
+				36D15B0C1AF3AFE500FAA564 /* Splash.caf */,
 				36FB47B81AF25ACA00565347 /* EnemyCollected.caf */,
 				36FB47B91AF25ACA00565347 /* EnemyKO.caf */,
 				36D9421C1AF12971005D59D3 /* CoinCollected.caf */,
@@ -477,6 +485,7 @@
 			children = (
 				36FB47A01AF18F5600565347 /* CoinCollected.sks */,
 				36FB47A11AF18F5600565347 /* spark.png */,
+				36D15B0A1AF3AE4B00FAA564 /* Splashed.sks */,
 			);
 			name = Emitters;
 			sourceTree = "<group>";
@@ -569,6 +578,7 @@
 				36FB47B21AF1937D00565347 /* Ratz_KO_L_Hit5.png in Resources */,
 				36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */,
 				36D941F01AF084EE005D59D3 /* Text_Number_0.png in Resources */,
+				36D15B0F1AF3B61200FAA564 /* Playerbitten.caf in Resources */,
 				36D942101AF10AB1005D59D3 /* Jump.caf in Resources */,
 				36D941F41AF084EE005D59D3 /* Text_Number_4.png in Resources */,
 				36D942111AF10AB1005D59D3 /* Run.caf in Resources */,
@@ -609,6 +619,7 @@
 				36D942141AF10AB1005D59D3 /* SpawnEnemy.caf in Resources */,
 				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
 				36F35C7B1AEDCD15008A3CCA /* Player_LeftJump.png in Resources */,
+				36D15B0D1AF3AFE500FAA564 /* Splash.caf in Resources */,
 				36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */,
 				36D941F21AF084EE005D59D3 /* Text_Number_2.png in Resources */,
 				36DB89C61AEEEF2E0093B567 /* Ratz_Right4.png in Resources */,
@@ -629,6 +640,7 @@
 				36FB47BA1AF25ACA00565347 /* EnemyCollected.caf in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
 				36FB47A31AF18F5600565347 /* spark.png in Resources */,
+				36D15B0B1AF3AE4B00FAA564 /* Splashed.sks in Resources */,
 				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
 				3624C3AB1AEFBFEE00D974C2 /* Coin2.png in Resources */,
 				36FB47B61AF1937D00565347 /* Ratz_KO_R_Hit4.png in Resources */,

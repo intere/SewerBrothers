@@ -35,6 +35,7 @@
     _spriteTextures = theScene.spriteTextures;
     
     // Sound Effects
+    _splashSound = [SKAction playSoundFileNamed:kRatzSplashedSoundFileName waitForCompletion:NO];
     _koSound = [SKAction playSoundFileNamed:kRatzKOSoundFileName waitForCompletion:NO];
     _collectedSound = [SKAction playSoundFileNamed:kRatzCollectedSoundFileName waitForCompletion:NO];
     _spawnSound = [SKAction playSoundFileNamed:kRatzSpawnSoundFileName waitForCompletion:NO];
@@ -153,6 +154,22 @@
         self.physicsBody.linearDamping = 1.0;
         self.physicsBody.allowsRotation = YES;
     }];
+}
+
+-(void)ratzHitWater:(SKScene *)whichScene {
+    // Play Sound
+    [whichScene runAction:_splashSound];
+    
+    // splash eye candy
+    NSString *emitterPath = [[NSBundle mainBundle] pathForResource:@"Splashed" ofType:@"sks"];
+    SKEmitterNode *splash = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterPath];
+    splash.position = self.position;
+    NSLog(@"splash (%f, %f)", splash.position.x, splash.position.y);
+    splash.name = @"ratzSplash";
+    splash.targetNode = whichScene.scene;
+    [whichScene addChild:splash];
+    
+    [self removeFromParent];
 }
 
 #pragma mark Movement
