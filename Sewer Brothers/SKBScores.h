@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 #define kTextPlayerHeaderFileName @"Text_PlayerScoreHeader.png"
+#define kTextHighHeaderFileName   @"Text_HighScoreHeader.png"
 
 #define kTextNumber0FileName @"Text_Number_0.png"
 #define kTextNumber1FileName @"Text_Number_1.png"
@@ -35,6 +36,6 @@
 -(void)createScoreNode:(SKScene *)whichScene;
 
 /** Updates the score.  */
--(void)updateScore:(SKScene *)whichScene newScore:(int)theScore;
+-(void)updateScore:(SKScene *)whichScene newScore:(int)theScore hiScore:(int)highScore;
 
 @end

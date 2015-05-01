@@ -14,15 +14,21 @@
 #import "SKBCoin.h"
 #import "SKBScores.h"
 
+#define kPlayerLivesMax          3
+
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 @property (strong, nonatomic) SKBPlayer *playerSprite;
 @property (strong, nonatomic) SKBSpriteTextures *spriteTextures;
 @property (strong, nonatomic) NSArray *castTypeArray, *castDelayArray, *castStartXindexArray;
 
 @property int frameCounter;
-@property int spawnedEnemyCount;
+@property int spawnedEnemyCount, activeEnemyCount;
 @property BOOL enemyIsSpawningFlag;
+@property BOOL playerIsDeadFlag;
+@property int playerLivesRemaining;
+@property BOOL gameIsOverFlag, gameIsPaused;
+
 
 @property (nonatomic, strong) SKBScores *scoreDisplay;
-@property int playerScore;
+@property int playerScore, highScore;
 @end

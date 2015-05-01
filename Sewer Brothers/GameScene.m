@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "SplashScreenScene.h"
 
 @implementation GameScene
 -(id)initWithSize:(CGSize)size {
@@ -50,24 +51,26 @@
         CGPoint location = [touch locationInNode:self];
         SBPlayerStatus status = _playerSprite.playerStatus;
         
-        if(location.y >= (self.frame.size.height / 2)) {
-            // user touched upper half of the screen (zero = bottom of screen)
-            if(status != SBPlayerJumpingLeft && status != SBPlayerJumpingRight && status != SBPlayerJumpingUpFacingLeft && status != SBPlayerJumpingUpFacingRight) {
-                [_playerSprite jump];
-            }
-        } else if(location.x <= (self.frame.size.width / 2)) {
-            // user touched left side of the screen
-            if(status == SBPlayerRunningRight) {
-                [_playerSprite skidRight];
-            } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
-                [_playerSprite runLeft];
-            }
-        } else {
-            // user touched right side of the screen
-            if(status == SBPlayerRunningLeft) {
-                [_playerSprite skidLeft];
-            } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
-                [_playerSprite runRight];
+        if(_playerSprite.playerStatus != SBPlayerFalling && !_playerIsDeadFlag) {
+            if(location.y >= (self.frame.size.height / 2)) {
+                // user touched upper half of the screen (zero = bottom of screen)
+                if(status != SBPlayerJumpingLeft && status != SBPlayerJumpingRight && status != SBPlayerJumpingUpFacingLeft && status != SBPlayerJumpingUpFacingRight) {
+                    [_playerSprite jump];
+                }
+            } else if(location.x <= (self.frame.size.width / 2)) {
+                // user touched left side of the screen
+                if(status == SBPlayerRunningRight) {
+                    [_playerSprite skidRight];
+                } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
+                    [_playerSprite runLeft];
+                }
+            } else {
+                // user touched right side of the screen
+                if(status == SBPlayerRunningLeft) {
+                    [_playerSprite skidLeft];
+                } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
+                    [_playerSprite runRight];
+                }
             }
         }
     }
@@ -75,92 +78,118 @@
 
 -(void)update:(NSTimeInterval)currentTime {
     /* Called before each frame is rendered.  */
-    if(!_enemyIsSpawningFlag && _spawnedEnemyCount < _castTypeArray.count) {
-        _enemyIsSpawningFlag = YES;
-        int castIndex = _spawnedEnemyCount;
-        
-        int leftSideX = CGRectGetMinX(self.frame)+kEnemySpawnEdgeBufferX;
-        int rightSideX = CGRectGetMaxX(self.frame)-kEnemySpawnEdgeBufferX;
-        int topSideY = CGRectGetMaxY(self.frame)-kEnemySpanwEdgeBufferY;
-        
-        // from castOfCharacters file, the sprite Type
-        NSNumber *theNumber = [_castTypeArray objectAtIndex:castIndex];
-        SKBEnemyTypes castType = [theNumber intValue];
-        
-        // from castOfCharacters file, the sprite Delay
-        theNumber = [_castDelayArray objectAtIndex:castIndex];
-        int castDelay = [theNumber intValue];
-        
-        // from castOfCharacters file, the sprite startXindex
-        int startX = 0;
-        // determine which side
-        theNumber = [_castStartXindexArray objectAtIndex:castIndex];
-        
-        if([theNumber intValue]==0) {
-            startX = leftSideX;
-        } else {
-            startX = rightSideX;
-        }
-        int startY = topSideY;
-        
-        // begin delay and when completed, spawn enemy
-        SKAction *spacing = [SKAction waitForDuration:castDelay];
-        [self runAction:spacing completion:^{
-            // Create & spawn the new Enemy
-            _enemyIsSpawningFlag = NO;
-            _spawnedEnemyCount = _spawnedEnemyCount + 1;
-            
-            if(castType == SKBEnemyTypeCoin) {
-                SKBCoin *newCoin = [SKBCoin initNewCoin:self startingPoint:CGPointMake(startX, startY) coinIndex:castIndex];
-                [newCoin spawnedInScene:self];
-            } else if(castType == SKBEnemyTypeRatz) {
-                SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(startX, startY) ratzIndex:castIndex];
-                [newEnemy spawnedInScene:self];
-            }
-        }];
-    }
     
-    // check for stuck enemies every 20 frames
-    _frameCounter++;
-    if(_frameCounter >=20) {
-        _frameCounter = 0;
-        for(int index=0; index<=_spawnedEnemyCount; index++) {
-            [self enumerateChildNodesWithName:[NSString stringWithFormat:@"coin%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
-                *stop = YES;
-                SKBCoin *theCoin = (SKBCoin *)node;
-                int currentX = theCoin.position.x;
-                int currentY = theCoin.position.y;
-                if(currentX == theCoin.lastKnownXposition && currentY == theCoin.lastKnownYposition) {
-                    NSLog(@"%@ appears to be stuck...", theCoin.name);
-                    if(theCoin.coinStatus == SBCoinRunningRight) {
-                        [theCoin removeAllActions];
-                        [theCoin runLeft];
-                    } else if(theCoin.coinStatus == SBCoinRunningLeft) {
-                        [theCoin removeAllActions];
-                        [theCoin runRight];
-                    }
+    if(_gameIsOverFlag) {
+        NSLog(@"update, gameOverFlag is true...");
+    }
+    else if(_playerLivesRemaining == 0) {
+        NSLog(@"player has no more lives remaining, trigger end of game");
+        [self gameIsOver];
+    } else if(_playerIsDeadFlag) {
+        // handle a dead player
+        _playerIsDeadFlag = NO;
+        
+        // resurrect (if applicable) after a short delay
+        SKAction *shortDelay = [SKAction waitForDuration:2];
+        [self runAction:shortDelay completion:^{
+            NSLog(@"player resurrection (%d lives remain)", _playerLivesRemaining);
+            _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:CGPointMake(40, 25)];
+            [_playerSprite spawnedInScene:self];
+        }];
+    } else if(_gameIsPaused) {
+        // do nothing while paused
+    } else if(_activeEnemyCount == 0 && _spawnedEnemyCount == _castTypeArray.count) {
+        [self levelCompleted];
+    } else {
+        // game is running
+        if(!_enemyIsSpawningFlag && _spawnedEnemyCount < _castTypeArray.count) {
+            _enemyIsSpawningFlag = YES;
+            int castIndex = _spawnedEnemyCount;
+            
+            int leftSideX = CGRectGetMinX(self.frame)+kEnemySpawnEdgeBufferX;
+            int rightSideX = CGRectGetMaxX(self.frame)-kEnemySpawnEdgeBufferX;
+            int topSideY = CGRectGetMaxY(self.frame)-kEnemySpanwEdgeBufferY;
+            
+            // from castOfCharacters file, the sprite Type
+            NSNumber *theNumber = [_castTypeArray objectAtIndex:castIndex];
+            SKBEnemyTypes castType = [theNumber intValue];
+            
+            // from castOfCharacters file, the sprite Delay
+            theNumber = [_castDelayArray objectAtIndex:castIndex];
+            int castDelay = [theNumber intValue];
+            
+            // from castOfCharacters file, the sprite startXindex
+            int startX = 0;
+            // determine which side
+            theNumber = [_castStartXindexArray objectAtIndex:castIndex];
+            
+            if([theNumber intValue]==0) {
+                startX = leftSideX;
+            } else {
+                startX = rightSideX;
+            }
+            int startY = topSideY;
+            
+            // begin delay and when completed, spawn enemy
+            SKAction *spacing = [SKAction waitForDuration:castDelay];
+            [self runAction:spacing completion:^{
+                // Create & spawn the new Enemy
+                _enemyIsSpawningFlag = NO;
+                _spawnedEnemyCount++;
+                _activeEnemyCount++;
+                
+                if(castType == SKBEnemyTypeCoin) {
+                    SKBCoin *newCoin = [SKBCoin initNewCoin:self startingPoint:CGPointMake(startX, startY) coinIndex:castIndex];
+                    [newCoin spawnedInScene:self];
+                } else if(castType == SKBEnemyTypeRatz) {
+                    SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(startX, startY) ratzIndex:castIndex];
+                    [newEnemy spawnedInScene:self];
                 }
-                theCoin.lastKnownXposition = currentX;
-                theCoin.lastKnownYposition = currentY;
             }];
-            [self enumerateChildNodesWithName:[NSString stringWithFormat:@"ratz%d", index] usingBlock:^(SKNode *node, BOOL*stop) {
-                *stop = YES;
-                SKBRatz *theRatz = (SKBRatz *)node;
-                int currentX = theRatz.position.x;
-                int currentY = theRatz.position.y;
-                if(currentX == theRatz.lastKnownXposition && currentY == theRatz.lastKnownYposition) {
-                    NSLog(@"%@ appears to be stuck...", theRatz.name);
-                    if(theRatz.ratzStatus == SBRatzRunningRight) {
-                        [theRatz removeAllActions];
-                        [theRatz runLeft];
-                    } else if(theRatz.ratzStatus == SBRatzRunningLeft) {
-                        [theRatz removeAllActions];
-                        [theRatz runRight];
+        }
+        
+        // check for stuck enemies every 20 frames
+        _frameCounter++;
+        if(_frameCounter >=20) {
+            _frameCounter = 0;
+            for(int index=0; index<=_spawnedEnemyCount; index++) {
+                [self enumerateChildNodesWithName:[NSString stringWithFormat:@"coin%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+                    *stop = YES;
+                    SKBCoin *theCoin = (SKBCoin *)node;
+                    int currentX = theCoin.position.x;
+                    int currentY = theCoin.position.y;
+                    if(currentX == theCoin.lastKnownXposition && currentY == theCoin.lastKnownYposition) {
+                        NSLog(@"%@ appears to be stuck...", theCoin.name);
+                        if(theCoin.coinStatus == SBCoinRunningRight) {
+                            [theCoin removeAllActions];
+                            [theCoin runLeft];
+                        } else if(theCoin.coinStatus == SBCoinRunningLeft) {
+                            [theCoin removeAllActions];
+                            [theCoin runRight];
+                        }
                     }
-                }
-                theRatz.lastKnownXposition = currentX;
-                theRatz.lastKnownYposition = currentY;
-            }];
+                    theCoin.lastKnownXposition = currentX;
+                    theCoin.lastKnownYposition = currentY;
+                }];
+                [self enumerateChildNodesWithName:[NSString stringWithFormat:@"ratz%d", index] usingBlock:^(SKNode *node, BOOL*stop) {
+                    *stop = YES;
+                    SKBRatz *theRatz = (SKBRatz *)node;
+                    int currentX = theRatz.position.x;
+                    int currentY = theRatz.position.y;
+                    if(currentX == theRatz.lastKnownXposition && currentY == theRatz.lastKnownYposition) {
+                        NSLog(@"%@ appears to be stuck...", theRatz.name);
+                        if(theRatz.ratzStatus == SBRatzRunningRight) {
+                            [theRatz removeAllActions];
+                            [theRatz runLeft];
+                        } else if(theRatz.ratzStatus == SBRatzRunningLeft) {
+                            [theRatz removeAllActions];
+                            [theRatz runRight];
+                        }
+                    }
+                    theRatz.lastKnownXposition = currentX;
+                    theRatz.lastKnownYposition = currentY;
+                }];
+            }
         }
     }
 }
@@ -231,6 +260,7 @@
             if([theCoin.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
                 NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theCoin.name);
                 [theCoin coinCollected:self];
+                --_activeEnemyCount;
             }
         }];
     }
@@ -348,13 +378,17 @@
     if(_playerSprite.playerStatus != SBPlayerFalling) {
         if(theRatz.ratzStatus == SBRatzKOfacingLeft || theRatz.ratzStatus == SBRatzKOfacingRight) {
             [theRatz ratzCollected:self];
+            --_activeEnemyCount;
             
             // Score some points
             _playerScore += kRatzPointValue;
-            [_scoreDisplay updateScore:self newScore:_playerScore];
+            [_scoreDisplay updateScore:self newScore:_playerScore hiScore:_highScore];
         } else if(theRatz.ratzStatus == SBRatzRunningLeft || theRatz.ratzStatus == SBRatzRunningRight) {
             // oops, player dies
             [_playerSprite playerKilled:self];
+            _playerLivesRemaining--;
+            _playerIsDeadFlag = YES;
+            [self playerLivesDisplay];
         }
     }
 }
@@ -362,10 +396,11 @@
 -(void)playerCollectedCoin:(SKPhysicsBody *)secondBody {
     SKBCoin *theCoin = (SKBCoin *)secondBody.node;
     [theCoin coinCollected:self];
+    --_activeEnemyCount;
     
     // Score some bonus points
     _playerScore += kCoinPointValue;
-    [_scoreDisplay updateScore:self newScore:_playerScore];
+    [_scoreDisplay updateScore:self newScore:_playerScore hiScore:_highScore];
 }
 
 -(void)ratHitPipe:(SKPhysicsBody *)firstBody {
@@ -380,6 +415,7 @@
 -(void)coinHitPipe:(SKPhysicsBody *)firstBody {
     SKBCoin *theCoin = (SKBCoin *)firstBody.node;
     [theCoin coinHitPipe];
+    --_activeEnemyCount;
 }
 
 -(void)playerHitEdge:(SKPhysicsBody *)firstBody {
@@ -490,11 +526,12 @@
     }
 }
 
-
 -(void)createSceneContents {
     // Initialize Enemies & Schedule
     _spawnedEnemyCount = 0;
     _enemyIsSpawningFlag = NO;
+    _gameIsOverFlag = NO;
+    _gameIsPaused = NO;
     
     // brick base
     SKSpriteNode *brickBase = [SKSpriteNode spriteNodeWithImageNamed:@"Base_600"];
@@ -571,16 +608,125 @@
     pipe.physicsBody.dynamic = NO;
     [self addChild:pipe];
     
+    // read high score from disk (if written there by previous game)
+    NSNumber *theScore = [[NSUserDefaults standardUserDefaults] objectForKey:@"highScore"];
+    _highScore = [theScore intValue];
+    
     // Scoring
     SKBScores *sceneScores = [[SKBScores alloc]init];
     [sceneScores createScoreNode:self];
     _scoreDisplay = sceneScores;
     _playerScore = 0;
-    [_scoreDisplay updateScore:self newScore:_playerScore];
+    [_scoreDisplay updateScore:self newScore:_playerScore hiScore:_highScore];
     
     // Player
     _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:CGPointMake(40, 25)];
     [_playerSprite spawnedInScene:self];
+    _playerLivesRemaining = kPlayerLivesMax;
+    _playerIsDeadFlag = NO;
+    [self playerLivesDisplay];
+}
+
+#pragma mark Lives Display
+-(void)playerLivesDisplay {
+    SKTexture *lifeTexture = [SKTexture textureWithImageNamed:kPlayerStillRightFileName];
+    CGPoint startWhere = CGPointMake(CGRectGetMinX(self.frame)+kScorePlayer1DistanceFromLeft+60, CGRectGetMaxY(self.frame)-kScoreDistanceFromTop - 20);
+    
+    // Clear out all life icons first
+    for(int index=1; index<=kPlayerLivesMax; index++) {
+        [self enumerateChildNodesWithName:[NSString stringWithFormat:@"player_lives%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+            *stop = YES;
+            [node removeFromParent];
+        }];
+    }
+    
+    // One body icon per life remaining
+    for(int index=1; index<=_playerLivesRemaining; index++) {
+        SKSpriteNode *lifeNode = [SKSpriteNode spriteNodeWithTexture:lifeTexture];
+        lifeNode.name = [NSString stringWithFormat:@"player_lives%d", index];
+        lifeNode.position = CGPointMake(startWhere.x + (index*kScorePlayer1DistanceFromLeft), startWhere.y);
+        lifeNode.xScale = 0.5;
+        lifeNode.yScale = 0.5;
+        [self addChild:lifeNode];
+    }
+}
+
+#pragma mark End Of Game
+
+-(void)gameIsOver {
+    NSLog(@"Game is over!");
+    _gameIsOverFlag = YES;
+    [self removeAllActions];
+    [self removeAllChildren];
+    
+    // Handle high scores
+    if(_playerScore > _highScore) {
+        _highScore = _playerScore;
+        NSLog(@"high score: %d", _highScore);
+        [_scoreDisplay updateScore:self newScore:_playerScore hiScore:_highScore];
+        
+        // write it to disk
+        NSNumber *theScore = [NSNumber numberWithInt:_highScore];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:theScore forKey:@"highScore"];
+        [userDefaults synchronize];
+    }
+    
+    SKLabelNode *gameOverText = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    gameOverText.text = @"Game Over";
+    gameOverText.fontSize = 60;
+    gameOverText.xScale = 0.1;
+    gameOverText.yScale = 0.1;
+    gameOverText.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    
+    SKLabelNode *pressAnywhereText = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    pressAnywhereText.text = @"Press anywhere to continue";
+    pressAnywhereText.fontSize = 12;
+    pressAnywhereText.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
+    SKAction *zoom = [SKAction scaleTo:1.0 duration:2];
+    SKAction *rotate = [SKAction rotateByAngle:M_PI duration:0.5];
+    
+    SKAction *rotateAbit = [SKAction repeatAction:rotate count:4];
+    SKAction *group = [SKAction group:@[zoom, rotateAbit]];
+    
+    [gameOverText runAction:group];
+    [self addChild:gameOverText];
+    [self addChild:pressAnywhereText];
+}
+
+# pragma mark End Of Level
+
+-(void)levelCompleted {
+    NSLog(@"Level is completed");
+    [self removeAllActions];
+    _gameIsPaused = YES;
+    
+    // Remove player sprite from scene
+    [self enumerateChildNodesWithName:@"player1" usingBlock:^(SKNode *node, BOOL *stop) {
+        *stop = YES;
+        [node removeFromParent];
+    }];
+    
+    // Play sound
+    SKAction *completedSong = [SKAction playSoundFileNamed:@"LevelCompleted.caf" waitForCompletion:NO];
+    [self runAction:completedSong];
+    
+    SKLabelNode* levelText = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    levelText.text = @"Level Completed";
+    levelText.fontSize = 48;
+    levelText.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    SKAction *fadeIn = [SKAction fadeInWithDuration:0.25];
+    SKAction *fadeOut = [SKAction fadeOutWithDuration:0.25];
+    SKAction *sequence = [SKAction group:@[fadeIn, fadeOut, fadeIn, fadeOut, fadeIn, fadeOut, fadeIn, fadeOut, fadeIn, fadeOut, fadeIn, fadeOut]];
+    
+    [self addChild:levelText];
+    [levelText runAction:sequence completion:^{
+        [levelText removeFromParent];
+        
+        // Player reappears at starting location
+        _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:CGPointMake(40, 25)];
+        [_playerSprite spawnedInScene:self];
+    }];
 }
 
 @end

@@ -26,6 +26,7 @@
         [self createScoreNumberTextures];
     }
     
+    // Players score
     SKTexture *headerTexture = [SKTexture textureWithImageNamed:kTextPlayerHeaderFileName];
     CGPoint startWhere = CGPointMake(CGRectGetMinX(whichScene.frame)+kScorePlayer1DistanceFromLeft, CGRectGetMaxY(whichScene.frame)-kScoreDistanceFromTop);
     
@@ -49,9 +50,36 @@
         zero.physicsBody.dynamic = NO;
         [whichScene addChild:zero];
     }
+    
+    // High score
+    headerTexture = [SKTexture textureWithImageNamed:kTextHighHeaderFileName];
+    startWhere = CGPointMake(startWhere.x + 200, startWhere.y);
+    
+    // Header
+    header = [SKSpriteNode spriteNodeWithTexture:headerTexture];
+    header.name = @"score_high_header";
+    header.position = startWhere;
+    header.xScale = 2;
+    header.yScale = 2;
+    header.physicsBody.dynamic = NO;
+    [whichScene addChild:header];
+    
+    // Score, 5 digits
+    textNumber0Texture = [SKTexture textureWithImageNamed:kTextNumber0FileName];
+    for(int index=1; index <= kScoreDigitCount; index++) {
+        SKSpriteNode *zero = [SKSpriteNode spriteNodeWithTexture:textNumber0Texture];
+        zero.name = [NSString stringWithFormat:@"score_high_digit%d", index];
+        zero.position = CGPointMake(startWhere.x+20+(kScoreNumberSpacing*index), CGRectGetMaxY(whichScene.frame)-kScoreDistanceFromTop);
+        zero.xScale = 2;
+        zero.yScale = 2;
+        zero.physicsBody.dynamic = NO;
+        [whichScene addChild:zero];
+    }
+
 }
 
--(void)updateScore:(SKScene *)whichScene newScore:(int)theScore {
+-(void)updateScore:(SKScene *)whichScene newScore:(int)theScore hiScore:(int)highScore {
+    // Player score
     NSString *numberString = [NSString stringWithFormat:@"00000%d", theScore];
     NSString *substring = [numberString substringFromIndex:[numberString length]-5];
     
@@ -64,5 +92,20 @@
             [node runAction:newDigit];
         }];
     }
+    
+    // High score
+    numberString = [NSString stringWithFormat:@"00000%d", highScore];
+    substring = [numberString substringFromIndex:[numberString length]-5];
+    
+    for(int index=1; index<=5; index++) {
+        [whichScene enumerateChildNodesWithName:[NSString stringWithFormat:@"score_high_digit%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+            NSString *charAtIndex = [substring substringWithRange:NSMakeRange(index-1, 1)];
+            int charIntValue = [charAtIndex intValue];
+            SKTexture *digitTexture = [_arrayOfNumberTextures objectAtIndex:charIntValue];
+            SKAction *newDigit = [SKAction animateWithTextures:@[digitTexture] timePerFrame:0.1];
+            [node runAction:newDigit];
+        }];
+    }
+
 }
 @end
