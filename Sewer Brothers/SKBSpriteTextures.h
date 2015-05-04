@@ -49,6 +49,30 @@
 #define kRatzKOfacingRight4FileName @"Ratz_KO_R_Hit4.png"
 #define kRatzKOfacingRight5FileName @"Ratz_KO_R_Hit5.png"
 
+#define kGatorzRunRight1FileName  @"Gatorz_Right_1.png"
+#define kGatorzRunRight2FileName  @"Gatorz_Right_2.png"
+#define kGatorzRunRight3FileName  @"Gatorz_Right_3.png"
+#define kGatorzRunRight4FileName  @"Gatorz_Right_4.png"
+#define kGatorzRunRight5FileName  @"Gatorz_Right_5.png"
+
+#define kGatorzRunLeft1FileName  @"Gatorz_Left_1.png"
+#define kGatorzRunLeft2FileName  @"Gatorz_Left_2.png"
+#define kGatorzRunLeft3FileName  @"Gatorz_Left_3.png"
+#define kGatorzRunLeft4FileName  @"Gatorz_Left_4.png"
+#define kGatorzRunLeft5FileName  @"Gatorz_Left_5.png"
+
+#define kGatorzKOfacingLeft1FileName    @"Gatorz_KO_L_Hit1.png"
+#define kGatorzKOfacingLeft2FileName    @"Gatorz_KO_L_Hit2.png"
+#define kGatorzKOfacingLeft3FileName    @"Gatorz_KO_L_Hit3.png"
+#define kGatorzKOfacingLeft4FileName    @"Gatorz_KO_L_Hit4.png"
+#define kGatorzKOfacingLeft5FileName    @"Gatorz_KO_L_Hit5.png"
+
+#define kGatorzKOfacingRight1FileName    @"Gatorz_KO_R_Hit1.png"
+#define kGatorzKOfacingRight2FileName    @"Gatorz_KO_R_Hit2.png"
+#define kGatorzKOfacingRight3FileName    @"Gatorz_KO_R_Hit3.png"
+#define kGatorzKOfacingRight4FileName    @"Gatorz_KO_R_Hit4.png"
+#define kGatorzKOfacingRight5FileName    @"Gatorz_KO_R_Hit5.png"
+
 #define kCoin1FileName @"Coin1.png"
 #define kCoin2FileName @"Coin2.png"
 #define kCoin3FileName @"Coin3.png"
@@ -62,7 +86,10 @@
 @property (nonatomic, strong) NSArray *playerSkiddingLeftTextures, *playerStillFacingLeftTextures;
 @property (nonatomic, strong) NSArray *ratzRunLeftTextures, *ratzRunRightTextures;
 @property (nonatomic, strong) NSArray *ratzKOfacingLeftTextures, *ratzKOfacingRightTextures;
+@property (nonatomic, strong) NSArray *gatorzRunLeftTextures, *gatorzRunRightTextures;
+@property (nonatomic, strong) NSArray *gatorzKOfacingLeftTextures, *gatorzKOfacingRightTextures;
 @property (nonatomic, strong) NSArray *coinTextures;
+
 
 -(void)createAnimationTextures;
 

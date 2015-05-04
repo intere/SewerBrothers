@@ -11,10 +11,13 @@
 #import "SKBPlayer.h"
 #import "SKBLedge.h"
 #import "SKBRatz.h"
+#import "SKBGatorz.h"
 #import "SKBCoin.h"
 #import "SKBScores.h"
 
-#define kPlayerLivesMax          3
+#define kNumberOfLevelsMax      1
+
+#define kPlayerLivesMax         3
 
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 @property (strong, nonatomic) SKBPlayer *playerSprite;
@@ -27,6 +30,7 @@
 @property BOOL playerIsDeadFlag;
 @property int playerLivesRemaining;
 @property BOOL gameIsOverFlag, gameIsPaused;
+@property int currentLevel;
 
 
 @property (nonatomic, strong) SKBScores *scoreDisplay;

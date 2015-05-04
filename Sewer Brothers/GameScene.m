@@ -39,8 +39,11 @@
         // add surfaces to screen
         [self createSceneContents];
         
+        // start at level 1
+        _currentLevel = 1;
+        
         // compose cast of characters from propertyList
-        [self loadCastOfCharacters];
+        [self loadCastOfCharacters:_currentLevel];
     }
     return self;
 }
@@ -108,7 +111,7 @@
             
             int leftSideX = CGRectGetMinX(self.frame)+kEnemySpawnEdgeBufferX;
             int rightSideX = CGRectGetMaxX(self.frame)-kEnemySpawnEdgeBufferX;
-            int topSideY = CGRectGetMaxY(self.frame)-kEnemySpanwEdgeBufferY;
+            int topSideY = CGRectGetMaxY(self.frame)-kEnemySpawnEdgeBufferY;
             
             // from castOfCharacters file, the sprite Type
             NSNumber *theNumber = [_castTypeArray objectAtIndex:castIndex];
@@ -194,7 +197,7 @@
     }
 }
 
--(void)loadCastOfCharacters {
+-(void)loadCastOfCharacters:(int)levelNumber {
     // load cast from plist file
     NSString *path = [[NSBundle mainBundle] pathForResource:kCastOfCharactersFileName ofType:@"plist"];
     NSDictionary *plistDictionary = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -202,17 +205,32 @@
     if(plistDictionary) {
         NSDictionary *levelDictionary = [plistDictionary valueForKey:@"Level"];
         if(levelDictionary) {
-            NSArray *levelOneArray = [levelDictionary valueForKey:@"One"];
-            if(levelOneArray) {
+            NSArray *singleLevel = [NSArray arrayWithObject:path];
+            
+            switch(levelNumber) {
+                case 1:
+                    singleLevel = [levelDictionary valueForKey:@"One"];
+                    break;
+                    
+                case 2:
+                    singleLevel = [levelDictionary valueForKey:@"Two"];
+                    break;
+                    
+                default:
+                    singleLevel = [levelDictionary valueForKey:@"Two"];
+                    break;
+            }
+            
+            if(singleLevel) {
                 NSDictionary *enemyDictionary = nil;
-                NSMutableArray *newTypeArray = [NSMutableArray arrayWithCapacity:levelOneArray.count];
-                NSMutableArray *newDelayArray = [NSMutableArray arrayWithCapacity:levelOneArray.count];
-                NSMutableArray *newStartArray = [NSMutableArray arrayWithCapacity:levelOneArray.count];
+                NSMutableArray *newTypeArray = [NSMutableArray arrayWithCapacity:singleLevel.count];
+                NSMutableArray *newDelayArray = [NSMutableArray arrayWithCapacity:singleLevel.count];
+                NSMutableArray *newStartArray = [NSMutableArray arrayWithCapacity:singleLevel.count];
                 NSNumber *rawType, *rawDelay, *rawStartXindex;
                 int enemyType, spawnDelay, startXindex = 0;
                 
-                for(int index=0; index<levelOneArray.count; index++) {
-                    enemyDictionary = [levelOneArray objectAtIndex:index];
+                for(int index=0; index<singleLevel.count; index++) {
+                    enemyDictionary = [singleLevel objectAtIndex:index];
                     
                     // NSNumbers from dictionary
                     rawType = [enemyDictionary valueForKey:@"Type"];
@@ -237,7 +255,7 @@
                 _castDelayArray = [NSArray arrayWithArray:newDelayArray];
                 _castStartXindexArray = [NSArray arrayWithArray:newStartArray];
             } else {
-                NSLog(@"No levelOneArray");
+                NSLog(@"No singleLevel Array");
             }
         } else {
             NSLog(@"No levelDictionary");
@@ -275,6 +293,20 @@
             if([theRatz.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
                 NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theRatz.name);
                 [theRatz ratzKnockedOut:self];
+            }
+        }];
+    }
+    
+    // Gatorz
+    for(int index=0; index<=_spawnedEnemyCount; index++) {
+        [self enumerateChildNodesWithName:[NSString stringWithFormat:@"gatorz%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
+            *stop = YES;
+            SKBGatorz *theGatorz = (SKBGatorz *)node;
+            
+            // struckLedge check
+            if([theGatorz.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
+                NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theGatorz.name);
+                [theGatorz gatorzKnockedOut:self];
             }
         }];
     }
@@ -369,9 +401,33 @@
     if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kRatzCategory) !=0)) {
         [self ratHitPlayer:secondBody];
     }
+    
+    // Player / Gatorz
+    if(((firstBody.categoryBitMask & kPlayerCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        [self gatorzHitPlayer:secondBody];
+    }
 }
 
 #pragma mark - Private Methods
+
+-(void)gatorzHitPlayer:(SKPhysicsBody *)secondBody {
+    SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+    if(_playerSprite.playerStatus != SBPlayerFalling) {
+        if(theGatorz.gatorzStatus == SBGatorzKOfacingLeft || theGatorz.gatorzStatus == SBGatorzKOfacingRight) {
+            // Gatorz is unconscious so kick em off the ledge
+            [theGatorz gatorzCollected:self];
+            
+            // score some points!
+            _playerScore += kGatorzPointValue;
+            [_scoreDisplay updateScore:self newScore:_playerScore hiScore:_highScore];
+        } else if(theGatorz.gatorzStatus == SBGatorzRunningLeft || theGatorz.gatorzStatus == SBGatorzRunningRight) {
+            // oops, player dies
+            [_playerSprite playerKilled:self];
+            _playerLivesRemaining--;
+            [self playerLivesDisplay];
+        }
+    }
+}
 
 -(void)ratHitPlayer:(SKPhysicsBody *)secondBody {
     SKBRatz *theRatz = (SKBRatz *)secondBody.node;
@@ -727,6 +783,13 @@
         _playerSprite = [SKBPlayer initNewPlayer:self startingPoint:CGPointMake(40, 25)];
         [_playerSprite spawnedInScene:self];
     }];
+    
+    // Trigger a new level and its cast of characters
+    _currentLevel++;
+    [self loadCastOfCharacters:_currentLevel];
+    _gameIsPaused = NO;
+    _spawnedEnemyCount = 0;
+    _enemyIsSpawningFlag = NO;
 }
 
 @end

@@ -87,6 +87,40 @@
     f5 = [SKTexture textureWithImageNamed:kRatzKOfacingRight5FileName];
     _ratzKOfacingRightTextures = @[f1, f2, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f5, f3, f2, f3, f2, f3, f2, f1];
     
+    // Gatorz
+    
+    // right, running
+    f1 = [SKTexture textureWithImageNamed:kGatorzRunRight1FileName];
+    f2 = [SKTexture textureWithImageNamed:kGatorzRunRight2FileName];
+    f3 = [SKTexture textureWithImageNamed:kGatorzRunRight3FileName];
+    f4 = [SKTexture textureWithImageNamed:kGatorzRunRight4FileName];
+    f5 = [SKTexture textureWithImageNamed:kGatorzRunRight5FileName];
+    _gatorzRunRightTextures = @[f1, f2, f3, f4, f5];
+    
+    // left, running
+    f1 = [SKTexture textureWithImageNamed:kGatorzRunLeft1FileName];
+    f2 = [SKTexture textureWithImageNamed:kGatorzRunLeft2FileName];
+    f3 = [SKTexture textureWithImageNamed:kGatorzRunLeft3FileName];
+    f4 = [SKTexture textureWithImageNamed:kGatorzRunLeft4FileName];
+    f5 = [SKTexture textureWithImageNamed:kGatorzRunLeft5FileName];
+    _gatorzRunLeftTextures = @[f1, f2, f3, f4, f5];
+    
+    // knocked out, facing left
+    f1 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft1FileName];
+    f2 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft2FileName];
+    f3 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft3FileName];
+    f4 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft4FileName];
+    f5 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft5FileName];
+    _gatorzKOfacingLeftTextures = @[f1, f2, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f3, f2, f3, f2, f3, f2, f1];
+    
+    // knocked out, facing right
+    f1 = [SKTexture textureWithImageNamed:kGatorzKOfacingRight1FileName];
+    f2 = [SKTexture textureWithImageNamed:kGatorzKOfacingRight2FileName];
+    f3 = [SKTexture textureWithImageNamed:kGatorzKOfacingRight3FileName];
+    f4 = [SKTexture textureWithImageNamed:kGatorzKOfacingRight4FileName];
+    f5 = [SKTexture textureWithImageNamed:kGatorzKOfacingRight5FileName];
+    _gatorzKOfacingRightTextures = @[f1, f2, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f4, f3, f2, f3, f2, f3, f2, f1];
+    
     // Coins
     f1 = [SKTexture textureWithImageNamed:kCoin1FileName];
     f2 = [SKTexture textureWithImageNamed:kCoin2FileName];

@@ -9,6 +9,41 @@
 /* Begin PBXBuildFile section */
 		36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */ = {isa = PBXBuildFile; fileRef = 36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */; };
 		36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */ = {isa = PBXBuildFile; fileRef = 36014F2E1AED3EFB0084817B /* Player_RightSkid.png */; };
+		361FB0D31AF7A4A40023B2E9 /* SKBGatorz.m in Sources */ = {isa = PBXBuildFile; fileRef = 361FB0D21AF7A4A40023B2E9 /* SKBGatorz.m */; };
+		361FB0F61AF7A4C40023B2E9 /* Gatorz_KO_L_Hit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0D41AF7A4C40023B2E9 /* Gatorz_KO_L_Hit1.png */; };
+		361FB0F71AF7A4C40023B2E9 /* Gatorz_KO_L_Hit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0D51AF7A4C40023B2E9 /* Gatorz_KO_L_Hit2.png */; };
+		361FB0F81AF7A4C40023B2E9 /* Gatorz_KO_L_Hit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0D61AF7A4C40023B2E9 /* Gatorz_KO_L_Hit3.png */; };
+		361FB0F91AF7A4C40023B2E9 /* Gatorz_KO_L_Hit4.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0D71AF7A4C40023B2E9 /* Gatorz_KO_L_Hit4.png */; };
+		361FB0FA1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0D81AF7A4C40023B2E9 /* Gatorz_KO_R_Hit1.png */; };
+		361FB0FB1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0D91AF7A4C40023B2E9 /* Gatorz_KO_R_Hit2.png */; };
+		361FB0FC1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0DA1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit3.png */; };
+		361FB0FD1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit4.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0DB1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit4.png */; };
+		361FB0FE1AF7A4C40023B2E9 /* Gatorz_Left_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0DC1AF7A4C40023B2E9 /* Gatorz_Left_1.png */; };
+		361FB0FF1AF7A4C40023B2E9 /* Gatorz_Left_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0DD1AF7A4C40023B2E9 /* Gatorz_Left_2.png */; };
+		361FB1001AF7A4C40023B2E9 /* Gatorz_Left_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0DE1AF7A4C40023B2E9 /* Gatorz_Left_3.png */; };
+		361FB1011AF7A4C40023B2E9 /* Gatorz_Left_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0DF1AF7A4C40023B2E9 /* Gatorz_Left_4.png */; };
+		361FB1021AF7A4C40023B2E9 /* Gatorz_Left_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E01AF7A4C40023B2E9 /* Gatorz_Left_5.png */; };
+		361FB1031AF7A4C40023B2E9 /* Gatorz_Left_turn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E11AF7A4C40023B2E9 /* Gatorz_Left_turn1.png */; };
+		361FB1041AF7A4C40023B2E9 /* Gatorz_Left_turn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E21AF7A4C40023B2E9 /* Gatorz_Left_turn2.png */; };
+		361FB1051AF7A4C40023B2E9 /* Gatorz_Left_turn3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E31AF7A4C40023B2E9 /* Gatorz_Left_turn3.png */; };
+		361FB1061AF7A4C40023B2E9 /* Gatorz_Mad_Left_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E41AF7A4C40023B2E9 /* Gatorz_Mad_Left_1.png */; };
+		361FB1071AF7A4C40023B2E9 /* Gatorz_Mad_Left_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E51AF7A4C40023B2E9 /* Gatorz_Mad_Left_2.png */; };
+		361FB1081AF7A4C40023B2E9 /* Gatorz_Mad_Left_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E61AF7A4C40023B2E9 /* Gatorz_Mad_Left_3.png */; };
+		361FB1091AF7A4C40023B2E9 /* Gatorz_Mad_Left_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E71AF7A4C40023B2E9 /* Gatorz_Mad_Left_4.png */; };
+		361FB10A1AF7A4C40023B2E9 /* Gatorz_Mad_Left_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E81AF7A4C40023B2E9 /* Gatorz_Mad_Left_5.png */; };
+		361FB10B1AF7A4C40023B2E9 /* Gatorz_Mad_Right_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0E91AF7A4C40023B2E9 /* Gatorz_Mad_Right_1.png */; };
+		361FB10C1AF7A4C40023B2E9 /* Gatorz_Mad_Right_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0EA1AF7A4C40023B2E9 /* Gatorz_Mad_Right_2.png */; };
+		361FB10D1AF7A4C40023B2E9 /* Gatorz_Mad_Right_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0EB1AF7A4C40023B2E9 /* Gatorz_Mad_Right_3.png */; };
+		361FB10E1AF7A4C40023B2E9 /* Gatorz_Mad_Right_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0EC1AF7A4C40023B2E9 /* Gatorz_Mad_Right_4.png */; };
+		361FB10F1AF7A4C40023B2E9 /* Gatorz_Mad_Right_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0ED1AF7A4C40023B2E9 /* Gatorz_Mad_Right_5.png */; };
+		361FB1101AF7A4C40023B2E9 /* Gatorz_Right_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0EE1AF7A4C40023B2E9 /* Gatorz_Right_1.png */; };
+		361FB1111AF7A4C40023B2E9 /* Gatorz_Right_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0EF1AF7A4C40023B2E9 /* Gatorz_Right_2.png */; };
+		361FB1121AF7A4C40023B2E9 /* Gatorz_Right_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0F01AF7A4C40023B2E9 /* Gatorz_Right_3.png */; };
+		361FB1131AF7A4C40023B2E9 /* Gatorz_Right_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0F11AF7A4C40023B2E9 /* Gatorz_Right_4.png */; };
+		361FB1141AF7A4C40023B2E9 /* Gatorz_Right_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0F21AF7A4C40023B2E9 /* Gatorz_Right_5.png */; };
+		361FB1151AF7A4C40023B2E9 /* Gatorz_Right_turn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0F31AF7A4C40023B2E9 /* Gatorz_Right_turn1.png */; };
+		361FB1161AF7A4C40023B2E9 /* Gatorz_Right_turn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0F41AF7A4C40023B2E9 /* Gatorz_Right_turn2.png */; };
+		361FB1171AF7A4C40023B2E9 /* Gatorz_Right_turn3.png in Resources */ = {isa = PBXBuildFile; fileRef = 361FB0F51AF7A4C40023B2E9 /* Gatorz_Right_turn3.png */; };
 		3624C3AA1AEFBFEE00D974C2 /* Coin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3624C3A71AEFBFEE00D974C2 /* Coin1.png */; };
 		3624C3AB1AEFBFEE00D974C2 /* Coin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3624C3A81AEFBFEE00D974C2 /* Coin2.png */; };
 		3624C3AC1AEFBFEE00D974C2 /* Coin3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3624C3A91AEFBFEE00D974C2 /* Coin3.png */; };
@@ -112,6 +147,42 @@
 /* Begin PBXFileReference section */
 		36014F2D1AED3EFB0084817B /* Player_LeftSkid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_LeftSkid.png; sourceTree = "<group>"; };
 		36014F2E1AED3EFB0084817B /* Player_RightSkid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player_RightSkid.png; sourceTree = "<group>"; };
+		361FB0D11AF7A4A40023B2E9 /* SKBGatorz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBGatorz.h; sourceTree = "<group>"; };
+		361FB0D21AF7A4A40023B2E9 /* SKBGatorz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBGatorz.m; sourceTree = "<group>"; };
+		361FB0D41AF7A4C40023B2E9 /* Gatorz_KO_L_Hit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_L_Hit1.png; sourceTree = "<group>"; };
+		361FB0D51AF7A4C40023B2E9 /* Gatorz_KO_L_Hit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_L_Hit2.png; sourceTree = "<group>"; };
+		361FB0D61AF7A4C40023B2E9 /* Gatorz_KO_L_Hit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_L_Hit3.png; sourceTree = "<group>"; };
+		361FB0D71AF7A4C40023B2E9 /* Gatorz_KO_L_Hit4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_L_Hit4.png; sourceTree = "<group>"; };
+		361FB0D81AF7A4C40023B2E9 /* Gatorz_KO_R_Hit1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_R_Hit1.png; sourceTree = "<group>"; };
+		361FB0D91AF7A4C40023B2E9 /* Gatorz_KO_R_Hit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_R_Hit2.png; sourceTree = "<group>"; };
+		361FB0DA1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_R_Hit3.png; sourceTree = "<group>"; };
+		361FB0DB1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_KO_R_Hit4.png; sourceTree = "<group>"; };
+		361FB0DC1AF7A4C40023B2E9 /* Gatorz_Left_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_1.png; sourceTree = "<group>"; };
+		361FB0DD1AF7A4C40023B2E9 /* Gatorz_Left_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_2.png; sourceTree = "<group>"; };
+		361FB0DE1AF7A4C40023B2E9 /* Gatorz_Left_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_3.png; sourceTree = "<group>"; };
+		361FB0DF1AF7A4C40023B2E9 /* Gatorz_Left_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_4.png; sourceTree = "<group>"; };
+		361FB0E01AF7A4C40023B2E9 /* Gatorz_Left_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_5.png; sourceTree = "<group>"; };
+		361FB0E11AF7A4C40023B2E9 /* Gatorz_Left_turn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_turn1.png; sourceTree = "<group>"; };
+		361FB0E21AF7A4C40023B2E9 /* Gatorz_Left_turn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_turn2.png; sourceTree = "<group>"; };
+		361FB0E31AF7A4C40023B2E9 /* Gatorz_Left_turn3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Left_turn3.png; sourceTree = "<group>"; };
+		361FB0E41AF7A4C40023B2E9 /* Gatorz_Mad_Left_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Left_1.png; sourceTree = "<group>"; };
+		361FB0E51AF7A4C40023B2E9 /* Gatorz_Mad_Left_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Left_2.png; sourceTree = "<group>"; };
+		361FB0E61AF7A4C40023B2E9 /* Gatorz_Mad_Left_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Left_3.png; sourceTree = "<group>"; };
+		361FB0E71AF7A4C40023B2E9 /* Gatorz_Mad_Left_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Left_4.png; sourceTree = "<group>"; };
+		361FB0E81AF7A4C40023B2E9 /* Gatorz_Mad_Left_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Left_5.png; sourceTree = "<group>"; };
+		361FB0E91AF7A4C40023B2E9 /* Gatorz_Mad_Right_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Right_1.png; sourceTree = "<group>"; };
+		361FB0EA1AF7A4C40023B2E9 /* Gatorz_Mad_Right_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Right_2.png; sourceTree = "<group>"; };
+		361FB0EB1AF7A4C40023B2E9 /* Gatorz_Mad_Right_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Right_3.png; sourceTree = "<group>"; };
+		361FB0EC1AF7A4C40023B2E9 /* Gatorz_Mad_Right_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Right_4.png; sourceTree = "<group>"; };
+		361FB0ED1AF7A4C40023B2E9 /* Gatorz_Mad_Right_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Mad_Right_5.png; sourceTree = "<group>"; };
+		361FB0EE1AF7A4C40023B2E9 /* Gatorz_Right_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_1.png; sourceTree = "<group>"; };
+		361FB0EF1AF7A4C40023B2E9 /* Gatorz_Right_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_2.png; sourceTree = "<group>"; };
+		361FB0F01AF7A4C40023B2E9 /* Gatorz_Right_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_3.png; sourceTree = "<group>"; };
+		361FB0F11AF7A4C40023B2E9 /* Gatorz_Right_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_4.png; sourceTree = "<group>"; };
+		361FB0F21AF7A4C40023B2E9 /* Gatorz_Right_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_5.png; sourceTree = "<group>"; };
+		361FB0F31AF7A4C40023B2E9 /* Gatorz_Right_turn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_turn1.png; sourceTree = "<group>"; };
+		361FB0F41AF7A4C40023B2E9 /* Gatorz_Right_turn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_turn2.png; sourceTree = "<group>"; };
+		361FB0F51AF7A4C40023B2E9 /* Gatorz_Right_turn3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gatorz_Right_turn3.png; sourceTree = "<group>"; };
 		3624C3A71AEFBFEE00D974C2 /* Coin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin1.png; sourceTree = "<group>"; };
 		3624C3A81AEFBFEE00D974C2 /* Coin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin2.png; sourceTree = "<group>"; };
 		3624C3A91AEFBFEE00D974C2 /* Coin3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coin3.png; sourceTree = "<group>"; };
@@ -234,6 +305,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361FB0CF1AF7A48E0023B2E9 /* Gatorz */ = {
+			isa = PBXGroup;
+			children = (
+				361FB0D01AF7A4970023B2E9 /* images */,
+				361FB0D11AF7A4A40023B2E9 /* SKBGatorz.h */,
+				361FB0D21AF7A4A40023B2E9 /* SKBGatorz.m */,
+			);
+			name = Gatorz;
+			sourceTree = "<group>";
+		};
+		361FB0D01AF7A4970023B2E9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				361FB0D41AF7A4C40023B2E9 /* Gatorz_KO_L_Hit1.png */,
+				361FB0D51AF7A4C40023B2E9 /* Gatorz_KO_L_Hit2.png */,
+				361FB0D61AF7A4C40023B2E9 /* Gatorz_KO_L_Hit3.png */,
+				361FB0D71AF7A4C40023B2E9 /* Gatorz_KO_L_Hit4.png */,
+				361FB0D81AF7A4C40023B2E9 /* Gatorz_KO_R_Hit1.png */,
+				361FB0D91AF7A4C40023B2E9 /* Gatorz_KO_R_Hit2.png */,
+				361FB0DA1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit3.png */,
+				361FB0DB1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit4.png */,
+				361FB0DC1AF7A4C40023B2E9 /* Gatorz_Left_1.png */,
+				361FB0DD1AF7A4C40023B2E9 /* Gatorz_Left_2.png */,
+				361FB0DE1AF7A4C40023B2E9 /* Gatorz_Left_3.png */,
+				361FB0DF1AF7A4C40023B2E9 /* Gatorz_Left_4.png */,
+				361FB0E01AF7A4C40023B2E9 /* Gatorz_Left_5.png */,
+				361FB0E11AF7A4C40023B2E9 /* Gatorz_Left_turn1.png */,
+				361FB0E21AF7A4C40023B2E9 /* Gatorz_Left_turn2.png */,
+				361FB0E31AF7A4C40023B2E9 /* Gatorz_Left_turn3.png */,
+				361FB0E41AF7A4C40023B2E9 /* Gatorz_Mad_Left_1.png */,
+				361FB0E51AF7A4C40023B2E9 /* Gatorz_Mad_Left_2.png */,
+				361FB0E61AF7A4C40023B2E9 /* Gatorz_Mad_Left_3.png */,
+				361FB0E71AF7A4C40023B2E9 /* Gatorz_Mad_Left_4.png */,
+				361FB0E81AF7A4C40023B2E9 /* Gatorz_Mad_Left_5.png */,
+				361FB0E91AF7A4C40023B2E9 /* Gatorz_Mad_Right_1.png */,
+				361FB0EA1AF7A4C40023B2E9 /* Gatorz_Mad_Right_2.png */,
+				361FB0EB1AF7A4C40023B2E9 /* Gatorz_Mad_Right_3.png */,
+				361FB0EC1AF7A4C40023B2E9 /* Gatorz_Mad_Right_4.png */,
+				361FB0ED1AF7A4C40023B2E9 /* Gatorz_Mad_Right_5.png */,
+				361FB0EE1AF7A4C40023B2E9 /* Gatorz_Right_1.png */,
+				361FB0EF1AF7A4C40023B2E9 /* Gatorz_Right_2.png */,
+				361FB0F01AF7A4C40023B2E9 /* Gatorz_Right_3.png */,
+				361FB0F11AF7A4C40023B2E9 /* Gatorz_Right_4.png */,
+				361FB0F21AF7A4C40023B2E9 /* Gatorz_Right_5.png */,
+				361FB0F31AF7A4C40023B2E9 /* Gatorz_Right_turn1.png */,
+				361FB0F41AF7A4C40023B2E9 /* Gatorz_Right_turn2.png */,
+				361FB0F51AF7A4C40023B2E9 /* Gatorz_Right_turn3.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		3624C3A61AEFBFD600D974C2 /* Coin */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +490,7 @@
 		36D8EE701AEC5190004315CE /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				361FB0CF1AF7A48E0023B2E9 /* Gatorz */,
 				36D941E51AF084AC005D59D3 /* Numbers */,
 				3624C3A61AEFBFD600D974C2 /* Coin */,
 				36DB89B31AEEEEFB0093B567 /* Ratz */,
@@ -581,26 +704,40 @@
 				36FB47B01AF1937D00565347 /* Ratz_KO_L_Hit3.png in Resources */,
 				36FB47BB1AF25ACA00565347 /* EnemyKO.caf in Resources */,
 				36D941F11AF084EE005D59D3 /* Text_Number_1.png in Resources */,
+				361FB1041AF7A4C40023B2E9 /* Gatorz_Left_turn2.png in Resources */,
 				36FB47B21AF1937D00565347 /* Ratz_KO_L_Hit5.png in Resources */,
+				361FB1121AF7A4C40023B2E9 /* Gatorz_Right_3.png in Resources */,
 				36D8EE7E1AEC9A21004315CE /* Player_Left3.png in Resources */,
+				361FB1171AF7A4C40023B2E9 /* Gatorz_Right_turn3.png in Resources */,
 				36D941F01AF084EE005D59D3 /* Text_Number_0.png in Resources */,
 				36D15B0F1AF3B61200FAA564 /* Playerbitten.caf in Resources */,
 				36D942101AF10AB1005D59D3 /* Jump.caf in Resources */,
+				361FB1021AF7A4C40023B2E9 /* Gatorz_Left_5.png in Resources */,
+				361FB1071AF7A4C40023B2E9 /* Gatorz_Mad_Left_2.png in Resources */,
 				36D941F41AF084EE005D59D3 /* Text_Number_4.png in Resources */,
+				361FB1101AF7A4C40023B2E9 /* Gatorz_Right_1.png in Resources */,
 				36D942111AF10AB1005D59D3 /* Run.caf in Resources */,
+				361FB10B1AF7A4C40023B2E9 /* Gatorz_Mad_Right_1.png in Resources */,
 				36DB89C51AEEEF2E0093B567 /* Ratz_Right3.png in Resources */,
 				36FB47B71AF1937D00565347 /* Ratz_KO_R_Hit5.png in Resources */,
+				361FB0FE1AF7A4C40023B2E9 /* Gatorz_Left_1.png in Resources */,
+				361FB10F1AF7A4C40023B2E9 /* Gatorz_Mad_Right_5.png in Resources */,
 				36D9421D1AF12971005D59D3 /* CoinCollected.caf in Resources */,
 				36FB47AF1AF1937D00565347 /* Ratz_KO_L_Hit2.png in Resources */,
 				36D8EE821AEC9A47004315CE /* Player_Left_Still.png in Resources */,
+				361FB0FC1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit3.png in Resources */,
 				36DB89C01AEEEF2E0093B567 /* Ratz_Left3.png in Resources */,
+				361FB0FD1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit4.png in Resources */,
 				36DB89C71AEEEF2E0093B567 /* Ratz_Right5.png in Resources */,
 				36D8EE6F1AEC4C0F004315CE /* Player_Right4.png in Resources */,
 				36D8EE6E1AEC4C0F004315CE /* Player_Right3.png in Resources */,
+				361FB0F91AF7A4C40023B2E9 /* Gatorz_KO_L_Hit4.png in Resources */,
 				36FB47B51AF1937D00565347 /* Ratz_KO_R_Hit3.png in Resources */,
 				36DB89BF1AEEEF2E0093B567 /* Ratz_Left2.png in Resources */,
+				361FB1061AF7A4C40023B2E9 /* Gatorz_Mad_Left_1.png in Resources */,
 				36FB47B41AF1937D00565347 /* Ratz_KO_R_Hit2.png in Resources */,
 				36D941E41AF030E6005D59D3 /* CastOfCharacters.plist in Resources */,
+				361FB0F81AF7A4C40023B2E9 /* Gatorz_KO_L_Hit3.png in Resources */,
 				36DB89BE1AEEEF2E0093B567 /* Ratz_Left1.png in Resources */,
 				36D8EE461AEBEFD3004315CE /* Images.xcassets in Resources */,
 				36D8EE6D1AEC4C0F004315CE /* Player_Right2.png in Resources */,
@@ -610,19 +747,29 @@
 				36014F2F1AED3EFB0084817B /* Player_LeftSkid.png in Resources */,
 				36FB47B31AF1937D00565347 /* Ratz_KO_R_Hit1.png in Resources */,
 				36D9421B1AF11540005D59D3 /* PipeLwrRight.png in Resources */,
+				361FB1151AF7A4C40023B2E9 /* Gatorz_Right_turn1.png in Resources */,
 				36D942091AF10A18005D59D3 /* Theme.caf in Resources */,
+				361FB0F61AF7A4C40023B2E9 /* Gatorz_KO_L_Hit1.png in Resources */,
 				36D8EE7F1AEC9A21004315CE /* Player_Left4.png in Resources */,
 				36D9421A1AF11540005D59D3 /* PipeLwrLeft.png in Resources */,
+				361FB1141AF7A4C40023B2E9 /* Gatorz_Right_5.png in Resources */,
 				3624C3AC1AEFBFEE00D974C2 /* Coin3.png in Resources */,
 				36D942131AF10AB1005D59D3 /* SpawnCoin.caf in Resources */,
+				361FB1131AF7A4C40023B2E9 /* Gatorz_Right_4.png in Resources */,
 				36DB89C21AEEEF2E0093B567 /* Ratz_Left5.png in Resources */,
+				361FB1031AF7A4C40023B2E9 /* Gatorz_Left_turn1.png in Resources */,
+				361FB0F71AF7A4C40023B2E9 /* Gatorz_KO_L_Hit2.png in Resources */,
 				36014F301AED3EFB0084817B /* Player_RightSkid.png in Resources */,
 				36FB47B11AF1937D00565347 /* Ratz_KO_L_Hit4.png in Resources */,
 				36FB47AE1AF1937D00565347 /* Ratz_KO_L_Hit1.png in Resources */,
+				361FB0FB1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit2.png in Resources */,
 				36D941F51AF084EE005D59D3 /* Text_Number_5.png in Resources */,
+				361FB1001AF7A4C40023B2E9 /* Gatorz_Left_3.png in Resources */,
 				36F35C781AEDC34C008A3CCA /* Base_600.png in Resources */,
 				36D941F81AF084EE005D59D3 /* Text_Number_8.png in Resources */,
+				361FB0FA1AF7A4C40023B2E9 /* Gatorz_KO_R_Hit1.png in Resources */,
 				36D942141AF10AB1005D59D3 /* SpawnEnemy.caf in Resources */,
+				361FB10D1AF7A4C40023B2E9 /* Gatorz_Mad_Right_3.png in Resources */,
 				36D8EE7D1AEC9A21004315CE /* Player_Left2.png in Resources */,
 				36F35C7B1AEDCD15008A3CCA /* Player_LeftJump.png in Resources */,
 				36D15B111AF3C1A400FAA564 /* Text_HighScoreHeader.png in Resources */,
@@ -630,19 +777,27 @@
 				36F35C761AED84E8008A3CCA /* Backdrop_568.png in Resources */,
 				36D941F21AF084EE005D59D3 /* Text_Number_2.png in Resources */,
 				36DB89C61AEEEF2E0093B567 /* Ratz_Right4.png in Resources */,
+				361FB10C1AF7A4C40023B2E9 /* Gatorz_Mad_Right_2.png in Resources */,
 				36FB47A21AF18F5600565347 /* CoinCollected.sks in Resources */,
 				36D942121AF10AB1005D59D3 /* Skid.caf in Resources */,
+				361FB10E1AF7A4C40023B2E9 /* Gatorz_Mad_Right_4.png in Resources */,
 				36D941F71AF084EE005D59D3 /* Text_Number_7.png in Resources */,
+				361FB10A1AF7A4C40023B2E9 /* Gatorz_Mad_Left_5.png in Resources */,
 				36D942171AF1137F005D59D3 /* Grate.png in Resources */,
 				36F35C7C1AEDCD15008A3CCA /* Player_RightJump.png in Resources */,
+				361FB1091AF7A4C40023B2E9 /* Gatorz_Mad_Left_4.png in Resources */,
 				36D942151AF10AB1005D59D3 /* SpawnPlayer.caf in Resources */,
 				36DB89C41AEEEF2E0093B567 /* Ratz_Right2.png in Resources */,
+				361FB1011AF7A4C40023B2E9 /* Gatorz_Left_4.png in Resources */,
+				361FB1051AF7A4C40023B2E9 /* Gatorz_Left_turn3.png in Resources */,
 				36D941FC1AF085F7005D59D3 /* Text_PlayerScoreHeader.png in Resources */,
+				361FB0FF1AF7A4C40023B2E9 /* Gatorz_Left_2.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
 				36D941F61AF084EE005D59D3 /* Text_Number_6.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
 				36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */,
 				36D8EE7C1AEC9A21004315CE /* Player_Left1.png in Resources */,
+				361FB1161AF7A4C40023B2E9 /* Gatorz_Right_turn2.png in Resources */,
 				36DB89C31AEEEF2E0093B567 /* Ratz_Right1.png in Resources */,
 				36FB47BA1AF25ACA00565347 /* EnemyCollected.caf in Resources */,
 				36D8EE441AEBEFD3004315CE /* Main.storyboard in Resources */,
@@ -651,6 +806,8 @@
 				36F35C751AED84E8008A3CCA /* Backdrop_480.png in Resources */,
 				3624C3AB1AEFBFEE00D974C2 /* Coin2.png in Resources */,
 				36FB47B61AF1937D00565347 /* Ratz_KO_R_Hit4.png in Resources */,
+				361FB1111AF7A4C40023B2E9 /* Gatorz_Right_2.png in Resources */,
+				361FB1081AF7A4C40023B2E9 /* Gatorz_Mad_Left_3.png in Resources */,
 				36D8EE6C1AEC4C0F004315CE /* Player_Right1.png in Resources */,
 				36D15B131AF3C88D00FAA564 /* LevelCompleted.caf in Resources */,
 				36D941F91AF084EE005D59D3 /* Text_Number_9.png in Resources */,
@@ -678,6 +835,7 @@
 				36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */,
 				36D8EE671AEC06F0004315CE /* GameScene.m in Sources */,
 				36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */,
+				361FB0D31AF7A4A40023B2E9 /* SKBGatorz.m in Sources */,
 				36D8EE741AEC523B004315CE /* SKBPlayer.m in Sources */,
 				36DB89CA1AEEF0C70093B567 /* SKBRatz.m in Sources */,
 				36D941FF1AF086C1005D59D3 /* SKBScores.m in Sources */,

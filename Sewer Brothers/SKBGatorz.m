@@ -1,33 +1,36 @@
 //
-//  SKBRatz.m
+//  Gatorz.m
 //  Sewer Brothers
 //
-//  Created by Eric Internicola on 4/27/15.
+//  Created by Eric Internicola on 5/4/15.
 //  Copyright (c) 2015 iColaSoft. All rights reserved.
 //
 
-#import "SKBRatz.h"
+#import "SKBGatorz.h"
 #import "GameScene.h"
 
-@implementation SKBRatz
-#pragma mark Initialization
+@implementation SKBGatorz
 
-+(SKBRatz *)initNewRatz:(SKScene *)whichScene startingPoint:(CGPoint)location ratzIndex:(int)index {
-    SKTexture *ratzTexture = [SKTexture textureWithImageNamed:kRatzRunRight1FileName];
-    SKBRatz *ratz = [SKBRatz spriteNodeWithTexture:ratzTexture];
-    ratz.name = [NSString stringWithFormat:@"ratz%d", index];
-    ratz.position = location;
-    ratz.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ratz.size];
-    ratz.physicsBody.categoryBitMask = kRatzCategory;
-    ratz.physicsBody.contactTestBitMask = kWallCategory | kRatzCategory | kCoinCategory | kPipeCategory | kLedgeCategory | kBaseCategory | kGatorzCategory;
-    ratz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kRatzCategory | kCoinCategory | kPlayerCategory | kGatorzCategory;
-    ratz.physicsBody.density = 1.0;
-    ratz.physicsBody.linearDamping = 0.1;
-    ratz.physicsBody.restitution = 0.2;
-    ratz.physicsBody.allowsRotation = NO;
+#pragma mark Initialization
++(SKBGatorz *)initNewGatorz:(SKScene *)whichScene startingPoint:(CGPoint)location gatorzIndex:(int)index {
+    SKTexture *gatorzTexture = [SKTexture textureWithImageNamed:kGatorzRunRight1FileName];
+    SKBGatorz *gatorz = [SKBGatorz spriteNodeWithTexture:gatorzTexture];
+    gatorz.name = [NSString stringWithFormat:@"gatorz%d", index];
+    gatorz.position = location;
+    gatorz.xScale = 1.5;
+    gatorz.yScale = 1.5;
     
-    [whichScene addChild:ratz];
-    return ratz;
+    gatorz.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:gatorz.size];
+    gatorz.physicsBody.categoryBitMask = kGatorzCategory;
+    gatorz.physicsBody.contactTestBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kPipeCategory | kGatorzCategory | kRatzCategory | kCoinCategory;
+    gatorz.physicsBody.collisionBitMask = kBaseCategory | kWallCategory | kLedgeCategory | kPlayerCategory | kGatorzCategory | kRatzCategory | kCoinCategory;
+    gatorz.physicsBody.density = 1.0;
+    gatorz.physicsBody.linearDamping = 0.1;
+    gatorz.physicsBody.restitution = 0.2;
+    gatorz.physicsBody.allowsRotation = NO;
+    
+    [whichScene addChild:gatorz];
+    return gatorz;
 }
 
 -(void)spawnedInScene:(SKScene *)whichScene {
@@ -35,10 +38,11 @@
     _spriteTextures = theScene.spriteTextures;
     
     // Sound Effects
-    _splashSound = [SKAction playSoundFileNamed:kRatzSplashedSoundFileName waitForCompletion:NO];
-    _koSound = [SKAction playSoundFileNamed:kRatzKOSoundFileName waitForCompletion:NO];
-    _collectedSound = [SKAction playSoundFileNamed:kRatzCollectedSoundFileName waitForCompletion:NO];
-    _spawnSound = [SKAction playSoundFileNamed:kRatzSpawnSoundFileName waitForCompletion:NO];
+    _splashSound = [SKAction playSoundFileNamed:kGatorzSplashedSoundFileName waitForCompletion:NO];
+    _koSound = [SKAction playSoundFileNamed:kGatorzKOSoundFileName waitForCompletion:NO];
+    _collectedSound = [SKAction playSoundFileNamed:kGatorzCollectedFileName waitForCompletion:NO];
+    _spawnSound = [SKAction playSoundFileNamed:kGatorzSpawnSoundFileName waitForCompletion:NO];
+    
     [self runAction:_spawnSound];
     
     // set initial direction and start moving
@@ -50,22 +54,22 @@
 }
 
 #pragma mark Screen wrap
--(void)wrapRatz:(CGPoint)where {
-    SKPhysicsBody *storePB = self.physicsBody;
+
+-(void)wrapGatorz:(CGPoint)where {
+    SKPhysicsBody *storedPB = self.physicsBody;
     self.physicsBody = nil;
     self.position = where;
-    self.physicsBody = storePB;
+    self.physicsBody = storedPB;
 }
 
--(void)ratzHitLeftPipe:(SKScene *)whichScene {
+-(void)gatorzHitLeftPipe:(SKScene *)whichScene {
     int leftSideX = CGRectGetMinX(whichScene.frame) + kEnemySpawnEdgeBufferX;
     int topSideY = CGRectGetMaxY(whichScene.frame) - kEnemySpawnEdgeBufferY;
     
-    SKPhysicsBody *storePB = self.physicsBody;
+    SKPhysicsBody *storedPB = self.physicsBody;
     self.physicsBody = nil;
     self.position = CGPointMake(leftSideX, topSideY);
-    self.physicsBody = storePB;
-    
+    self.physicsBody = storedPB;
     [self removeAllActions];
     [self runRight];
     
@@ -73,41 +77,40 @@
     [self runAction:_spawnSound];
 }
 
--(void)ratzHitRightPipe:(SKScene *)whichScene {
+-(void)gatorzHitRightPipe:(SKScene *)whichScene {
     int rightSideX = CGRectGetMaxX(whichScene.frame) - kEnemySpawnEdgeBufferX;
     int topSideY = CGRectGetMaxY(whichScene.frame) - kEnemySpawnEdgeBufferY;
     
-    SKPhysicsBody *storePB = self.physicsBody;
+    SKPhysicsBody *storedPB = self.physicsBody;
     self.physicsBody = nil;
     self.position = CGPointMake(rightSideX, topSideY);
-    self.physicsBody = storePB;
-    
+    self.physicsBody = storedPB;
     [self removeAllActions];
     [self runLeft];
     
     // Play spawning sound
     [self runAction:_spawnSound];
-
 }
 
 #pragma mark Contact
--(void)ratzKnockedOut:(SKScene *)whichScene {
+
+-(void)gatorzKnockedOut:(SKScene *)whichScene {
     [self removeAllActions];
     
     NSArray *textureArray = nil;
-    if(_ratzStatus == SBRatzRunningLeft) {
-        _ratzStatus = SBRatzKOfacingLeft;
-        textureArray = [NSArray arrayWithArray:_spriteTextures.ratzKOfacingLeftTextures];
+    if(_gatorzStatus == SBGatorzRunningLeft) {
+        _gatorzStatus = SBGatorzKOfacingLeft;
+        textureArray = [NSArray arrayWithArray:_spriteTextures.gatorzKOfacingLeftTextures];
     } else {
-        _ratzStatus = SBRatzKOfacingRight;
-        textureArray = [NSArray arrayWithArray:_spriteTextures.ratzKOfacingRightTextures];
+        _gatorzStatus = SBGatorzKOfacingRight;
+        textureArray = [NSArray arrayWithArray:_spriteTextures.gatorzKOfacingRightTextures];
     }
     
-    SKAction *knockedOutAnimation = [SKAction animateWithTextures:textureArray timePerFrame:0.2];
-    SKAction *knockedOutForAwhiile = [SKAction repeatAction:knockedOutAnimation count:1];
+    SKAction *knockedOutAction = [SKAction animateWithTextures:textureArray timePerFrame:0.2];
+    SKAction *knockedOutForAwhile = [SKAction repeatAction:knockedOutAction count:1];
     
-    [self runAction:knockedOutForAwhiile completion:^{
-        if(_ratzStatus == SBRatzKOfacingLeft) {
+    [self runAction:knockedOutForAwhile completion:^{
+        if(_gatorzStatus == SBGatorzKOfacingLeft) {
             [self runLeft];
         } else {
             [self runRight];
@@ -115,16 +118,18 @@
     }];
 }
 
--(void)ratzCollected:(SKScene *)whichScene {
+-(void)gatorzCollected:(SKScene *)whichScene {
     NSLog(@"%@ collected", self.name);
-    [whichScene runAction:_collectedSound];
     
-    // Updated status
-    _ratzStatus = SBRatzKicked;
+    // Update status
+    _gatorzStatus = SBGatorzKicked;
+    
+    // Play sound
+    [whichScene runAction:_collectedSound];
     
     // show amount of winnings
     SKLabelNode *moneyText = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
-    moneyText.text = [NSString stringWithFormat:@"$%d", kRatzPointValue];
+    moneyText.text = [NSString stringWithFormat:@"$%d", kGatorzPointValue];
     moneyText.fontSize = 9;
     moneyText.fontColor = [SKColor whiteColor];
     moneyText.position = CGPointMake(self.position.x-10, self.position.y+28);
@@ -134,7 +139,7 @@
     [moneyText runAction:fadeAway completion:^{[moneyText removeFromParent];}];
     
     // upward impulse applied
-    [self.physicsBody applyImpulse:CGVectorMake(0, kRatzKickedIncrement)];
+    [self.physicsBody applyImpulse:CGVectorMake(0, kGatorzKickedIncrement)];
     
     // Make him spin when kicked
     SKAction *rotation = [SKAction rotateByAngle:M_PI duration:0.1];
@@ -143,12 +148,12 @@
     [self runAction:rotateForever];
     
     // while kicked upward and spinning, wait for a short spell before altering physics body
-    SKAction *shortDelay = [SKAction waitForDuration:0.5];
+    SKAction *shortDelay = [SKAction waitForDuration:0.25];
     
     [self runAction:shortDelay completion:^{
         // Make a new physics body that is much, much smaller as to not affect ledges as he falls
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1, 1)];
-        self.physicsBody.categoryBitMask = kRatzCategory;
+        self.physicsBody.categoryBitMask = kGatorzCategory;
         self.physicsBody.collisionBitMask = kWallCategory;
         self.physicsBody.contactTestBitMask = kWallCategory;
         self.physicsBody.linearDamping = 1.0;
@@ -156,7 +161,7 @@
     }];
 }
 
--(void)ratzHitWater:(SKScene *)whichScene {
+-(void)gatorzHitWater:(SKScene *)whichScene {
     // Play Sound
     [whichScene runAction:_splashSound];
     
@@ -165,7 +170,7 @@
     SKEmitterNode *splash = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterPath];
     splash.position = self.position;
     NSLog(@"splash (%f, %f)", splash.position.x, splash.position.y);
-    splash.name = @"ratzSplash";
+    splash.name = @"gatorzSplash";
     splash.targetNode = whichScene.scene;
     [whichScene addChild:splash];
     
@@ -175,39 +180,41 @@
 #pragma mark Movement
 
 -(void)runRight {
-    _ratzStatus = SBRatzRunningRight;
+    _gatorzStatus = SBGatorzRunningRight;
     
-    SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.ratzRunRightTextures timePerFrame:0.05];
+    SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.gatorzRunRightTextures timePerFrame:0.05];
     SKAction *walkForever = [SKAction repeatActionForever:walkAnimation];
     [self runAction:walkForever];
     
-    SKAction *moveRight = [SKAction moveByX:kRatzRunningIncrement y:0 duration:1];
+    SKAction *moveRight = [SKAction moveByX:kGatorzRunningIncrement y:0 duration:1];
     SKAction *moveForever = [SKAction repeatActionForever:moveRight];
     [self runAction:moveForever];
 }
 
 -(void)runLeft {
-    _ratzStatus = SBRatzRunningLeft;
+    _gatorzStatus = SBGatorzRunningLeft;
     
-    SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.ratzRunLeftTextures timePerFrame:0.05];
+    SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.gatorzRunLeftTextures timePerFrame:0.05];
     SKAction *walkForever = [SKAction repeatActionForever:walkAnimation];
     [self runAction:walkForever];
     
-    SKAction *moveLeft = [SKAction moveByX:-kRatzRunningIncrement y:0 duration:1];
-    SKAction *moveForever = [SKAction repeatActionForever:moveLeft];
+    SKAction *moveRight = [SKAction moveByX:-kGatorzRunningIncrement y:0 duration:1];
+    SKAction *moveForever = [SKAction repeatActionForever:moveRight];
     [self runAction:moveForever];
 }
 
 -(void)turnRight {
-    self.ratzStatus = SBRatzRunningRight;
+    _gatorzStatus = SBGatorzRunningRight;
     [self removeAllActions];
+    
     SKAction *moveRight = [SKAction moveByX:5 y:0 duration:0.4];
     [self runAction:moveRight completion:^{[self runRight];}];
 }
 
 -(void)turnLeft {
-    self.ratzStatus = SBRatzRunningLeft;
+    _gatorzStatus = SBGatorzRunningLeft;
     [self removeAllActions];
+    
     SKAction *moveLeft = [SKAction moveByX:-5 y:0 duration:0.4];
     [self runAction:moveLeft completion:^{[self runLeft];}];
 }
