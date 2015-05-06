@@ -25,7 +25,8 @@ static const uint32_t kGatorzCategory = 0x1 << 7;
 
 typedef enum : uint8_t {
     SKBEnemyTypeCoin = 0,
-    SKBEnemyTypeRatz
+    SKBEnemyTypeRatz,
+    SKBEnemyTypeGatorz
 } SKBEnemyTypes;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

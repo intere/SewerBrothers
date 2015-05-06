@@ -39,8 +39,9 @@
         // add surfaces to screen
         [self createSceneContents];
         
+#warning remove level 2 as start
         // start at level 1
-        _currentLevel = 1;
+        _currentLevel = 2;
         
         // compose cast of characters from propertyList
         [self loadCastOfCharacters:_currentLevel];
@@ -147,6 +148,9 @@
                 } else if(castType == SKBEnemyTypeRatz) {
                     SKBRatz *newEnemy = [SKBRatz initNewRatz:self startingPoint:CGPointMake(startX, startY) ratzIndex:castIndex];
                     [newEnemy spawnedInScene:self];
+                } else if(castType == SKBEnemyTypeGatorz) {
+                    SKBGatorz *newEnemy = [SKBGatorz initNewGatorz:self startingPoint:CGPointMake(startX, startY) gatorzIndex:castIndex];
+                    [newEnemy spawnedInScene:self];
                 }
             }];
         }
@@ -156,6 +160,8 @@
         if(_frameCounter >=20) {
             _frameCounter = 0;
             for(int index=0; index<=_spawnedEnemyCount; index++) {
+                
+                // Coins
                 [self enumerateChildNodesWithName:[NSString stringWithFormat:@"coin%d", index] usingBlock:^(SKNode *node, BOOL *stop) {
                     *stop = YES;
                     SKBCoin *theCoin = (SKBCoin *)node;
@@ -174,6 +180,8 @@
                     theCoin.lastKnownXposition = currentX;
                     theCoin.lastKnownYposition = currentY;
                 }];
+                
+                // Ratz
                 [self enumerateChildNodesWithName:[NSString stringWithFormat:@"ratz%d", index] usingBlock:^(SKNode *node, BOOL*stop) {
                     *stop = YES;
                     SKBRatz *theRatz = (SKBRatz *)node;
@@ -192,6 +200,27 @@
                     theRatz.lastKnownXposition = currentX;
                     theRatz.lastKnownYposition = currentY;
                 }];
+                
+                // Gatorz
+                [self enumerateChildNodesWithName:[NSString stringWithFormat:@"gatorz%d", index] usingBlock:^(SKNode *node, BOOL*stop) {
+                    *stop = YES;
+                    SKBGatorz *theGatorz = (SKBGatorz *)node;
+                    int currentX = theGatorz.position.x;
+                    int currentY = theGatorz.position.y;
+                    if(currentX == theGatorz.lastKnownXposition && currentY == theGatorz.lastKnownYposition) {
+                        NSLog(@"%@ appears to be stuck...", theGatorz.name);
+                        if(theGatorz.gatorzStatus == SBGatorzRunningRight) {
+                            [theGatorz removeAllActions];
+                            [theGatorz runLeft];
+                        } else if(theGatorz.gatorzStatus == SBGatorzRunningLeft) {
+                            [theGatorz removeAllActions];
+                            [theGatorz runRight];
+                        }
+                    }
+                    theGatorz.lastKnownXposition = currentX;
+                    theGatorz.lastKnownYposition = currentY;
+                }];
+
             }
         }
     }
@@ -278,7 +307,7 @@
             if([theCoin.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
                 NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theCoin.name);
                 [theCoin coinCollected:self];
-                --_activeEnemyCount;
+                _activeEnemyCount--;
             }
         }];
     }
@@ -333,9 +362,24 @@
         [self ratHitEdge:firstBody];
     }
     
+    // Gatorz / sidewalls
+    if(((firstBody.categoryBitMask & kWallCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        [self gatorHitEdge:secondBody];
+    }
+    
     // Ratz / Ratz
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kRatzCategory) !=0)) {
         [self contactBetweenRat:firstBody andRat:secondBody];
+    }
+    
+    // Gatorz / Gatorz
+    if(((firstBody.categoryBitMask & kGatorzCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        [self contactBetweenGatorz:firstBody andGatorz:secondBody];
+    }
+    
+    // Ratz / Gatorz
+    if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        [self contactBetweenRat:firstBody andGatorz:secondBody];
     }
     
     // Coin / sidewalls
@@ -353,6 +397,11 @@
         [self contactBetweenRat:firstBody andCoin:secondBody];
     }
     
+    // Coin / Gatorz
+    if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        [self contactBetweenGatorz:secondBody andCoin:firstBody];
+    }
+    
     // Coin / Pipes
     if(((firstBody.categoryBitMask & kCoinCategory) != 0) && ((secondBody.categoryBitMask & kPipeCategory) !=0)) {
         [self coinHitPipe:firstBody];
@@ -361,6 +410,11 @@
     // Ratz / Pipes
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kPipeCategory) !=0)) {
         [self ratHitPipe:firstBody];
+    }
+    
+    // Gatorz / Pipes
+    if(((firstBody.categoryBitMask & kPipeCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        [self gatorHitPipe:secondBody];
     }
     
     // Player / Coins
@@ -391,10 +445,23 @@
         theRatz.lastKnownContactedLedge = theLedge.name;
     }
     
+    // Gatorz / Ledges
+    if(((firstBody.categoryBitMask & kLedgeCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+        SKNode *theLedge = firstBody.node;
+        theGatorz.lastKnownContactedLedge = theLedge.name;
+    }
+    
     // Ratz / Base Bricks
     if(((firstBody.categoryBitMask & kRatzCategory) != 0) && ((secondBody.categoryBitMask & kBaseCategory) !=0)) {
         SKBRatz *theRatz = (SKBRatz *)firstBody.node;
         theRatz.lastKnownContactedLedge = @"";
+    }
+    
+    // Gatorz / Base Bricks
+    if(((firstBody.categoryBitMask & kBaseCategory) != 0) && ((secondBody.categoryBitMask & kGatorzCategory) !=0)) {
+        SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+        theGatorz.lastKnownContactedLedge = @"";
     }
     
     // Player / Ratz
@@ -416,6 +483,7 @@
         if(theGatorz.gatorzStatus == SBGatorzKOfacingLeft || theGatorz.gatorzStatus == SBGatorzKOfacingRight) {
             // Gatorz is unconscious so kick em off the ledge
             [theGatorz gatorzCollected:self];
+            _activeEnemyCount--;
             
             // score some points!
             _playerScore += kGatorzPointValue;
@@ -424,6 +492,7 @@
             // oops, player dies
             [_playerSprite playerKilled:self];
             _playerLivesRemaining--;
+            _playerIsDeadFlag = YES;
             [self playerLivesDisplay];
         }
     }
@@ -434,7 +503,7 @@
     if(_playerSprite.playerStatus != SBPlayerFalling) {
         if(theRatz.ratzStatus == SBRatzKOfacingLeft || theRatz.ratzStatus == SBRatzKOfacingRight) {
             [theRatz ratzCollected:self];
-            --_activeEnemyCount;
+            _activeEnemyCount--;
             
             // Score some points
             _playerScore += kRatzPointValue;
@@ -452,7 +521,7 @@
 -(void)playerCollectedCoin:(SKPhysicsBody *)secondBody {
     SKBCoin *theCoin = (SKBCoin *)secondBody.node;
     [theCoin coinCollected:self];
-    --_activeEnemyCount;
+    _activeEnemyCount--;
     
     // Score some bonus points
     _playerScore += kCoinPointValue;
@@ -468,10 +537,19 @@
     }
 }
 
+-(void)gatorHitPipe:(SKPhysicsBody *)secondBody {
+    SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+    if(theGatorz.position.x < 100) {
+        [theGatorz gatorzHitLeftPipe:self];
+    } else {
+        [theGatorz gatorzHitRightPipe:self];
+    }
+}
+
 -(void)coinHitPipe:(SKPhysicsBody *)firstBody {
     SKBCoin *theCoin = (SKBCoin *)firstBody.node;
     [theCoin coinHitPipe];
-    --_activeEnemyCount;
+    _activeEnemyCount--;
 }
 
 -(void)playerHitEdge:(SKPhysicsBody *)firstBody {
@@ -483,10 +561,10 @@
             if (_playerSprite.position.y > CGRectGetMaxY(self.frame)-20) {
                 NSLog(@"player hit top of screen");
             } else if(_playerSprite.position.x < 20) {
-                NSLog(@"player contacted left edge");
+//                NSLog(@"player contacted left edge");
                 [_playerSprite wrapPlayer:CGPointMake(self.frame.size.width-10, _playerSprite.position.y)];
             } else {
-                NSLog(@"player contacted right edge");
+//                NSLog(@"player contacted right edge");
                 [_playerSprite wrapPlayer:CGPointMake(10, _playerSprite.position.y)];
             }
         }
@@ -500,10 +578,8 @@
     SKBRatz *theRatz = (SKBRatz *)firstBody.node;
     if(theRatz.ratzStatus != SBRatzKicked) {
         if(theRatz.position.x < 100) {
-            NSLog(@"ratz contacted left edge");
             [theRatz wrapRatz:CGPointMake(self.frame.size.width-20, theRatz.position.y)];
         } else {
-            NSLog(@"ratz contacted right edge");
             [theRatz wrapRatz:CGPointMake(20, theRatz.position.y)];
         }
     } else {
@@ -512,24 +588,81 @@
     }
 }
 
+-(void)gatorHitEdge:(SKPhysicsBody *)secondBody {
+    SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+    if(theGatorz.gatorzStatus != SBGatorzKicked) {
+        if(theGatorz.position.x < 100) {
+//            NSLog(@"gatorz contacted left edge");
+            [theGatorz wrapGatorz:CGPointMake(self.frame.size.width-20, theGatorz.position.y)];
+        } else {
+//            NSLog(@"gatorz contacted right edge");
+            [theGatorz wrapGatorz:CGPointMake(20, theGatorz.position.y)];
+        }
+    } else {
+        // contacted bottom wall (has been kicked off and has fallen)
+        [theGatorz gatorzHitWater:self];
+    }
+}
+
 -(void)contactBetweenRat:(SKPhysicsBody *)firstBody andRat:(SKPhysicsBody *)secondBody {
     SKBRatz *theFirstRatz = (SKBRatz *)firstBody.node;
     SKBRatz *theSecondRatz = (SKBRatz *)secondBody.node;
     
-    NSLog(@"%@ & %@ have collided...", theFirstRatz.name, theSecondRatz.name);
+//    NSLog(@"%@ & %@ have collided...", theFirstRatz.name, theSecondRatz.name);
     
-    // case first ratz to turn and change directions
+    // cause first ratz to turn and change directions
     if(theFirstRatz.ratzStatus == SBRatzRunningLeft) {
         [theFirstRatz turnRight];
     } else if(theFirstRatz.ratzStatus == SBRatzRunningRight) {
         [theFirstRatz turnLeft];
     }
     
+    // cause second ratz to turn and change dirctions
     if(theSecondRatz.ratzStatus == SBRatzRunningLeft) {
         [theSecondRatz turnRight];
     } else if(theSecondRatz.ratzStatus == SBRatzRunningRight) {
         [theSecondRatz turnLeft];
     }
+}
+
+-(void)contactBetweenGatorz:(SKPhysicsBody *)firstBody andGatorz:(SKPhysicsBody *)secondBody {
+    SKBGatorz *theFirstGatorz = (SKBGatorz *)firstBody.node;
+    SKBGatorz *theSecondGatorz = (SKBGatorz *)secondBody.node;
+    
+    // cause first gatorz to turn and change directions
+    if(theFirstGatorz.gatorzStatus == SBGatorzRunningLeft) {
+        [theFirstGatorz turnRight];
+    } else if(theFirstGatorz.gatorzStatus == SBGatorzRunningRight) {
+        [theSecondGatorz turnLeft];
+    }
+    
+    // cause the second gatorz to turn and change directions
+    if(theSecondGatorz.gatorzStatus == SBGatorzRunningLeft) {
+        [theSecondGatorz turnLeft];
+    } else if(theSecondGatorz.gatorzStatus == SBGatorzRunningRight) {
+        [theSecondGatorz turnRight];
+    }
+}
+
+-(void)contactBetweenRat:(SKPhysicsBody *)firstBody andGatorz:(SKPhysicsBody *)secondBody {
+    SKBRatz *theRatz = (SKBRatz *)firstBody.node;
+    SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+    
+//    NSLog(@"%@ & %@ have collided...", theRatz.name, theGatorz.name);
+    
+    // case first ratz to turn and change directions
+    if(theRatz.ratzStatus == SBRatzRunningLeft) {
+        [theRatz turnRight];
+    } else if(theRatz.ratzStatus == SBRatzRunningRight) {
+        [theRatz turnLeft];
+    }
+    
+    if(theGatorz.gatorzStatus == SBGatorzRunningLeft) {
+        [theGatorz turnRight];
+    } else if(theGatorz.gatorzStatus == SBGatorzRunningRight) {
+        [theGatorz turnLeft];
+    }
+
 }
 
 -(void)coinHitEdge:(SKPhysicsBody *)firstBody {
@@ -545,7 +678,7 @@
     SKBCoin *theFirstCoin = (SKBCoin *)firstBody.node;
     SKBCoin *theSecondCoin = (SKBCoin *)secondBody.node;
     
-    NSLog(@"%@ & %@ have collided...", theFirstCoin.name, theSecondCoin.name);
+//    NSLog(@"%@ & %@ have collided...", theFirstCoin.name, theSecondCoin.name);
     
     // case first ratz to turn and change directions
     if(theFirstCoin.coinStatus == SBCoinRunningLeft) {
@@ -565,7 +698,7 @@
     SKBRatz *theRatz = (SKBRatz *)firstBody.node;
     SKBCoin *theCoin = (SKBCoin *)secondBody.node;
     
-    NSLog(@"%@ & %@ have collided...", theCoin.name, theRatz.name);
+//    NSLog(@"%@ & %@ have collided...", theCoin.name, theRatz.name);
     
     // cause coin to turn and change directions
     if(theCoin.coinStatus == SBCoinRunningLeft) {
@@ -579,6 +712,27 @@
         [theRatz turnRight];
     } else if(theRatz.ratzStatus == SBRatzRunningRight) {
         [theRatz turnLeft];
+    }
+}
+
+-(void)contactBetweenGatorz:(SKPhysicsBody *)secondBody andCoin:(SKPhysicsBody *)firstBody {
+    SKBGatorz *theGatorz = (SKBGatorz *)secondBody.node;
+    SKBCoin *theCoin = (SKBCoin *)firstBody.node;
+    
+//    NSLog(@"%@ & %@ have collided...", theCoin.name, theGatorz.name);
+    
+    // cause coin to turn and change directions
+    if(theCoin.coinStatus == SBCoinRunningLeft) {
+        [theCoin turnRight];
+    } else if(theCoin.coinStatus == SBCoinRunningRight) {
+        [theCoin turnLeft];
+    }
+    
+    // cause Ratz to turn and change directions
+    if(theGatorz.gatorzStatus == SBGatorzRunningLeft) {
+        [theGatorz turnRight];
+    } else if(theGatorz.gatorzStatus == SBGatorzRunningRight) {
+        [theGatorz turnLeft];
     }
 }
 
