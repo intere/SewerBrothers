@@ -245,8 +245,15 @@
                     singleLevel = [levelDictionary valueForKey:@"Two"];
                     break;
                     
+                case 3:
+                    singleLevel = [levelDictionary valueForKey:@"Three"];
+                    break;
+                    
+                case 4:
+                    singleLevel = [levelDictionary valueForKey:@"Four"];
+                    
                 default:
-                    singleLevel = [levelDictionary valueForKey:@"Two"];
+                    singleLevel = [levelDictionary valueForKey:@"Four"];
                     break;
             }
             
