@@ -105,6 +105,22 @@
     f5 = [SKTexture textureWithImageNamed:kGatorzRunLeft5FileName];
     _gatorzRunLeftTextures = @[f1, f2, f3, f4, f5];
     
+    // right, running mad
+    f1 = [SKTexture textureWithImageNamed:kGatorzMadRunRight1FileName];
+    f2 = [SKTexture textureWithImageNamed:kGatorzMadRunRight2FileName];
+    f3 = [SKTexture textureWithImageNamed:kGatorzMadRunRight3FileName];
+    f4 = [SKTexture textureWithImageNamed:kGatorzMadRunRight4FileName];
+    f5 = [SKTexture textureWithImageNamed:kGatorzMadRunRight5FileName];
+    _gatorzMadRunRightTextures = @[f1, f2, f3, f4, f5];
+    
+    // left, running mad
+    f1 = [SKTexture textureWithImageNamed:kGatorzMadRunLeft1FileName];
+    f2 = [SKTexture textureWithImageNamed:kGatorzMadRunLeft2FileName];
+    f3 = [SKTexture textureWithImageNamed:kGatorzMadRunLeft3FileName];
+    f4 = [SKTexture textureWithImageNamed:kGatorzMadRunLeft4FileName];
+    f5 = [SKTexture textureWithImageNamed:kGatorzMadRunLeft5FileName];
+    _gatorzMadRunLeftTextures = @[f1, f2, f3, f4, f5];
+    
     // knocked out, facing left
     f1 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft1FileName];
     f2 = [SKTexture textureWithImageNamed:kGatorzKOfacingLeft2FileName];

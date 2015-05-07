@@ -36,6 +36,7 @@
 -(void)spawnedInScene:(SKScene *)whichScene {
     GameScene *theScene = (GameScene *)whichScene;
     _spriteTextures = theScene.spriteTextures;
+    _hitCount = 0;
     
     // Sound Effects
     _splashSound = [SKAction playSoundFileNamed:kGatorzSplashedSoundFileName waitForCompletion:NO];
@@ -183,6 +184,9 @@
     _gatorzStatus = SBGatorzRunningRight;
     
     SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.gatorzRunRightTextures timePerFrame:0.05];
+    if(_hitCount==1) {
+        walkAnimation = [SKAction animateWithTextures:_spriteTextures.gatorzMadRunRightTextures timePerFrame:0.05];
+    }
     SKAction *walkForever = [SKAction repeatActionForever:walkAnimation];
     [self runAction:walkForever];
     
@@ -195,6 +199,9 @@
     _gatorzStatus = SBGatorzRunningLeft;
     
     SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.gatorzRunLeftTextures timePerFrame:0.05];
+    if(_hitCount==1) {
+        walkAnimation = [SKAction animateWithTextures:_spriteTextures.gatorzMadRunLeftTextures timePerFrame:0.05];
+    }
     SKAction *walkForever = [SKAction repeatActionForever:walkAnimation];
     [self runAction:walkForever];
     

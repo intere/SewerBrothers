@@ -12,7 +12,6 @@
 @implementation SKBPlayer
 
 -(void)runRight {
-    NSLog(@"run Right");
     _playerStatus = SBPlayerRunningRight;
     SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.playerRunRightTextures timePerFrame:0.05];
     SKAction *walkForever = [SKAction repeatActionForever:walkAnimation];
@@ -30,7 +29,6 @@
 }
 
 -(void)runLeft {
-    NSLog(@"run Left");
     _playerStatus = SBPlayerRunningLeft;
     SKAction *walkAnimation = [SKAction animateWithTextures:_spriteTextures.playerRunLeftTextures timePerFrame:0.05];
     SKAction *walkForever = [SKAction repeatActionForever:walkAnimation];
@@ -49,7 +47,6 @@
 }
 
 -(void)skidRight {
-    NSLog(@"skid Right");
     [self removeAllActions];
     _playerStatus = SBPlayerSkiddingRight;
     
@@ -69,13 +66,11 @@
     SKAction *group = [SKAction group:@[sequence, _skidSound]];
     
     [self runAction:group completion:^{
-        NSLog(@"skid ended, still facing right");
         _playerStatus = SBPlayerFacingRight;
     }];
 }
 
 -(void)skidLeft {
-    NSLog(@"skid Left");
     [self removeAllActions];
     _playerStatus = SBPlayerSkiddingLeft;
     
@@ -95,7 +90,6 @@
     SKAction *group = [SKAction group:@[sequence, _skidSound]];
     
     [self runAction:group completion:^{
-        NSLog(@"skid ended, still facing Left");
         _playerStatus = SBPlayerFacingLeft;
     }];
 }
@@ -109,22 +103,18 @@
     
     // determine direction and next phase
     if(self.playerStatus == SBPlayerRunningLeft || self.playerStatus == SBPlayerSkiddingLeft) {
-        NSLog(@"jump left");
         self.playerStatus = SBPlayerJumpingLeft;
         playerJumpTextures = _spriteTextures.playerJumpLeftTextures;
         nextplayerStatus = SBPlayerRunningLeft;
     } else if(self.playerStatus == SBPlayerRunningRight || self.playerStatus == SBPlayerSkiddingRight) {
-        NSLog(@"jump right");
         self.playerStatus = SBPlayerJumpingRight;
         playerJumpTextures = _spriteTextures.playerJumpRightTextures;
         nextplayerStatus = SBPlayerRunningRight;
     } else if(self.playerStatus == SBPlayerFacingLeft) {
-        NSLog(@"jump up, facing left");
         self.playerStatus = SBPlayerJumpingUpFacingLeft;
         playerJumpTextures = _spriteTextures.playerJumpLeftTextures;
         nextplayerStatus = SBPlayerFacingLeft;
     } else if(self.playerStatus == SBPlayerFacingRight) {
-        NSLog(@"jump up, facing right");
         self.playerStatus = SBPlayerJumpingUpFacingRight;
         playerJumpTextures = _spriteTextures.playerJumpRightTextures;
         nextplayerStatus = SBPlayerFacingRight;

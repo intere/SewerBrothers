@@ -140,7 +140,7 @@
                 // Create & spawn the new Enemy
                 _enemyIsSpawningFlag = NO;
                 _spawnedEnemyCount++;
-                _activeEnemyCount++;
+                [self addedEnemy];
                 
                 if(castType == SKBEnemyTypeCoin) {
                     SKBCoin *newCoin = [SKBCoin initNewCoin:self startingPoint:CGPointMake(startX, startY) coinIndex:castIndex];
@@ -168,7 +168,7 @@
                     int currentX = theCoin.position.x;
                     int currentY = theCoin.position.y;
                     if(currentX == theCoin.lastKnownXposition && currentY == theCoin.lastKnownYposition) {
-                        NSLog(@"%@ appears to be stuck...", theCoin.name);
+//                        NSLog(@"%@ appears to be stuck...", theCoin.name);
                         if(theCoin.coinStatus == SBCoinRunningRight) {
                             [theCoin removeAllActions];
                             [theCoin runLeft];
@@ -188,7 +188,7 @@
                     int currentX = theRatz.position.x;
                     int currentY = theRatz.position.y;
                     if(currentX == theRatz.lastKnownXposition && currentY == theRatz.lastKnownYposition) {
-                        NSLog(@"%@ appears to be stuck...", theRatz.name);
+//                        NSLog(@"%@ appears to be stuck...", theRatz.name);
                         if(theRatz.ratzStatus == SBRatzRunningRight) {
                             [theRatz removeAllActions];
                             [theRatz runLeft];
@@ -208,7 +208,7 @@
                     int currentX = theGatorz.position.x;
                     int currentY = theGatorz.position.y;
                     if(currentX == theGatorz.lastKnownXposition && currentY == theGatorz.lastKnownYposition) {
-                        NSLog(@"%@ appears to be stuck...", theGatorz.name);
+//                        NSLog(@"%@ appears to be stuck...", theGatorz.name);
                         if(theGatorz.gatorzStatus == SBGatorzRunningRight) {
                             [theGatorz removeAllActions];
                             [theGatorz runLeft];
@@ -307,7 +307,7 @@
             if([theCoin.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
                 NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theCoin.name);
                 [theCoin coinCollected:self];
-                _activeEnemyCount--;
+                [self removedEnemy:@"Coin"];
             }
         }];
     }
@@ -335,7 +335,18 @@
             // struckLedge check
             if([theGatorz.lastKnownContactedLedge isEqualToString:struckLedgeName]) {
                 NSLog(@"Player hit %@ where %@ is known to be", struckLedgeName, theGatorz.name);
-                [theGatorz gatorzKnockedOut:self];
+                if(theGatorz.hitCount==0) {
+                    theGatorz.hitCount++;
+                    NSLog(@"%@ has been hit once", theGatorz.name);
+                    if(theGatorz.gatorzStatus == SBGatorzRunningLeft) {
+                        [theGatorz runLeft];
+                    } else if(theGatorz.gatorzStatus == SBGatorzRunningRight) {
+                        [theGatorz runRight];
+                    }
+                } else if(theGatorz.hitCount == 1) {
+                    theGatorz.hitCount = 0;
+                    [theGatorz gatorzKnockedOut:self];
+                }
             }
         }];
     }
@@ -483,7 +494,7 @@
         if(theGatorz.gatorzStatus == SBGatorzKOfacingLeft || theGatorz.gatorzStatus == SBGatorzKOfacingRight) {
             // Gatorz is unconscious so kick em off the ledge
             [theGatorz gatorzCollected:self];
-            _activeEnemyCount--;
+            [self removedEnemy:@"Gatorz"];
             
             // score some points!
             _playerScore += kGatorzPointValue;
@@ -503,7 +514,7 @@
     if(_playerSprite.playerStatus != SBPlayerFalling) {
         if(theRatz.ratzStatus == SBRatzKOfacingLeft || theRatz.ratzStatus == SBRatzKOfacingRight) {
             [theRatz ratzCollected:self];
-            _activeEnemyCount--;
+            [self removedEnemy:@"Ratz"];
             
             // Score some points
             _playerScore += kRatzPointValue;
@@ -521,7 +532,7 @@
 -(void)playerCollectedCoin:(SKPhysicsBody *)secondBody {
     SKBCoin *theCoin = (SKBCoin *)secondBody.node;
     [theCoin coinCollected:self];
-    _activeEnemyCount--;
+    [self removedEnemy:@"Coin"];
     
     // Score some bonus points
     _playerScore += kCoinPointValue;
@@ -549,7 +560,7 @@
 -(void)coinHitPipe:(SKPhysicsBody *)firstBody {
     SKBCoin *theCoin = (SKBCoin *)firstBody.node;
     [theCoin coinHitPipe];
-    _activeEnemyCount--;
+    [self removedEnemy:@"Coin"];
 }
 
 -(void)playerHitEdge:(SKPhysicsBody *)firstBody {
@@ -944,6 +955,16 @@
     _gameIsPaused = NO;
     _spawnedEnemyCount = 0;
     _enemyIsSpawningFlag = NO;
+}
+
+-(void)addedEnemy {
+    _activeEnemyCount++;
+    NSLog(@"Added an enemy (we have: %d)", _activeEnemyCount);
+}
+
+-(void)removedEnemy:(NSString *)which {
+    _activeEnemyCount--;
+    NSLog(@"Removed an enemy (%@ - we have: %d)", which, _activeEnemyCount);
 }
 
 @end

@@ -61,6 +61,18 @@
 #define kGatorzRunLeft4FileName  @"Gatorz_Left_4.png"
 #define kGatorzRunLeft5FileName  @"Gatorz_Left_5.png"
 
+#define kGatorzMadRunRight1FileName    @"Gatorz_Mad_Right_1.png"
+#define kGatorzMadRunRight2FileName    @"Gatorz_Mad_Right_2.png"
+#define kGatorzMadRunRight3FileName    @"Gatorz_Mad_Right_3.png"
+#define kGatorzMadRunRight4FileName    @"Gatorz_Mad_Right_4.png"
+#define kGatorzMadRunRight5FileName    @"Gatorz_Mad_Right_5.png"
+
+#define kGatorzMadRunLeft1FileName    @"Gatorz_Mad_Left_1.png"
+#define kGatorzMadRunLeft2FileName    @"Gatorz_Mad_Left_2.png"
+#define kGatorzMadRunLeft3FileName    @"Gatorz_Mad_Left_3.png"
+#define kGatorzMadRunLeft4FileName    @"Gatorz_Mad_Left_4.png"
+#define kGatorzMadRunLeft5FileName    @"Gatorz_Mad_Left_5.png"
+
 #define kGatorzKOfacingLeft1FileName    @"Gatorz_KO_L_Hit1.png"
 #define kGatorzKOfacingLeft2FileName    @"Gatorz_KO_L_Hit2.png"
 #define kGatorzKOfacingLeft3FileName    @"Gatorz_KO_L_Hit3.png"
@@ -87,6 +99,7 @@
 @property (nonatomic, strong) NSArray *ratzRunLeftTextures, *ratzRunRightTextures;
 @property (nonatomic, strong) NSArray *ratzKOfacingLeftTextures, *ratzKOfacingRightTextures;
 @property (nonatomic, strong) NSArray *gatorzRunLeftTextures, *gatorzRunRightTextures;
+@property (nonatomic, strong) NSArray *gatorzMadRunLeftTextures, *gatorzMadRunRightTextures;
 @property (nonatomic, strong) NSArray *gatorzKOfacingLeftTextures, *gatorzKOfacingRightTextures;
 @property (nonatomic, strong) NSArray *coinTextures;
 
