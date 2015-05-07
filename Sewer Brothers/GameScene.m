@@ -39,9 +39,8 @@
         // add surfaces to screen
         [self createSceneContents];
         
-#warning remove level 2 as start
         // start at level 1
-        _currentLevel = 2;
+        _currentLevel = 1;
         
         // compose cast of characters from propertyList
         [self loadCastOfCharacters:_currentLevel];
@@ -52,28 +51,35 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins.  */
     for(UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        SBPlayerStatus status = _playerSprite.playerStatus;
-        
-        if(_playerSprite.playerStatus != SBPlayerFalling && !_playerIsDeadFlag) {
-            if(location.y >= (self.frame.size.height / 2)) {
-                // user touched upper half of the screen (zero = bottom of screen)
-                if(status != SBPlayerJumpingLeft && status != SBPlayerJumpingRight && status != SBPlayerJumpingUpFacingLeft && status != SBPlayerJumpingUpFacingRight) {
-                    [_playerSprite jump];
-                }
-            } else if(location.x <= (self.frame.size.width / 2)) {
-                // user touched left side of the screen
-                if(status == SBPlayerRunningRight) {
-                    [_playerSprite skidRight];
-                } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
-                    [_playerSprite runLeft];
-                }
-            } else {
-                // user touched right side of the screen
-                if(status == SBPlayerRunningLeft) {
-                    [_playerSprite skidLeft];
-                } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
-                    [_playerSprite runRight];
+        if(_gameIsOverFlag) {
+            GameScene *nextScene = [[GameScene alloc]initWithSize:self.size];
+            SKTransition *doors = [SKTransition doorwayWithDuration:0.5];
+            [self.view presentScene:nextScene transition:doors];
+            [self removeFromParent];
+        } else {
+            CGPoint location = [touch locationInNode:self];
+            SBPlayerStatus status = _playerSprite.playerStatus;
+            
+            if(_playerSprite.playerStatus != SBPlayerFalling && !_playerIsDeadFlag) {
+                if(location.y >= (self.frame.size.height / 2)) {
+                    // user touched upper half of the screen (zero = bottom of screen)
+                    if(status != SBPlayerJumpingLeft && status != SBPlayerJumpingRight && status != SBPlayerJumpingUpFacingLeft && status != SBPlayerJumpingUpFacingRight) {
+                        [_playerSprite jump];
+                    }
+                } else if(location.x <= (self.frame.size.width / 2)) {
+                    // user touched left side of the screen
+                    if(status == SBPlayerRunningRight) {
+                        [_playerSprite skidRight];
+                    } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
+                        [_playerSprite runLeft];
+                    }
+                } else {
+                    // user touched right side of the screen
+                    if(status == SBPlayerRunningLeft) {
+                        [_playerSprite skidLeft];
+                    } else if(status == SBPlayerFacingLeft || status == SBPlayerFacingRight) {
+                        [_playerSprite runRight];
+                    }
                 }
             }
         }

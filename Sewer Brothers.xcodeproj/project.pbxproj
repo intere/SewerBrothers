@@ -53,6 +53,7 @@
 		36D15B0F1AF3B61200FAA564 /* Playerbitten.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D15B0E1AF3B61200FAA564 /* Playerbitten.caf */; };
 		36D15B111AF3C1A400FAA564 /* Text_HighScoreHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D15B101AF3C1A400FAA564 /* Text_HighScoreHeader.png */; };
 		36D15B131AF3C88D00FAA564 /* LevelCompleted.caf in Resources */ = {isa = PBXBuildFile; fileRef = 36D15B121AF3C88D00FAA564 /* LevelCompleted.caf */; };
+		36D449351AFB9CF3000B7FC8 /* Instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 36D449341AFB9CF3000B7FC8 /* Instructions.png */; };
 		36D8EE361AEBEFD3004315CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE351AEBEFD3004315CE /* main.m */; };
 		36D8EE391AEBEFD3004315CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE381AEBEFD3004315CE /* AppDelegate.m */; };
 		36D8EE3C1AEBEFD3004315CE /* SplashScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 36D8EE3B1AEBEFD3004315CE /* SplashScreenScene.m */; };
@@ -193,6 +194,7 @@
 		36D15B0E1AF3B61200FAA564 /* Playerbitten.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Playerbitten.caf; sourceTree = "<group>"; };
 		36D15B101AF3C1A400FAA564 /* Text_HighScoreHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Text_HighScoreHeader.png; sourceTree = "<group>"; };
 		36D15B121AF3C88D00FAA564 /* LevelCompleted.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LevelCompleted.caf; sourceTree = "<group>"; };
+		36D449341AFB9CF3000B7FC8 /* Instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instructions.png; sourceTree = "<group>"; };
 		36D8EE301AEBEFD3004315CE /* Sewer Brothers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sewer Brothers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D8EE341AEBEFD3004315CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36D8EE351AEBEFD3004315CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		365DBC2E1AEE6C4E005CAE5D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				36D449341AFB9CF3000B7FC8 /* Instructions.png */,
 				36D942181AF11540005D59D3 /* PipeLwrLeft.png */,
 				36D942191AF11540005D59D3 /* PipeLwrRight.png */,
 				36D942161AF1137F005D59D3 /* Grate.png */,
@@ -490,11 +493,11 @@
 		36D8EE701AEC5190004315CE /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				365DBC2E1AEE6C4E005CAE5D /* images */,
 				361FB0CF1AF7A48E0023B2E9 /* Gatorz */,
 				36D941E51AF084AC005D59D3 /* Numbers */,
 				3624C3A61AEFBFD600D974C2 /* Coin */,
 				36DB89B31AEEEEFB0093B567 /* Ratz */,
-				365DBC2E1AEE6C4E005CAE5D /* images */,
 				36F35C7D1AEE658F008A3CCA /* Ledge */,
 				36D8EE711AEC51F4004315CE /* Player */,
 				36D8EE751AEC58CD004315CE /* SKBSpriteTextures.h */,
@@ -793,6 +796,7 @@
 				36D941FC1AF085F7005D59D3 /* Text_PlayerScoreHeader.png in Resources */,
 				361FB0FF1AF7A4C40023B2E9 /* Gatorz_Left_2.png in Resources */,
 				36D8EE611AEBF6E3004315CE /* SewerSplash_568.png in Resources */,
+				36D449351AFB9CF3000B7FC8 /* Instructions.png in Resources */,
 				36D941F61AF084EE005D59D3 /* Text_Number_6.png in Resources */,
 				36D8EE601AEBF6E3004315CE /* SewerSplash_480.png in Resources */,
 				36F35C821AEE6658008A3CCA /* LedgeBrick.png in Resources */,

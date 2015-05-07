@@ -48,19 +48,32 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
-        SKNode *splashNode = [self childNodeWithName:SPLASH_NODE];
-        SKNode *startNode = [self childNodeWithName:@"startNode"];
-        if(splashNode) {
-            splashNode.name = nil;
-            SKAction *zoom = [SKAction scaleTo:4.0 duration:1];
-            SKAction *fadeAway = [SKAction fadeOutWithDuration:1];
-            SKAction *grouped = [SKAction group:@[zoom, fadeAway]];
-            [startNode runAction:grouped];
-            [splashNode runAction:grouped completion:^{
-                GameScene *nextScene = [[GameScene alloc]initWithSize:self.size];
-                SKTransition *doors = [SKTransition doorwayWithDuration:0.5];
-                [self.view presentScene:nextScene transition:doors];
-            }];
+        SKNode *instructionNode = [self childNodeWithName:@"instructionNode"];
+        
+        if(instructionNode != nil) {
+            // second tap - on to the game:
+            [instructionNode removeFromParent];
+            
+            SKNode *splashNode = [self childNodeWithName:SPLASH_NODE];
+            SKNode *startNode = [self childNodeWithName:@"startNode"];
+            if(splashNode) {
+                splashNode.name = nil;
+                SKAction *zoom = [SKAction scaleTo:4.0 duration:1];
+                SKAction *fadeAway = [SKAction fadeOutWithDuration:1];
+                SKAction *grouped = [SKAction group:@[zoom, fadeAway]];
+                [startNode runAction:grouped];
+                [splashNode runAction:grouped completion:^{
+                    GameScene *nextScene = [[GameScene alloc]initWithSize:self.size];
+                    SKTransition *doors = [SKTransition doorwayWithDuration:0.5];
+                    [self.view presentScene:nextScene transition:doors];
+                }];
+            }
+        } else {
+            // first tap - show instructions
+            SKSpriteNode *instruction = [SKSpriteNode spriteNodeWithImageNamed:@"Instructions"];
+            instruction.name = @"instructionNode";
+            instruction.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+            [self addChild:instruction];
         }
     }
 }
